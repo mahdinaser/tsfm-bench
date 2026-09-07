@@ -1,0 +1,19 @@
+# Exact versions are pinned by `make freeze` AFTER installation, so that every
+# version recorded here is one that was actually measured, not one that was
+# guessed. Until then this file lists the required distributions only.
+numpy
+pandas
+scipy
+matplotlib
+rdata
+xarray
+statsforecast
+mlforecast
+lightgbm
+neuralforecast
+torch
+transformers
+huggingface_hub
+chronos-forecasting>=2
+timesfm[torch]
+uni2ts
