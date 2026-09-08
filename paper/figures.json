@@ -71,31 +71,32 @@
     },
     "airquality_hourly": {
       "best": "TimesFM3",
-      "friedman_p": 2.2386862449062254e-112,
+      "friedman_p": 1.4146388575985749e-112,
       "n_series": 379,
       "tied_with_best": [
         "TimesFM3",
-        "Moirai2",
         "Chronos2",
+        "Moirai2",
         "TimesFM",
         "NBEATS",
         "ChronosBoltBase"
       ],
       "label": "Air quality (hourly)",
       "best_foundation_mase": 0.8947700645222322,
-      "best_classical_mase": 1.119714420582368,
-      "foundation_gain_pct": 20.089439943368887,
+      "best_classical_mase": 1.0238821369649307,
+      "foundation_gain_pct": 12.610052249316736,
       "best_is_foundation": true,
       "naive_tied_with_best": false
     },
     "energy_hourly": {
       "best": "Theta",
-      "friedman_p": 9.337342854882971e-11,
+      "friedman_p": 2.2992189401378353e-10,
       "n_series": 47,
       "tied_with_best": [
         "Theta",
         "Chronos2",
         "TimesFM3",
+        "AutoARIMA",
         "Moirai2",
         "ChronosBoltSmall",
         "TimesFM"
@@ -109,7 +110,7 @@
     },
     "fx_daily": {
       "best": "TimesFM",
-      "friedman_p": 0.11864562133850551,
+      "friedman_p": 0.135321599791196,
       "n_series": 29,
       "tied_with_best": [
         "TimesFM",
@@ -117,9 +118,10 @@
         "AutoETS",
         "SeasonalNaive",
         "Theta",
-        "Moirai2",
         "NBEATS",
+        "Moirai2",
         "ChronosBoltBase",
+        "AutoARIMA",
         "TimesFM3",
         "ChronosBoltSmall",
         "LightGBM"
@@ -146,14 +148,14 @@
       "TimesFM": 0.06308979837169827,
       "LSTM": 0.07988265644523038,
       "AutoETS": 0.11594282475725248,
-      "AutoARIMA": 0.4915500064147636
+      "AutoARIMA": 0.8613609303310513
     },
-    "arima_over_Chronos2_median": 52.23989606556826,
+    "arima_over_Chronos2_median": 53.553971483506366,
     "arima_over_Chronos2_max": 2688.7946302738405,
     "arima_over_Chronos2_max_group": "weather_hourly",
-    "arima_over_Chronos2_min": 16.995988153008305,
-    "arima_n_groups": 4
+    "arima_over_Chronos2_min": 4.880620372801002,
+    "arima_n_groups": 7
   },
-  "n_cells": 88,
+  "n_cells": 91,
   "n_models": 13
 }

@@ -1,0 +1,100 @@
+{
+  "airquality_hourly": {
+    "n_series": 379,
+    "n_models": 13,
+    "friedman_p": 1.4146388575985749e-112,
+    "best": "TimesFM3",
+    "indistinguishable_from_best": [
+      "TimesFM3",
+      "Chronos2",
+      "Moirai2",
+      "TimesFM",
+      "NBEATS",
+      "ChronosBoltBase"
+    ]
+  },
+  "energy_hourly": {
+    "n_series": 47,
+    "n_models": 13,
+    "friedman_p": 2.2992189401378353e-10,
+    "best": "Theta",
+    "indistinguishable_from_best": [
+      "Theta",
+      "Chronos2",
+      "TimesFM3",
+      "AutoARIMA",
+      "Moirai2",
+      "ChronosBoltSmall",
+      "TimesFM"
+    ]
+  },
+  "fx_daily": {
+    "n_series": 29,
+    "n_models": 13,
+    "friedman_p": 0.135321599791196,
+    "best": "TimesFM",
+    "indistinguishable_from_best": [
+      "TimesFM",
+      "Chronos2",
+      "AutoETS",
+      "SeasonalNaive",
+      "Theta",
+      "NBEATS",
+      "Moirai2",
+      "ChronosBoltBase",
+      "AutoARIMA",
+      "TimesFM3",
+      "ChronosBoltSmall",
+      "LightGBM"
+    ]
+  },
+  "weather_hourly": {
+    "n_series": 300,
+    "n_models": 13,
+    "friedman_p": 4.6602264718654264e-85,
+    "best": "Chronos2",
+    "indistinguishable_from_best": [
+      "Chronos2",
+      "TimesFM3",
+      "ChronosBoltBase",
+      "Moirai2",
+      "ChronosBoltSmall",
+      "TimesFM"
+    ]
+  },
+  "wiki_daily": {
+    "n_series": 500,
+    "n_models": 13,
+    "friedman_p": 9.287771085647924e-251,
+    "best": "TimesFM3",
+    "indistinguishable_from_best": [
+      "TimesFM3",
+      "TimesFM",
+      "Moirai2"
+    ]
+  },
+  "wiki_monthly": {
+    "n_series": 500,
+    "n_models": 13,
+    "friedman_p": 2.177183483985983e-258,
+    "best": "Moirai2",
+    "indistinguishable_from_best": [
+      "Moirai2",
+      "Chronos2",
+      "TimesFM",
+      "TimesFM3",
+      "ChronosBoltBase"
+    ]
+  },
+  "wiki_weekly": {
+    "n_series": 500,
+    "n_models": 13,
+    "friedman_p": 1.089835214791259e-264,
+    "best": "TimesFM3",
+    "indistinguishable_from_best": [
+      "TimesFM3",
+      "TimesFM",
+      "Chronos2"
+    ]
+  }
+}
