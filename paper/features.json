@@ -1,0 +1,72 @@
+[
+  {
+    "group":"wiki_daily",
+    "n_used":150,
+    "seasonality":7,
+    "spectral_entropy":0.9294534723,
+    "seasonal_strength":0.1022439884,
+    "foundation_gain_pct":25.7900408389,
+    "friedman_p":9.287771086e-251,
+    "label":"Wikipedia (daily)"
+  },
+  {
+    "group":"wiki_weekly",
+    "n_used":150,
+    "seasonality":1,
+    "spectral_entropy":0.9155825713,
+    "seasonal_strength":0.0,
+    "foundation_gain_pct":28.4032203923,
+    "friedman_p":1.089835215e-264,
+    "label":"Wikipedia (weekly)"
+  },
+  {
+    "group":"wiki_monthly",
+    "n_used":150,
+    "seasonality":12,
+    "spectral_entropy":0.8746724534,
+    "seasonal_strength":0.0614808488,
+    "foundation_gain_pct":16.8934317691,
+    "friedman_p":2.177183484e-258,
+    "label":"Wikipedia (monthly)"
+  },
+  {
+    "group":"weather_hourly",
+    "n_used":150,
+    "seasonality":24,
+    "spectral_entropy":0.693114208,
+    "seasonal_strength":0.767176339,
+    "foundation_gain_pct":12.4526437868,
+    "friedman_p":4.660226472e-85,
+    "label":"Weather (hourly)"
+  },
+  {
+    "group":"airquality_hourly",
+    "n_used":150,
+    "seasonality":24,
+    "spectral_entropy":0.8416208929,
+    "seasonal_strength":0.3423531693,
+    "foundation_gain_pct":12.6100522493,
+    "friedman_p":1.414638858e-112,
+    "label":"Air quality (hourly)"
+  },
+  {
+    "group":"energy_hourly",
+    "n_used":47,
+    "seasonality":24,
+    "spectral_entropy":0.8283585644,
+    "seasonal_strength":0.4706670873,
+    "foundation_gain_pct":-10.5622984786,
+    "friedman_p":0.0000000002,
+    "label":"Electricity (hourly)"
+  },
+  {
+    "group":"fx_daily",
+    "n_used":29,
+    "seasonality":1,
+    "spectral_entropy":0.9281341812,
+    "seasonal_strength":0.0,
+    "foundation_gain_pct":0.6181598701,
+    "friedman_p":0.1353215998,
+    "label":"Exchange rates (daily)"
+  }
+]

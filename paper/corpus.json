@@ -1,0 +1,84 @@
+{
+  "families": {
+    "TimesFM": [
+      "TimesFM",
+      "TimesFM3"
+    ],
+    "Chronos": [
+      "Chronos2",
+      "ChronosBoltBase",
+      "ChronosBoltSmall"
+    ]
+  },
+  "corpus_domain": [
+    "wiki_daily",
+    "wiki_weekly",
+    "wiki_monthly"
+  ],
+  "median_delta_in_corpus": -0.833333333333333,
+  "median_delta_elsewhere": 0.0,
+  "mean_delta_in_corpus": -0.5297777777777778,
+  "mean_delta_elsewhere": -0.08543046357615892,
+  "n_in_corpus": 1500,
+  "n_elsewhere": 755,
+  "mannwhitney_p": 8.090117549805903e-08,
+  "rank_biserial": -0.13491125827814565,
+  "per_group_family_rank": {
+    "airquality_hourly": {
+      "TimesFM": 3.41688654353562,
+      "TimesFM3": 3.3271767810026387,
+      "Chronos2": 3.445910290237467,
+      "ChronosBoltBase": 3.649076517150396,
+      "ChronosBoltSmall": 3.767810026385224,
+      "Moirai2": 3.3931398416886545
+    },
+    "energy_hourly": {
+      "TimesFM": 3.7872340425531914,
+      "TimesFM3": 3.1702127659574466,
+      "Chronos2": 3.0638297872340425,
+      "ChronosBoltBase": 3.6595744680851063,
+      "ChronosBoltSmall": 3.723404255319149,
+      "Moirai2": 3.595744680851064
+    },
+    "fx_daily": {
+      "TimesFM": 3.1379310344827585,
+      "TimesFM3": 3.689655172413793,
+      "Chronos2": 3.103448275862069,
+      "ChronosBoltBase": 3.5517241379310347,
+      "ChronosBoltSmall": 4.0,
+      "Moirai2": 3.5172413793103448
+    },
+    "weather_hourly": {
+      "TimesFM": 3.6266666666666665,
+      "TimesFM3": 3.493333333333333,
+      "Chronos2": 3.236666666666667,
+      "ChronosBoltBase": 3.4966666666666666,
+      "ChronosBoltSmall": 3.6066666666666665,
+      "Moirai2": 3.54
+    },
+    "wiki_daily": {
+      "TimesFM": 3.026,
+      "TimesFM3": 2.974,
+      "Chronos2": 3.516,
+      "ChronosBoltBase": 3.974,
+      "ChronosBoltSmall": 4.11,
+      "Moirai2": 3.4
+    },
+    "wiki_monthly": {
+      "TimesFM": 3.372,
+      "TimesFM3": 3.544,
+      "Chronos2": 3.328,
+      "ChronosBoltBase": 3.546,
+      "ChronosBoltSmall": 3.932,
+      "Moirai2": 3.278
+    },
+    "wiki_weekly": {
+      "TimesFM": 3.138,
+      "TimesFM3": 3.066,
+      "Chronos2": 3.304,
+      "ChronosBoltBase": 3.798,
+      "ChronosBoltSmall": 3.94,
+      "Moirai2": 3.754
+    }
+  }
+}

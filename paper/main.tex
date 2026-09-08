@@ -15,9 +15,10 @@
 % Every quoted number is a macro generated from the results, so no sentence can
 % drift from the table above it between one re-run and the next.
 \input{tables/claims.tex}
+\input{tables/corpus.tex}
 
-\title{When Do Time-Series Foundation Models Actually Help?\\
-       A Contamination-Free Benchmark Across Five Domains}
+\title{A Later Test Set Is Not a New Domain:\\
+       Pretraining Familiarity Survives a Contamination-Free Hold-Out}
 \author{Mahdi Naser Moghadasi}
 \date{\today}
 
@@ -27,28 +28,32 @@
 \begin{abstract}
 Time-series foundation models are evaluated almost exclusively on public
 archives that predate them, so a strong score cannot be separated from having
-seen the test set during pretraining. We re-evaluate thirteen forecasters ---
-four classical, three trained per dataset, and six pretrained --- on seven
-groups drawn from five domains whose observations were all published after
-every model in the comparison was released, and whose data collection is
-specified in advance and reproducible without any API key. Under this protocol
-the advantage of pretrained models is neither universal nor uniform: it is
-large on high-entropy periodic series (up to \MaxGain{} lower MASE than the
-best classical method, on \MaxGainGroup{}), smaller but real on hourly weather
-and air quality, absent on electricity settlement data, where a Theta baseline
-ranks first, and absent on daily exchange rates, where a seasonal naive
-forecast is statistically indistinguishable from every model tested. We argue
-from these results that the operative question is not whether pretrained
-models beat classical baselines but on what kind of series, and we propose a
-characterisation --- periodic and high-entropy --- that predicts the sign of
-the gap on all seven groups. We also report cost: the accuracy differences
-that separate the leading pretrained models are, in most groups, smaller than
-the interval within which they are statistically indistinguishable, while
-their inference cost differs sharply from that of an automatic ARIMA search ---
-by a median factor of \ArimaMedianSlowdown{}, but ranging from
-\ArimaMinSlowdown{}$\times$ on weekly data to
-\ArimaMaxSlowdown{}$\times$ on \ArimaMaxGroup{}, because a model-order search
-grows with series length and season while a forward pass does not.
+seen the test set during pretraining. The obvious remedy is a hold-out that
+postdates the models. We build one: thirteen forecasters --- four classical,
+three trained per dataset, six pretrained --- on seven groups drawn from five
+domains, every observation published after the last model was released, and
+every dataset rebuildable without an API key. Under this protocol pretrained
+models win \NumGroupsFoundationBestSig{} of \NumGroups{} groups, lose one to a
+Theta baseline, and on daily exchange rates are indistinguishable from a
+seasonal naive forecast, along with every other method tested.
+
+We then ask what separates the wins from the losses, and report a negative
+result: the two intrinsic properties one would reach for --- seasonal strength
+and spectral entropy, measured on the input window --- do not account for the
+pattern, and seasonal strength is if anything negatively associated with the
+advantage. What does track it is corpus familiarity. Our largest gain
+(\MaxGain{} lower MASE than the best classical method, on \MaxGainGroup{})
+falls on Wikipedia pageviews, the domain TimesFM's authors describe as the bulk of its pretraining
+corpus, at the same granularities and differing only in time window. Within the
+pretrained family, where every model forecasts identical series so that series
+difficulty cancels, the TimesFM family outranks the Chronos family by
+\CorpusDeltaWiki{} on Wikipedia against \CorpusDeltaOther{} everywhere else
+(\CorpusNWiki{} vs.\ \CorpusNOther{} series, Mann--Whitney $p$~\CorpusP{}). We
+conclude that a temporal hold-out removes memorisation of a window but not
+familiarity with a domain, that benchmarks therefore need domain hold-outs
+stated relative to disclosed corpora, and that the practitioner's question is
+less which model is better than whether their domain is one the model was
+raised on.
 \end{abstract}
 
 \section{Introduction}
@@ -73,10 +78,21 @@ comparison. Nothing in the hold-out can have been memorised because none of it
 had happened yet.
 
 Under that protocol the headline finding of the foundation-model literature
-survives only in part, and the part that fails is the more interesting one.
-Pretrained models are clearly better on some domains and clearly not better on
-others, and the boundary is not random: it tracks a property of the series
-rather than a property of the model.
+survives only in part. Pretrained models are clearly better on some domains and
+clearly not better on others. The interesting question is what separates them,
+and our answer is not the one we set out to give: we expected a property of the
+series and found a property of the corpus. The domain on which pretrained
+models gain most is the domain one of them was largely pretrained on --- the
+same source and the same granularities, differing only in time window --- and
+the advantage is largest for exactly the model whose corpus it is.
+
+This is not memorisation of the test set; the hold-out makes that impossible.
+It is the weaker but more durable form of the same problem. A model that has
+read a decade of Wikipedia pageview series has learned what Wikipedia pageview
+series do, and January 2026 pageviews still do it. Moving the test window
+forward controls for the first kind of contamination and leaves the second
+untouched, which means the field's evaluations cannot be repaired by
+recency alone.
 
 \paragraph{Contributions.}
 \begin{enumerate}
@@ -84,9 +100,14 @@ rather than a property of the model.
         every evaluated model, over five domains built only from keyless,
         continuously published sources so that any reader can rebuild the exact
         panel from the fetchers we release.
-  \item \textbf{A negative result with a boundary.} Pretrained models do not
-        beat classical baselines everywhere. We identify two domains where they
-        do not, and characterise what those domains have in common.
+  \item \textbf{Two negative results.} Pretrained models do not beat classical
+        baselines everywhere: we identify one domain where a Theta baseline
+        ranks first and one where nothing beats seasonal naive. And the
+        intrinsic explanation fails --- neither seasonal strength nor spectral
+        entropy accounts for where the advantage appears.
+  \item \textbf{Evidence that pretraining familiarity persists past a temporal
+        hold-out}, from a within-family comparison on identical series that no
+        property of those series can explain.
   \item \textbf{Significance rather than decimal places.} We report
         multiple-comparison rank intervals and corrected paired tests, and show
         that most published-style gaps between leading pretrained models fall
@@ -217,34 +238,81 @@ exchange rates the tied set contains every method tested; the benchmark detects
 no difference between any of the thirteen, which is the right answer for that
 domain rather than a failure of the design.
 
-\subsection{Where the advantage lives}
+\subsection{The intrinsic explanation, and why we abandoned it}
 
 Ordering the groups by the gap between the best pretrained model and the best
-classical one produces a gradient rather than a dichotomy: largest on Wikipedia
-traffic, substantial on air quality, smaller on weather, negative on
-electricity, and null on exchange rates. Two properties are needed to explain
-it, and neither suffices alone.
+classical one gives a gradient: largest on Wikipedia traffic, smaller on
+weather and air quality, negative on electricity, null on exchange rates. The
+natural hypothesis is that some property of the series explains it, and the
+natural candidates are periodicity and noise --- pretraining should help most
+where a repeating structure exists but is hard to estimate from a few hundred
+observations alone.
 
-\emph{Periodicity alone does not predict the advantage.} Weather, air quality
-and electricity all have a clean daily cycle, and the gap across them ranges
-from clearly positive to negative.
+We tested that directly. For each group we measured, on the input window only,
+the median seasonal strength (from an STL decomposition at the group's seasonal
+period) and the median spectral entropy of the differenced series, both as
+defined in the feature literature used to characterise the M4 panel
+(Table~\ref{tab:features}). Neither explains the pattern. Seasonal strength is
+if anything \emph{negatively} associated with the advantage: Wikipedia series
+have almost no measurable seasonality at the tested period and show the largest
+gains, while weather is the most strongly seasonal group in the study and shows
+a middling one. Spectral entropy fails in the other direction: exchange rates
+are as high-entropy as Wikipedia traffic and show no advantage at all. With
+seven groups no correlation here is statistically meaningful in any case, and
+we report the measurement rather than a story fitted to it.
 
-\emph{Entropy alone does not predict it either.} Exchange rates are the
-highest-entropy domain in the study and show no advantage at all.
+\begin{table}[t]
+\centering
+\small
+\input{tables/features.tex}
+\caption{Series properties measured on the input window only, against the
+observed advantage. Neither column orders the last one.}
+\label{tab:features}
+\end{table}
 
-What separates the groups is the conjunction. Where a series carries a
-repeating structure \emph{and} enough irregular variation that estimating that
-structure from a few hundred observations is statistically hard, pretraining
-supplies what the target series cannot: a prior over what such series usually
-do. Where the structure is clean enough to estimate directly --- electricity
-load, whose daily and weekly cycles are close to deterministic --- a method
-fitted to the series itself matches or beats the prior. Where there is no
-structure to transfer, nothing helps.
+\subsection{Corpus familiarity survives the hold-out}
 
-This is a falsifiable characterisation, and we state the falsification: a
-domain that is periodic and noisy on which pretrained models fail to beat
-Theta, or a smooth low-noise periodic domain on which they beat it decisively,
-would refute it.
+What does line up with the gradient is not a property of the series but of the
+models' training data. TimesFM's authors describe its pretraining corpus as
+dominated by Wikipedia pageviews --- on the order of $10^{11}$ time points at
+hourly, daily, weekly and monthly granularity, running to late 2023. Our three
+Wikipedia groups are pageviews at daily, weekly and monthly granularity,
+beginning in 2026. The hold-out is clean in time and identical in kind.
+
+A domain being both the largest corpus component and the largest measured gain
+is suggestive, but it is one coincidence and admits a benign reading: perhaps
+Wikipedia traffic is simply a domain where all pretrained models do well. We
+can separate the two, because the pretrained models forecast the \emph{same
+series}. Any property of those series --- difficulty, seasonality, noise ---
+applies equally to all of them and cancels in a within-family comparison. What
+does not cancel is what each model read during pretraining.
+
+Ranking the six pretrained models against each other on every series, the
+TimesFM family sits \CorpusDeltaWiki{} ranks below the Chronos family on
+Wikipedia and only \CorpusDeltaOther{} below it on the other four domains
+(\CorpusNWiki{} vs.\ \CorpusNOther{} series; Mann--Whitney $p$~\CorpusP{},
+rank-biserial \CorpusEffect{}). The model with Wikipedia in its corpus is
+specifically better at Wikipedia, and only there. The effect is modest in size,
+and we present it as such --- but its direction is not something the series can
+account for.
+
+We therefore read the gradient as a corpus-overlap effect rather than a
+capability one, and note that this is a hypothesis our design supports rather
+than a demonstrated mechanism. The decisive experiment is a benchmark whose
+domains are stratified by membership in each model's disclosed corpus, which
+requires disclosure the field does not currently provide. That, rather than a
+further increase in the size of the pretraining set, seems to us the useful
+next contribution.
+
+\subsection{What this means for evaluation}
+
+A temporal hold-out is necessary and not sufficient. It rules out the model
+having seen these observations; it does not rule out the model having spent its
+training on this kind of series, and the second effect is large enough to
+reorder a leaderboard. Reporting a single average across domains hides it
+entirely, because the average is dominated by whichever domains happen to be in
+the benchmark, and those are the well-published ones --- which are also the
+ones most likely to be in a pretraining corpus.
 
 \subsection{Cost}
 
@@ -273,25 +341,52 @@ exactly where the search is most expensive.
 
 \section{Limitations}
 
-The hold-out is one forecast origin per group; a rolling-origin evaluation
-would estimate variance across time as well as across series. Two domains
-contribute fewer than fifty series, so their rank intervals are wide, and the
-electricity result in particular should be read as ``no evidence of an
-advantage'' rather than as a demonstrated deficit. Pretraining cutoffs are
-taken from model documentation and cannot be independently verified; where a
-cutoff is undisclosed we substitute the release date. Finally, the study covers
-five domains, which is more than the standard two but far from the diversity of
-real forecasting practice.
+The corpus-overlap finding is an association, not a demonstrated mechanism. It
+rests on one corpus whose composition is publicly described and one domain that
+matches it; a model could be better at Wikipedia traffic for reasons unrelated
+to having read Wikipedia traffic, and our within-family comparison narrows that
+possibility without closing it. The effect is also modest --- a rank-biserial
+correlation of \CorpusEffect{} --- and we resist reading a large practical
+consequence into it. Settling the question needs a benchmark stratified by
+corpus membership across several models, which in turn needs disclosure that
+most published corpora do not provide.
+
+Beyond that: the hold-out is one forecast origin per group, where a
+rolling-origin evaluation would estimate variance across time as well as across
+series. Two domains contribute fewer than fifty series, so their rank intervals
+are wide, and the electricity result should be read as ``no evidence of an
+advantage'' rather than a demonstrated deficit. Pretraining cutoffs are taken
+from model documentation and cannot be independently verified; where a cutoff
+is undisclosed we substitute the release date. And the study covers five
+domains, more than the standard two but far from the diversity of real
+forecasting practice --- with the caveat, central to our argument, that adding
+whichever domains are easiest to obtain is likely to add exactly the
+well-published ones that pretraining corpora already contain.
 
 \section{Conclusion}
 
-Evaluated on data that postdates them, time-series foundation models are
-strong on some domains, unnecessary on others, and useless where nothing works.
-The interesting quantity is not the average of those outcomes but the property
-that separates them. We find that pretraining pays where series are periodic
-and noisy, and does not pay where they are periodic and clean or aperiodic and
-unpredictable. We release the fetchers, the harness and the per-series losses
-so that the boundary can be tested on domains we did not consider.
+Evaluated on data that postdates them, time-series foundation models are strong
+on some domains, unnecessary on others, and useless where nothing works. We set
+out to explain that spread with a property of the series and could not: neither
+periodicity nor entropy orders it. What orders it is which domains the models
+were raised on. The largest advantage in our study falls on the domain that
+constitutes the bulk of one model's pretraining corpus, at the same
+granularities, and it is that model's family which holds the advantage there
+and nowhere else.
+
+The practical consequence for benchmark design is that moving the test window
+forward is not enough. It is necessary --- without it, nothing can be
+concluded at all --- but it controls only for having seen these observations,
+not for having spent a hundred billion time points learning what this kind of
+observation looks like. A benchmark that wants to measure generalisation has to
+hold out domains, not just dates, and it can only do so if pretraining corpora
+are disclosed well enough to say which domains those are. The practitioner's
+version of the same point is shorter: before asking which model is best, ask
+whether your data looks like the data it was raised on.
+
+We release the fetchers, the harness and the per-series losses so that both the
+negative result and the corpus effect can be tested on domains we did not
+consider.
 
 \section*{Reproducibility}
 
