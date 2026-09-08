@@ -18,6 +18,8 @@ from functools import lru_cache
 import numpy as np
 import pandas as pd
 
+from .metrics import mase_scale
+
 DATA_ROOT = os.environ.get(
     "TSFM_BENCH_DATA",
     os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data"),
@@ -232,6 +234,33 @@ def load_group(name: str) -> GroupData:
 
     if g.max_context is not None:
         train = [t[-g.max_context:] for t in train]
+
+    # MASE divides by the in-sample seasonal-naive error, so a series that
+    # never moves has a denominator of zero and no defined MASE at all. Denmark
+    # reports a hydro column for a price area with essentially no hydro: it is
+    # flat, seasonal naive scores 0.000 on it, and the two neural models that
+    # missed it by a hair scored 4e8 and 6e7, dragging the group's mean MASE
+    # into the millions on the strength of one degenerate series. Such a series
+    # poses no forecasting problem; it is dropped, and the count is reported so
+    # the exclusion is visible rather than silent.
+    # A relative threshold cannot catch this: the offending series is zero
+    # everywhere except a single 1e-06 blip, so its scale is negligible in
+    # absolute terms and enormous relative to itself. Counting distinct values
+    # is unit-free and unambiguous - anything a forecaster could be asked to
+    # predict takes more than two values across its whole input window, while
+    # an intermittent count series (0, 1, 2, ...) survives easily.
+    keep = [i for i, t in enumerate(train)
+            if len(t) > g.seasonality
+            and len(np.unique(t)) >= 3
+            and mase_scale(t, g.seasonality) > 0]
+    if len(keep) < len(train):
+        dropped = [ids[i] for i in range(len(ids)) if i not in set(keep)]
+        print(f"[data] {name}: dropped {len(dropped)} constant series "
+              f"(no defined MASE): {', '.join(dropped[:5])}"
+              f"{' ...' if len(dropped) > 5 else ''}")
+        ids = [ids[i] for i in keep]
+        train = [train[i] for i in keep]
+        test = test[keep]
 
     if g.subsample is not None and len(ids) > g.subsample:
         rng = np.random.default_rng(SUBSAMPLE_SEED)

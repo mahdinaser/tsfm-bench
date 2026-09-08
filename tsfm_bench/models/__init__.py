@@ -28,7 +28,8 @@ for _n, _m, _a in [
     ("ChronosBoltSmall",  "foundation",  "ChronosBoltSmall"),
     ("ChronosBoltBase",   "foundation",  "ChronosBoltBase"),
     ("Chronos2",          "foundation",  "Chronos2"),
-    ("TimesFM",           "foundation",  "TimesFM"),
+    ("TimesFM",           "foundation",  "TimesFM25"),
+    ("TimesFM3",          "foundation",  "TimesFM3"),
     ("Moirai2",           "foundation",  "Moirai2"),
     ("Sundial",           "foundation",  "Sundial"),
 ]:

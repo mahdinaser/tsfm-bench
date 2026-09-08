@@ -90,21 +90,21 @@
     },
     "energy_hourly": {
       "best": "Theta",
-      "friedman_p": 2.2992189401378353e-10,
-      "n_series": 47,
+      "friedman_p": 5.39745167423783e-11,
+      "n_series": 46,
       "tied_with_best": [
         "Theta",
-        "Chronos2",
         "TimesFM3",
-        "AutoARIMA",
+        "Chronos2",
         "Moirai2",
+        "AutoARIMA",
         "ChronosBoltSmall",
         "TimesFM"
       ],
       "label": "Electricity (hourly)",
-      "best_foundation_mase": 1.1307600999282197,
-      "best_classical_mase": 1.0227357023938508,
-      "foundation_gain_pct": -10.562298478631694,
+      "best_foundation_mase": 1.1549462373314285,
+      "best_classical_mase": 1.0447182088425537,
+      "foundation_gain_pct": -10.550981839494954,
       "best_is_foundation": false,
       "naive_tied_with_best": false
     },
@@ -136,19 +136,19 @@
   },
   "cost": {
     "median_seconds_per_series": {
-      "SeasonalNaive": 1.4451425522565842e-06,
-      "ChronosBoltSmall": 0.012147648527844758,
-      "Moirai2": 0.014077768661081791,
-      "ChronosBoltBase": 0.01663221020526732,
-      "Chronos2": 0.017005941953441243,
-      "TimesFM3": 0.02685082208365202,
-      "Theta": 0.030660599165906507,
-      "LightGBM": 0.03282346756819213,
-      "NBEATS": 0.04998863148589012,
-      "TimesFM": 0.06308979837169827,
-      "LSTM": 0.07988265644523038,
-      "AutoETS": 0.11594282475725248,
-      "AutoARIMA": 0.8613609303310513
+      "SeasonalNaive": 1.558154821395874e-06,
+      "ChronosBoltSmall": 0.01249344660323064,
+      "Moirai2": 0.014090138343764876,
+      "ChronosBoltBase": 0.017385731143700803,
+      "Chronos2": 0.018093369172541174,
+      "TimesFM3": 0.02693546754214913,
+      "Theta": 0.042921205666537086,
+      "LightGBM": 0.055043392186057194,
+      "NBEATS": 0.06271432129864433,
+      "TimesFM": 0.07261564196370832,
+      "LSTM": 0.08869430481959151,
+      "AutoETS": 0.1361596472866829,
+      "AutoARIMA": 3.848365049982242
     },
     "arima_over_Chronos2_median": 53.553971483506366,
     "arima_over_Chronos2_max": 2688.7946302738405,
@@ -156,6 +156,6 @@
     "arima_over_Chronos2_min": 4.880620372801002,
     "arima_n_groups": 7
   },
-  "n_cells": 91,
+  "n_cells": 104,
   "n_models": 13
 }

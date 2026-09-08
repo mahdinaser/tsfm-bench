@@ -182,7 +182,14 @@ benchmark. Table~\ref{tab:mase} lists the resulting groups.
 
 Series selection is specified before any result is seen --- the full city list,
 the full currency list, the publisher's own column set --- and nothing is added
-or removed afterwards.
+or removed afterwards. One mechanical exclusion applies: a series taking fewer
+than three distinct values across its entire input window is dropped, because
+MASE divides by an in-sample seasonal-naive error that is then zero and the
+metric is undefined. Exactly one series in the study meets this condition (a
+hydro-generation column for a Danish price area with no hydro, reported as zero
+throughout), and the rule is stated in these terms rather than as a threshold
+because a relative one cannot catch it: its scale is negligible in absolute
+terms and large relative to itself.
 
 \subsection{Metrics and significance}
 
@@ -198,6 +205,15 @@ signed-rank rather than a paired $t$-test because MASE across a panel is
 strongly right-skewed, and we avoid the label ``Diebold--Mariano'' because that
 test compares errors over time within one series, which is not the comparison a
 panel benchmark makes.
+
+The gap between a mean and a rank is not academic here, and we met it by
+accident. Before the exclusion above was in place, the near-constant Danish
+hydro series gave the two neural models mean MASE values of order $10^{6}$ on
+the electricity group --- one series in forty-seven moving the group mean by
+six orders of magnitude, while every model's typical behaviour on that group
+was unremarkable. The rank-based conclusion for that group was identical with
+and without the series. A benchmark reported as a mean is one degenerate series
+away from a headline; reported as ranks it is not.
 
 \section{Results}
 
