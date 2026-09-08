@@ -1,0 +1,15 @@
+{
+  "source": "Open-Meteo ERA5 archive (no API key)",
+  "variables": [
+    "temperature_2m",
+    "wind_speed_10m",
+    "relative_humidity_2m"
+  ],
+  "n_cities": 127,
+  "start": "2024-01-01",
+  "end": "2026-09-06",
+  "retrieved_at": "2026-09-08T02:34:05.803499+00:00",
+  "n_series": 300,
+  "dropped_incomplete": 0,
+  "sha256": "7a1379c7ef621045ad0d23341f22d3f8758ce53016ed8bf6231dcc76b6392201"
+}

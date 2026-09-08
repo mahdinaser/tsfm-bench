@@ -637,7 +637,7 @@ asserting it. Each of the nine was run twice under different seeds and the
 point forecasts compared exactly: all nine agree to the last bit
 ($\max|\Delta| = 0$), and the check is released as
 \texttt{scripts/check\_determinism.py} with its output in
-\texttt{results/holdout\_2026/determinism.json}. Across the three stochastic
+\texttt{results/holdout\_2026/determinism\_\_<group>.json}. Across the three stochastic
 models, the spread in mean MASE over three seeds is below 8\% on every group.
 
 \section{Limitations}
@@ -741,6 +741,9 @@ headline effect as much as for it.
 
 \section*{Reproducibility}
 
+Code, data fetchers and per-series results:
+\url{https://github.com/mahdinaser/tsfm-bench}
+
 Every dataset is rebuilt by a script in \texttt{data/sources/} requiring no
 credentials. \texttt{scripts/run\_holdout.sh} reproduces the runs,
 \texttt{scripts/significance.py} the tests, and \texttt{scripts/make\_tables.py}
@@ -751,7 +754,8 @@ re-running the models.
 \bibliographystyle{plainnat}
 \bibliography{refs}
 
-\newpage
-\input{checklist.tex}
+% The NeurIPS paper checklist lives in checklist.tex and is deliberately NOT
+% included here. It is required for a NeurIPS submission and must be re-added
+% with \input{checklist.tex} before submitting; it is noise in a preprint.
 
 \end{document}

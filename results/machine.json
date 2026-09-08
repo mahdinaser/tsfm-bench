@@ -1,0 +1,10 @@
+{
+  "macos": "14.4",
+  "model": "Mac15,11",
+  "chip": "Apple M3 Max",
+  "arch": "arm64",
+  "logical_cores": "14",
+  "perf_cores": "10",
+  "eff_cores": "4",
+  "ram_gb": "36.0"
+}

@@ -1,0 +1,1002 @@
+--- 2026-09-07T21:11:31.583735+00:00 LSTM__m3_other
+Traceback (most recent call last):
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 87, in main
+    fc = model.run(data.train, group.horizon, group.seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/base.py", line 56, in run
+    fc = self.forecast(train, horizon, seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/neural.py", line 82, in forecast
+    nf.fit(df=df, val_size=horizon)
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/core.py", line 659, in fit
+    self.models[i] = model.fit(
+                     ^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 2009, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 624, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 560, in fit
+    call._call_and_handle_interrupt(
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 598, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1011, in _run
+    results = self._run_stage()
+              ^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run_stage
+    self._run_sanity_check()
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1082, in _run_sanity_check
+    val_loop.run()
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/loops/utilities.py", line 179, in _decorator
+    return loop_run(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 145, in run
+    self._evaluation_step(batch, batch_idx, dataloader_idx, dataloader_iter)
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 437, in _evaluation_step
+    output = call._call_strategy_hook(trainer, hook_name, *step_args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 329, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 412, in validation_step
+    return self.lightning_module.validation_step(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1903, in validation_step
+    windows = self._normalization(windows=windows, y_idx=y_idx)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 913, in _normalization
+    temporal_data = self.scaler.transform(x=temporal_data, mask=temporal_mask)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/common/_scalers.py", line 445, in transform
+    x_shift, x_scale = self.compute_statistics(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/common/_scalers.py", line 233, in robust_statistics
+    x_median = masked_median(x=x, mask=mask, dim=dim)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/common/_scalers.py", line 30, in masked_median
+    x_median, _ = x_nan.nanmedian(dim=dim, keepdim=keepdim)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NotImplementedError: The operator 'aten::nanmedian.dim_values' is not currently implemented for the MPS device. If you want this op to be added in priority during the prototype phase of this feature, please comment on https://github.com/pytorch/pytorch/issues/77764. As a temporary fix, you can set the environment variable `PYTORCH_ENABLE_MPS_FALLBACK=1` to use the CPU as a fallback for this op. WARNING: this will be slower than running natively on MPS.
+--- 2026-09-07T21:11:32.387592+00:00 LSTM__tourism_yearly
+Traceback (most recent call last):
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 87, in main
+    fc = model.run(data.train, group.horizon, group.seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/base.py", line 56, in run
+    fc = self.forecast(train, horizon, seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/neural.py", line 82, in forecast
+    nf.fit(df=df, val_size=horizon)
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/core.py", line 659, in fit
+    self.models[i] = model.fit(
+                     ^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 2009, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 624, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 560, in fit
+    call._call_and_handle_interrupt(
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 598, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1011, in _run
+    results = self._run_stage()
+              ^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run_stage
+    self._run_sanity_check()
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1082, in _run_sanity_check
+    val_loop.run()
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/loops/utilities.py", line 179, in _decorator
+    return loop_run(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 145, in run
+    self._evaluation_step(batch, batch_idx, dataloader_idx, dataloader_iter)
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 437, in _evaluation_step
+    output = call._call_strategy_hook(trainer, hook_name, *step_args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 329, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 412, in validation_step
+    return self.lightning_module.validation_step(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1903, in validation_step
+    windows = self._normalization(windows=windows, y_idx=y_idx)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 913, in _normalization
+    temporal_data = self.scaler.transform(x=temporal_data, mask=temporal_mask)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/common/_scalers.py", line 445, in transform
+    x_shift, x_scale = self.compute_statistics(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/common/_scalers.py", line 233, in robust_statistics
+    x_median = masked_median(x=x, mask=mask, dim=dim)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/common/_scalers.py", line 30, in masked_median
+    x_median, _ = x_nan.nanmedian(dim=dim, keepdim=keepdim)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NotImplementedError: The operator 'aten::nanmedian.dim_values' is not currently implemented for the MPS device. If you want this op to be added in priority during the prototype phase of this feature, please comment on https://github.com/pytorch/pytorch/issues/77764. As a temporary fix, you can set the environment variable `PYTORCH_ENABLE_MPS_FALLBACK=1` to use the CPU as a fallback for this op. WARNING: this will be slower than running natively on MPS.
+--- 2026-09-07T21:11:37.376214+00:00 NBEATS__m3_other
+Traceback (most recent call last):
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 87, in main
+    fc = model.run(data.train, group.horizon, group.seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/base.py", line 56, in run
+    fc = self.forecast(train, horizon, seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/neural.py", line 82, in forecast
+    nf.fit(df=df, val_size=horizon)
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/core.py", line 659, in fit
+    self.models[i] = model.fit(
+                     ^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 2009, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 624, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 560, in fit
+    call._call_and_handle_interrupt(
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 598, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1011, in _run
+    results = self._run_stage()
+              ^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run_stage
+    self._run_sanity_check()
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1082, in _run_sanity_check
+    val_loop.run()
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/loops/utilities.py", line 179, in _decorator
+    return loop_run(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 145, in run
+    self._evaluation_step(batch, batch_idx, dataloader_idx, dataloader_iter)
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 437, in _evaluation_step
+    output = call._call_strategy_hook(trainer, hook_name, *step_args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 329, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 412, in validation_step
+    return self.lightning_module.validation_step(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1903, in validation_step
+    windows = self._normalization(windows=windows, y_idx=y_idx)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 913, in _normalization
+    temporal_data = self.scaler.transform(x=temporal_data, mask=temporal_mask)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/common/_scalers.py", line 445, in transform
+    x_shift, x_scale = self.compute_statistics(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/common/_scalers.py", line 233, in robust_statistics
+    x_median = masked_median(x=x, mask=mask, dim=dim)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/common/_scalers.py", line 30, in masked_median
+    x_median, _ = x_nan.nanmedian(dim=dim, keepdim=keepdim)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NotImplementedError: The operator 'aten::nanmedian.dim_values' is not currently implemented for the MPS device. If you want this op to be added in priority during the prototype phase of this feature, please comment on https://github.com/pytorch/pytorch/issues/77764. As a temporary fix, you can set the environment variable `PYTORCH_ENABLE_MPS_FALLBACK=1` to use the CPU as a fallback for this op. WARNING: this will be slower than running natively on MPS.
+--- 2026-09-07T21:11:38.199847+00:00 NBEATS__tourism_yearly
+Traceback (most recent call last):
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 87, in main
+    fc = model.run(data.train, group.horizon, group.seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/base.py", line 56, in run
+    fc = self.forecast(train, horizon, seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/neural.py", line 82, in forecast
+    nf.fit(df=df, val_size=horizon)
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/core.py", line 659, in fit
+    self.models[i] = model.fit(
+                     ^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 2009, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 624, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 560, in fit
+    call._call_and_handle_interrupt(
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 598, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1011, in _run
+    results = self._run_stage()
+              ^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run_stage
+    self._run_sanity_check()
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1082, in _run_sanity_check
+    val_loop.run()
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/loops/utilities.py", line 179, in _decorator
+    return loop_run(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 145, in run
+    self._evaluation_step(batch, batch_idx, dataloader_idx, dataloader_iter)
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 437, in _evaluation_step
+    output = call._call_strategy_hook(trainer, hook_name, *step_args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 329, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 412, in validation_step
+    return self.lightning_module.validation_step(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1903, in validation_step
+    windows = self._normalization(windows=windows, y_idx=y_idx)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 913, in _normalization
+    temporal_data = self.scaler.transform(x=temporal_data, mask=temporal_mask)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/common/_scalers.py", line 445, in transform
+    x_shift, x_scale = self.compute_statistics(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/common/_scalers.py", line 233, in robust_statistics
+    x_median = masked_median(x=x, mask=mask, dim=dim)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/neuralforecast/common/_scalers.py", line 30, in masked_median
+    x_median, _ = x_nan.nanmedian(dim=dim, keepdim=keepdim)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NotImplementedError: The operator 'aten::nanmedian.dim_values' is not currently implemented for the MPS device. If you want this op to be added in priority during the prototype phase of this feature, please comment on https://github.com/pytorch/pytorch/issues/77764. As a temporary fix, you can set the environment variable `PYTORCH_ENABLE_MPS_FALLBACK=1` to use the CPU as a fallback for this op. WARNING: this will be slower than running natively on MPS.
+--- 2026-09-07T21:11:41.893693+00:00 ChronosBoltSmall__m3_other
+Traceback (most recent call last):
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 87, in main
+    fc = model.run(data.train, group.horizon, group.seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/base.py", line 56, in run
+    fc = self.forecast(train, horizon, seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/foundation.py", line 57, in forecast
+    pipe, load_s = self._load(device)
+                   ^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/foundation.py", line 46, in _load
+    import chronos, torch
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/chronos/__init__.py", line 13, in <module>
+    from .chronos2 import Chronos2ForecastingConfig, Chronos2Model, Chronos2Pipeline
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/chronos/chronos2/__init__.py", line 7, in <module>
+    from .model import Chronos2Model
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/chronos/chronos2/model.py", line 15, in <module>
+    from transformers.modeling_utils import PreTrainedModel
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/modeling_utils.py", line 49, in <module>
+    from .conversion_mapping import get_model_conversion_mapping
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/conversion_mapping.py", line 21, in <module>
+    from .core_model_loading import (
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/core_model_loading.py", line 35, in <module>
+    from .integrations.accelerate import get_device, offload_weight
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/integrations/accelerate.py", line 65, in <module>
+    ) -> tuple[int, list[str], list[nn.Module]]:
+                                    ^^
+NameError: name 'nn' is not defined
+--- 2026-09-07T21:11:42.648097+00:00 ChronosBoltSmall__tourism_yearly
+Traceback (most recent call last):
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 87, in main
+    fc = model.run(data.train, group.horizon, group.seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/base.py", line 56, in run
+    fc = self.forecast(train, horizon, seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/foundation.py", line 57, in forecast
+    pipe, load_s = self._load(device)
+                   ^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/foundation.py", line 46, in _load
+    import chronos, torch
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/chronos/__init__.py", line 13, in <module>
+    from .chronos2 import Chronos2ForecastingConfig, Chronos2Model, Chronos2Pipeline
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/chronos/chronos2/__init__.py", line 7, in <module>
+    from .model import Chronos2Model
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/chronos/chronos2/model.py", line 15, in <module>
+    from transformers.modeling_utils import PreTrainedModel
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/modeling_utils.py", line 49, in <module>
+    from .conversion_mapping import get_model_conversion_mapping
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/conversion_mapping.py", line 21, in <module>
+    from .core_model_loading import (
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/core_model_loading.py", line 35, in <module>
+    from .integrations.accelerate import get_device, offload_weight
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/integrations/accelerate.py", line 65, in <module>
+    ) -> tuple[int, list[str], list[nn.Module]]:
+                                    ^^
+NameError: name 'nn' is not defined
+--- 2026-09-07T21:11:45.934643+00:00 ChronosBoltBase__m3_other
+Traceback (most recent call last):
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 87, in main
+    fc = model.run(data.train, group.horizon, group.seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/base.py", line 56, in run
+    fc = self.forecast(train, horizon, seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/foundation.py", line 57, in forecast
+    pipe, load_s = self._load(device)
+                   ^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/foundation.py", line 46, in _load
+    import chronos, torch
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/chronos/__init__.py", line 13, in <module>
+    from .chronos2 import Chronos2ForecastingConfig, Chronos2Model, Chronos2Pipeline
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/chronos/chronos2/__init__.py", line 7, in <module>
+    from .model import Chronos2Model
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/chronos/chronos2/model.py", line 15, in <module>
+    from transformers.modeling_utils import PreTrainedModel
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/modeling_utils.py", line 49, in <module>
+    from .conversion_mapping import get_model_conversion_mapping
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/conversion_mapping.py", line 21, in <module>
+    from .core_model_loading import (
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/core_model_loading.py", line 35, in <module>
+    from .integrations.accelerate import get_device, offload_weight
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/integrations/accelerate.py", line 65, in <module>
+    ) -> tuple[int, list[str], list[nn.Module]]:
+                                    ^^
+NameError: name 'nn' is not defined
+--- 2026-09-07T21:11:46.693072+00:00 ChronosBoltBase__tourism_yearly
+Traceback (most recent call last):
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 87, in main
+    fc = model.run(data.train, group.horizon, group.seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/base.py", line 56, in run
+    fc = self.forecast(train, horizon, seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/foundation.py", line 57, in forecast
+    pipe, load_s = self._load(device)
+                   ^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/foundation.py", line 46, in _load
+    import chronos, torch
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/chronos/__init__.py", line 13, in <module>
+    from .chronos2 import Chronos2ForecastingConfig, Chronos2Model, Chronos2Pipeline
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/chronos/chronos2/__init__.py", line 7, in <module>
+    from .model import Chronos2Model
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/chronos/chronos2/model.py", line 15, in <module>
+    from transformers.modeling_utils import PreTrainedModel
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/modeling_utils.py", line 49, in <module>
+    from .conversion_mapping import get_model_conversion_mapping
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/conversion_mapping.py", line 21, in <module>
+    from .core_model_loading import (
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/core_model_loading.py", line 35, in <module>
+    from .integrations.accelerate import get_device, offload_weight
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/integrations/accelerate.py", line 65, in <module>
+    ) -> tuple[int, list[str], list[nn.Module]]:
+                                    ^^
+NameError: name 'nn' is not defined
+--- 2026-09-07T21:11:49.977993+00:00 Chronos2__m3_other
+Traceback (most recent call last):
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 87, in main
+    fc = model.run(data.train, group.horizon, group.seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/base.py", line 56, in run
+    fc = self.forecast(train, horizon, seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/foundation.py", line 57, in forecast
+    pipe, load_s = self._load(device)
+                   ^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/foundation.py", line 46, in _load
+    import chronos, torch
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/chronos/__init__.py", line 13, in <module>
+    from .chronos2 import Chronos2ForecastingConfig, Chronos2Model, Chronos2Pipeline
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/chronos/chronos2/__init__.py", line 7, in <module>
+    from .model import Chronos2Model
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/chronos/chronos2/model.py", line 15, in <module>
+    from transformers.modeling_utils import PreTrainedModel
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/modeling_utils.py", line 49, in <module>
+    from .conversion_mapping import get_model_conversion_mapping
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/conversion_mapping.py", line 21, in <module>
+    from .core_model_loading import (
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/core_model_loading.py", line 35, in <module>
+    from .integrations.accelerate import get_device, offload_weight
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/integrations/accelerate.py", line 65, in <module>
+    ) -> tuple[int, list[str], list[nn.Module]]:
+                                    ^^
+NameError: name 'nn' is not defined
+--- 2026-09-07T21:11:50.735914+00:00 Chronos2__tourism_yearly
+Traceback (most recent call last):
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 87, in main
+    fc = model.run(data.train, group.horizon, group.seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/base.py", line 56, in run
+    fc = self.forecast(train, horizon, seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/foundation.py", line 57, in forecast
+    pipe, load_s = self._load(device)
+                   ^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/foundation.py", line 46, in _load
+    import chronos, torch
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/chronos/__init__.py", line 13, in <module>
+    from .chronos2 import Chronos2ForecastingConfig, Chronos2Model, Chronos2Pipeline
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/chronos/chronos2/__init__.py", line 7, in <module>
+    from .model import Chronos2Model
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/chronos/chronos2/model.py", line 15, in <module>
+    from transformers.modeling_utils import PreTrainedModel
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/modeling_utils.py", line 49, in <module>
+    from .conversion_mapping import get_model_conversion_mapping
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/conversion_mapping.py", line 21, in <module>
+    from .core_model_loading import (
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/core_model_loading.py", line 35, in <module>
+    from .integrations.accelerate import get_device, offload_weight
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/integrations/accelerate.py", line 65, in <module>
+    ) -> tuple[int, list[str], list[nn.Module]]:
+                                    ^^
+NameError: name 'nn' is not defined
+--- 2026-09-07T21:12:20.172120+00:00 TimesFM__m3_other
+Traceback (most recent call last):
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 87, in main
+    fc = model.run(data.train, group.horizon, group.seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/base.py", line 56, in run
+    fc = self.forecast(train, horizon, seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/foundation.py", line 132, in forecast
+    point, quant = model.forecast(horizon=horizon, inputs=[np.asarray(s, dtype=np.float32) for s in train])
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/timesfm/timesfm_2p5/timesfm_2p5_base.py", line 188, in forecast
+    point_forecast, quantile_forecast = self.compiled_decode(horizon, values, masks)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/timesfm/timesfm_2p5/timesfm_2p5_torch.py", line 428, in _compiled_decode
+    torch.from_numpy(np.array(inputs)).to(self.model.device).to(torch.float32)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Cannot convert a MPS Tensor to float64 dtype as the MPS framework doesn't support float64. Please use float32 instead.
+--- 2026-09-07T21:12:24.571441+00:00 TimesFM__tourism_yearly
+Traceback (most recent call last):
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 87, in main
+    fc = model.run(data.train, group.horizon, group.seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/base.py", line 56, in run
+    fc = self.forecast(train, horizon, seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/foundation.py", line 132, in forecast
+    point, quant = model.forecast(horizon=horizon, inputs=[np.asarray(s, dtype=np.float32) for s in train])
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/timesfm/timesfm_2p5/timesfm_2p5_base.py", line 188, in forecast
+    point_forecast, quantile_forecast = self.compiled_decode(horizon, values, masks)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/timesfm/timesfm_2p5/timesfm_2p5_torch.py", line 428, in _compiled_decode
+    torch.from_numpy(np.array(inputs)).to(self.model.device).to(torch.float32)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Cannot convert a MPS Tensor to float64 dtype as the MPS framework doesn't support float64. Please use float32 instead.
+--- 2026-09-07T21:13:19.212637+00:00 Moirai2__m3_other
+Traceback (most recent call last):
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 87, in main
+    fc = model.run(data.train, group.horizon, group.seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/base.py", line 56, in run
+    fc = self.forecast(train, horizon, seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/foundation.py", line 218, in forecast
+    pred = np.asarray(model.predict(past_target=chunk))      # (b, nq, h, 1)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/uni2ts/model/moirai2/forecast.py", line 531, in predict
+    predictions = self(**data_entry).detach().cpu().numpy()
+                  ^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/uni2ts/model/moirai2/forecast.py", line 230, in forward
+    ) = self._convert(
+        ^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/uni2ts/model/moirai2/forecast.py", line 622, in _convert
+    past_seq_id, future_seq_id = self._generate_time_id(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/uni2ts/model/moirai2/forecast.py", line 566, in _generate_time_id
+    past_seq_id.cummax(dim=-1).values.cumsum(dim=-1) - 1, min=0
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+NotImplementedError: The operator 'aten::_cummax_helper' is not currently implemented for the MPS device. If you want this op to be added in priority during the prototype phase of this feature, please comment on https://github.com/pytorch/pytorch/issues/77764. As a temporary fix, you can set the environment variable `PYTORCH_ENABLE_MPS_FALLBACK=1` to use the CPU as a fallback for this op. WARNING: this will be slower than running natively on MPS.
+--- 2026-09-07T21:13:20.137361+00:00 Moirai2__tourism_yearly
+Traceback (most recent call last):
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 87, in main
+    fc = model.run(data.train, group.horizon, group.seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/base.py", line 56, in run
+    fc = self.forecast(train, horizon, seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/foundation.py", line 218, in forecast
+    pred = np.asarray(model.predict(past_target=chunk))      # (b, nq, h, 1)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/uni2ts/model/moirai2/forecast.py", line 531, in predict
+    predictions = self(**data_entry).detach().cpu().numpy()
+                  ^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/uni2ts/model/moirai2/forecast.py", line 230, in forward
+    ) = self._convert(
+        ^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/uni2ts/model/moirai2/forecast.py", line 622, in _convert
+    past_seq_id, future_seq_id = self._generate_time_id(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/uni2ts/model/moirai2/forecast.py", line 566, in _generate_time_id
+    past_seq_id.cummax(dim=-1).values.cumsum(dim=-1) - 1, min=0
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+NotImplementedError: The operator 'aten::_cummax_helper' is not currently implemented for the MPS device. If you want this op to be added in priority during the prototype phase of this feature, please comment on https://github.com/pytorch/pytorch/issues/77764. As a temporary fix, you can set the environment variable `PYTORCH_ENABLE_MPS_FALLBACK=1` to use the CPU as a fallback for this op. WARNING: this will be slower than running natively on MPS.
+--- 2026-09-07T21:13:23.281194+00:00 Sundial__m3_other
+Traceback (most recent call last):
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 87, in main
+    fc = model.run(data.train, group.horizon, group.seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/base.py", line 56, in run
+    fc = self.forecast(train, horizon, seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/foundation.py", line 249, in forecast
+    model = AutoModelForCausalLM.from_pretrained(self.repo, trust_remote_code=True)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/utils/import_utils.py", line 2359, in __getattribute__
+    requires_backends(cls, cls._backends)
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/utils/import_utils.py", line 2345, in requires_backends
+    raise ImportError("".join(failed))
+ImportError: 
+AutoModelForCausalLM requires the PyTorch library but it was not found in your environment. Check out the instructions on the
+installation page: https://pytorch.org/get-started/locally/ and follow the ones that match your environment.
+Please note that you may need to restart your runtime after installation.
+
+--- 2026-09-07T21:13:23.928155+00:00 Sundial__tourism_yearly
+Traceback (most recent call last):
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 87, in main
+    fc = model.run(data.train, group.horizon, group.seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/base.py", line 56, in run
+    fc = self.forecast(train, horizon, seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/foundation.py", line 249, in forecast
+    model = AutoModelForCausalLM.from_pretrained(self.repo, trust_remote_code=True)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/utils/import_utils.py", line 2359, in __getattribute__
+    requires_backends(cls, cls._backends)
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/utils/import_utils.py", line 2345, in requires_backends
+    raise ImportError("".join(failed))
+ImportError: 
+AutoModelForCausalLM requires the PyTorch library but it was not found in your environment. Check out the instructions on the
+installation page: https://pytorch.org/get-started/locally/ and follow the ones that match your environment.
+Please note that you may need to restart your runtime after installation.
+
+--- 2026-09-07T21:17:39.947759+00:00 TimesFM__m3_other
+Traceback (most recent call last):
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 96, in main
+    per_series, agg = score(group, fc, data)
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 60, in score
+    agg["wql"] = wql(data.test, fc.quantiles)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/metrics.py", line 71, in wql
+    total += np.sum(quantile_loss(actual, qf[..., i], float(q)))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/metrics.py", line 53, in quantile_loss
+    diff = actual - pred_q
+           ~~~~~~~^~~~~~~~
+ValueError: operands could not be broadcast together with shapes (174,8) (192,8) 
+--- 2026-09-07T21:17:47.160440+00:00 TimesFM__tourism_yearly
+Traceback (most recent call last):
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 96, in main
+    per_series, agg = score(group, fc, data)
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 60, in score
+    agg["wql"] = wql(data.test, fc.quantiles)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/metrics.py", line 71, in wql
+    total += np.sum(quantile_loss(actual, qf[..., i], float(q)))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/metrics.py", line 53, in quantile_loss
+    diff = actual - pred_q
+           ~~~~~~~^~~~~~~~
+ValueError: operands could not be broadcast together with shapes (518,4) (544,4) 
+--- 2026-09-07T21:17:52.989397+00:00 Moirai2__m3_other
+Traceback (most recent call last):
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 93, in main
+    fc = model.run(data.train, group.horizon, group.seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/base.py", line 56, in run
+    fc = self.forecast(train, horizon, seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/foundation.py", line 230, in forecast
+    pred = np.asarray(model.predict(past_target=chunk))      # (b, nq, h, 1)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/uni2ts/model/moirai2/forecast.py", line 531, in predict
+    predictions = self(**data_entry).detach().cpu().numpy()
+                  ^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/uni2ts/model/moirai2/forecast.py", line 267, in forward
+    preds = self.module(
+            ^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/uni2ts/model/moirai2/module.py", line 142, in forward
+    loc, scale = self.scaler(
+                 ^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/uni2ts/module/packed_scaler.py", line 46, in forward
+    target.double(), observed_mask, sample_id, variate_id
+    ^^^^^^^^^^^^^^^
+TypeError: Cannot convert a MPS Tensor to float64 dtype as the MPS framework doesn't support float64. Please use float32 instead.
+--- 2026-09-07T21:17:54.110407+00:00 Moirai2__tourism_yearly
+Traceback (most recent call last):
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 93, in main
+    fc = model.run(data.train, group.horizon, group.seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/base.py", line 56, in run
+    fc = self.forecast(train, horizon, seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/foundation.py", line 230, in forecast
+    pred = np.asarray(model.predict(past_target=chunk))      # (b, nq, h, 1)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/uni2ts/model/moirai2/forecast.py", line 531, in predict
+    predictions = self(**data_entry).detach().cpu().numpy()
+                  ^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/uni2ts/model/moirai2/forecast.py", line 267, in forward
+    preds = self.module(
+            ^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/uni2ts/model/moirai2/module.py", line 142, in forward
+    loc, scale = self.scaler(
+                 ^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/uni2ts/module/packed_scaler.py", line 46, in forward
+    target.double(), observed_mask, sample_id, variate_id
+    ^^^^^^^^^^^^^^^
+TypeError: Cannot convert a MPS Tensor to float64 dtype as the MPS framework doesn't support float64. Please use float32 instead.
+--- 2026-09-07T21:18:14.247700+00:00 Sundial__m3_other
+Traceback (most recent call last):
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 93, in main
+    fc = model.run(data.train, group.horizon, group.seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/base.py", line 56, in run
+    fc = self.forecast(train, horizon, seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/foundation.py", line 282, in forecast
+    out = model.generate(xt, max_new_tokens=horizon, num_samples=self.num_samples)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/.cache/huggingface/modules/transformers_modules/thuml/sundial_hyphen_base_hyphen_128m/3212e42564493f520593e5414af4367fc4b49226/ts_generation_mixin.py", line 34, in generate
+    outputs = super().generate(inputs=inputs, generation_config=generation_config, logits_processor=logits_processor, stopping_criteria=stopping_criteria, prefix_allowed_tokens_fn=prefix_allowed_tokens_fn, synced_gpus=synced_gpus, assistant_model=assistant_model, streamer=streamer, negative_prompt_ids=negative_prompt_ids, negative_prompt_attention_mask=negative_prompt_attention_mask, num_samples=num_samples, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/generation/utils.py", line 2668, in generate
+    result = decoding_method(
+             ^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/generation/utils.py", line 2868, in _sample
+    outputs = self._prefill(
+              ^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/generation/utils.py", line 3942, in _prefill
+    model_inputs = self.prepare_inputs_for_generation(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/.cache/huggingface/modules/transformers_modules/thuml/sundial_hyphen_base_hyphen_128m/3212e42564493f520593e5414af4367fc4b49226/modeling_sundial.py", line 518, in prepare_inputs_for_generation
+    past_length = past_key_values.seen_tokens
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'DynamicCache' object has no attribute 'seen_tokens'
+--- 2026-09-07T21:18:16.692713+00:00 Sundial__tourism_yearly
+Traceback (most recent call last):
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 93, in main
+    fc = model.run(data.train, group.horizon, group.seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/base.py", line 56, in run
+    fc = self.forecast(train, horizon, seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/foundation.py", line 282, in forecast
+    out = model.generate(xt, max_new_tokens=horizon, num_samples=self.num_samples)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/.cache/huggingface/modules/transformers_modules/thuml/sundial_hyphen_base_hyphen_128m/3212e42564493f520593e5414af4367fc4b49226/ts_generation_mixin.py", line 34, in generate
+    outputs = super().generate(inputs=inputs, generation_config=generation_config, logits_processor=logits_processor, stopping_criteria=stopping_criteria, prefix_allowed_tokens_fn=prefix_allowed_tokens_fn, synced_gpus=synced_gpus, assistant_model=assistant_model, streamer=streamer, negative_prompt_ids=negative_prompt_ids, negative_prompt_attention_mask=negative_prompt_attention_mask, num_samples=num_samples, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/generation/utils.py", line 2668, in generate
+    result = decoding_method(
+             ^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/generation/utils.py", line 2868, in _sample
+    outputs = self._prefill(
+              ^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/generation/utils.py", line 3942, in _prefill
+    model_inputs = self.prepare_inputs_for_generation(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/.cache/huggingface/modules/transformers_modules/thuml/sundial_hyphen_base_hyphen_128m/3212e42564493f520593e5414af4367fc4b49226/modeling_sundial.py", line 518, in prepare_inputs_for_generation
+    past_length = past_key_values.seen_tokens
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'DynamicCache' object has no attribute 'seen_tokens'
+--- 2026-09-07T21:19:41.024304+00:00 Sundial__m3_other
+Traceback (most recent call last):
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 93, in main
+    fc = model.run(data.train, group.horizon, group.seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/base.py", line 56, in run
+    fc = self.forecast(train, horizon, seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/foundation.py", line 299, in forecast
+    out = model.generate(xt, max_new_tokens=horizon, num_samples=self.num_samples)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/.cache/huggingface/modules/transformers_modules/thuml/sundial_hyphen_base_hyphen_128m/3212e42564493f520593e5414af4367fc4b49226/ts_generation_mixin.py", line 34, in generate
+    outputs = super().generate(inputs=inputs, generation_config=generation_config, logits_processor=logits_processor, stopping_criteria=stopping_criteria, prefix_allowed_tokens_fn=prefix_allowed_tokens_fn, synced_gpus=synced_gpus, assistant_model=assistant_model, streamer=streamer, negative_prompt_ids=negative_prompt_ids, negative_prompt_attention_mask=negative_prompt_attention_mask, num_samples=num_samples, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/generation/utils.py", line 2668, in generate
+    result = decoding_method(
+             ^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/generation/utils.py", line 2868, in _sample
+    outputs = self._prefill(
+              ^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/generation/utils.py", line 3948, in _prefill
+    return self(**model_inputs, return_dict=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/.cache/huggingface/modules/transformers_modules/thuml/sundial_hyphen_base_hyphen_128m/3212e42564493f520593e5414af4367fc4b49226/modeling_sundial.py", line 443, in forward
+    outputs = self.model(
+              ^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/.cache/huggingface/modules/transformers_modules/thuml/sundial_hyphen_base_hyphen_128m/3212e42564493f520593e5414af4367fc4b49226/modeling_sundial.py", line 313, in forward
+    past_key_values_length = past_key_values.get_usable_length(
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'DynamicCache' object has no attribute 'get_usable_length'. Did you mean: 'get_max_length'?
+--- 2026-09-07T21:19:42.142787+00:00 Sundial__tourism_yearly
+Traceback (most recent call last):
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 93, in main
+    fc = model.run(data.train, group.horizon, group.seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/base.py", line 56, in run
+    fc = self.forecast(train, horizon, seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/foundation.py", line 299, in forecast
+    out = model.generate(xt, max_new_tokens=horizon, num_samples=self.num_samples)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/.cache/huggingface/modules/transformers_modules/thuml/sundial_hyphen_base_hyphen_128m/3212e42564493f520593e5414af4367fc4b49226/ts_generation_mixin.py", line 34, in generate
+    outputs = super().generate(inputs=inputs, generation_config=generation_config, logits_processor=logits_processor, stopping_criteria=stopping_criteria, prefix_allowed_tokens_fn=prefix_allowed_tokens_fn, synced_gpus=synced_gpus, assistant_model=assistant_model, streamer=streamer, negative_prompt_ids=negative_prompt_ids, negative_prompt_attention_mask=negative_prompt_attention_mask, num_samples=num_samples, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/generation/utils.py", line 2668, in generate
+    result = decoding_method(
+             ^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/generation/utils.py", line 2868, in _sample
+    outputs = self._prefill(
+              ^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/generation/utils.py", line 3948, in _prefill
+    return self(**model_inputs, return_dict=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/.cache/huggingface/modules/transformers_modules/thuml/sundial_hyphen_base_hyphen_128m/3212e42564493f520593e5414af4367fc4b49226/modeling_sundial.py", line 443, in forward
+    outputs = self.model(
+              ^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/.cache/huggingface/modules/transformers_modules/thuml/sundial_hyphen_base_hyphen_128m/3212e42564493f520593e5414af4367fc4b49226/modeling_sundial.py", line 313, in forward
+    past_key_values_length = past_key_values.get_usable_length(
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'DynamicCache' object has no attribute 'get_usable_length'. Did you mean: 'get_max_length'?
+--- 2026-09-07T21:20:33.318208+00:00 Sundial__m3_other
+Traceback (most recent call last):
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 93, in main
+    fc = model.run(data.train, group.horizon, group.seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/base.py", line 56, in run
+    fc = self.forecast(train, horizon, seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/foundation.py", line 309, in forecast
+    out = model.generate(xt, max_new_tokens=horizon, num_samples=self.num_samples)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/.cache/huggingface/modules/transformers_modules/thuml/sundial_hyphen_base_hyphen_128m/3212e42564493f520593e5414af4367fc4b49226/ts_generation_mixin.py", line 34, in generate
+    outputs = super().generate(inputs=inputs, generation_config=generation_config, logits_processor=logits_processor, stopping_criteria=stopping_criteria, prefix_allowed_tokens_fn=prefix_allowed_tokens_fn, synced_gpus=synced_gpus, assistant_model=assistant_model, streamer=streamer, negative_prompt_ids=negative_prompt_ids, negative_prompt_attention_mask=negative_prompt_attention_mask, num_samples=num_samples, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/generation/utils.py", line 2668, in generate
+    result = decoding_method(
+             ^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/generation/utils.py", line 2868, in _sample
+    outputs = self._prefill(
+              ^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/generation/utils.py", line 3948, in _prefill
+    return self(**model_inputs, return_dict=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/.cache/huggingface/modules/transformers_modules/thuml/sundial_hyphen_base_hyphen_128m/3212e42564493f520593e5414af4367fc4b49226/modeling_sundial.py", line 443, in forward
+    outputs = self.model(
+              ^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/.cache/huggingface/modules/transformers_modules/thuml/sundial_hyphen_base_hyphen_128m/3212e42564493f520593e5414af4367fc4b49226/modeling_sundial.py", line 327, in forward
+    attention_mask = _prepare_4d_causal_attention_mask(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/modeling_attn_mask_utils.py", line 353, in _prepare_4d_causal_attention_mask
+    attention_mask = attn_mask_converter.to_4d(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/modeling_attn_mask_utils.py", line 154, in to_4d
+    expanded_attn_mask = causal_4d_mask.masked_fill(expanded_attn_mask.bool(), torch.finfo(dtype).min)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: The size of tensor a (95) must match the size of tensor b (6) at non-singleton dimension 3
+--- 2026-09-07T21:20:34.401647+00:00 Sundial__tourism_yearly
+Traceback (most recent call last):
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 93, in main
+    fc = model.run(data.train, group.horizon, group.seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/base.py", line 56, in run
+    fc = self.forecast(train, horizon, seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/foundation.py", line 309, in forecast
+    out = model.generate(xt, max_new_tokens=horizon, num_samples=self.num_samples)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/.cache/huggingface/modules/transformers_modules/thuml/sundial_hyphen_base_hyphen_128m/3212e42564493f520593e5414af4367fc4b49226/ts_generation_mixin.py", line 34, in generate
+    outputs = super().generate(inputs=inputs, generation_config=generation_config, logits_processor=logits_processor, stopping_criteria=stopping_criteria, prefix_allowed_tokens_fn=prefix_allowed_tokens_fn, synced_gpus=synced_gpus, assistant_model=assistant_model, streamer=streamer, negative_prompt_ids=negative_prompt_ids, negative_prompt_attention_mask=negative_prompt_attention_mask, num_samples=num_samples, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/generation/utils.py", line 2668, in generate
+    result = decoding_method(
+             ^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/generation/utils.py", line 2868, in _sample
+    outputs = self._prefill(
+              ^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/generation/utils.py", line 3948, in _prefill
+    return self(**model_inputs, return_dict=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/.cache/huggingface/modules/transformers_modules/thuml/sundial_hyphen_base_hyphen_128m/3212e42564493f520593e5414af4367fc4b49226/modeling_sundial.py", line 443, in forward
+    outputs = self.model(
+              ^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/.cache/huggingface/modules/transformers_modules/thuml/sundial_hyphen_base_hyphen_128m/3212e42564493f520593e5414af4367fc4b49226/modeling_sundial.py", line 327, in forward
+    attention_mask = _prepare_4d_causal_attention_mask(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/modeling_attn_mask_utils.py", line 353, in _prepare_4d_causal_attention_mask
+    attention_mask = attn_mask_converter.to_4d(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/modeling_attn_mask_utils.py", line 154, in to_4d
+    expanded_attn_mask = causal_4d_mask.masked_fill(expanded_attn_mask.bool(), torch.finfo(dtype).min)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: The size of tensor a (30) must match the size of tensor b (2) at non-singleton dimension 3
+--- 2026-09-07T21:21:38.136501+00:00 Sundial__m3_other
+Traceback (most recent call last):
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 93, in main
+    fc = model.run(data.train, group.horizon, group.seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/base.py", line 56, in run
+    fc = self.forecast(train, horizon, seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/foundation.py", line 309, in forecast
+    out = model.generate(xt, max_new_tokens=horizon, num_samples=self.num_samples)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/.cache/huggingface/modules/transformers_modules/thuml/sundial_hyphen_base_hyphen_128m/3212e42564493f520593e5414af4367fc4b49226/ts_generation_mixin.py", line 34, in generate
+    outputs = super().generate(inputs=inputs, generation_config=generation_config, logits_processor=logits_processor, stopping_criteria=stopping_criteria, prefix_allowed_tokens_fn=prefix_allowed_tokens_fn, synced_gpus=synced_gpus, assistant_model=assistant_model, streamer=streamer, negative_prompt_ids=negative_prompt_ids, negative_prompt_attention_mask=negative_prompt_attention_mask, num_samples=num_samples, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/generation/utils.py", line 2566, in generate
+    result = decoding_method(
+             ^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/generation/utils.py", line 2783, in _sample
+    model_inputs = self.prepare_inputs_for_generation(input_ids, **model_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/.cache/huggingface/modules/transformers_modules/thuml/sundial_hyphen_base_hyphen_128m/3212e42564493f520593e5414af4367fc4b49226/modeling_sundial.py", line 522, in prepare_inputs_for_generation
+    max_cache_length = past_key_values.get_max_length()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'DynamicCache' object has no attribute 'get_max_length'. Did you mean: 'get_seq_length'?
+--- 2026-09-07T21:21:39.563880+00:00 Sundial__tourism_yearly
+Traceback (most recent call last):
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 93, in main
+    fc = model.run(data.train, group.horizon, group.seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/base.py", line 56, in run
+    fc = self.forecast(train, horizon, seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/foundation.py", line 309, in forecast
+    out = model.generate(xt, max_new_tokens=horizon, num_samples=self.num_samples)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/.cache/huggingface/modules/transformers_modules/thuml/sundial_hyphen_base_hyphen_128m/3212e42564493f520593e5414af4367fc4b49226/ts_generation_mixin.py", line 34, in generate
+    outputs = super().generate(inputs=inputs, generation_config=generation_config, logits_processor=logits_processor, stopping_criteria=stopping_criteria, prefix_allowed_tokens_fn=prefix_allowed_tokens_fn, synced_gpus=synced_gpus, assistant_model=assistant_model, streamer=streamer, negative_prompt_ids=negative_prompt_ids, negative_prompt_attention_mask=negative_prompt_attention_mask, num_samples=num_samples, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/generation/utils.py", line 2566, in generate
+    result = decoding_method(
+             ^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/generation/utils.py", line 2783, in _sample
+    model_inputs = self.prepare_inputs_for_generation(input_ids, **model_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/.cache/huggingface/modules/transformers_modules/thuml/sundial_hyphen_base_hyphen_128m/3212e42564493f520593e5414af4367fc4b49226/modeling_sundial.py", line 522, in prepare_inputs_for_generation
+    max_cache_length = past_key_values.get_max_length()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'DynamicCache' object has no attribute 'get_max_length'. Did you mean: 'get_seq_length'?

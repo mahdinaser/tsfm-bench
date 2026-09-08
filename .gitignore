@@ -11,3 +11,8 @@ __pycache__/
 *.pyc
 results/forecasts/
 scripts_validate_snaive.py
+paper/main.aux
+paper/main.log
+paper/main.out
+paper/main.bbl
+paper/main.blg

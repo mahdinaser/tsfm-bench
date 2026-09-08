@@ -11,8 +11,11 @@ describe:        ## measured summary of all 13 groups
 validate:        ## acceptance test: seasonal naive vs published M4 table
 	$(PY) scripts/validate_snaive.py
 
+smoke:           ## every model on two small groups -> results/smoke/
+	bash scripts/smoke.sh
+
 foundation:
-	$(PY) run.py --models ChronosBoltSmall ChronosBoltBase Chronos2 TimesFM Moirai2 Sundial --groups all
+	$(PY) run.py --models ChronosBoltSmall ChronosBoltBase Chronos2 TimesFM TimesFM3 Moirai2 Sundial --groups all
 
 baselines:
 	$(PY) run.py --models SeasonalNaive Theta AutoETS AutoARIMA LightGBM --groups all

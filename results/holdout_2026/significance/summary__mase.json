@@ -14,16 +14,16 @@
     ]
   },
   "energy_hourly": {
-    "n_series": 47,
+    "n_series": 46,
     "n_models": 13,
-    "friedman_p": 2.2992189401378353e-10,
+    "friedman_p": 5.39745167423783e-11,
     "best": "Theta",
     "indistinguishable_from_best": [
       "Theta",
-      "Chronos2",
       "TimesFM3",
-      "AutoARIMA",
+      "Chronos2",
       "Moirai2",
+      "AutoARIMA",
       "ChronosBoltSmall",
       "TimesFM"
     ]

@@ -105,10 +105,12 @@ def main() -> int:
         ),
         "license": ("Each publisher's own terms govern reuse of its data; the retrieval "
                     "code is released under the repository licence."),
-        "url": "TODO: repository URL",
+        "url": "https://github.com/mahdinaser/tsfm-bench",
         "version": "1.0.0",
         "datePublished": datetime.date.today().isoformat(),
-        "citeAs": "TODO: cite this paper once it has an arXiv identifier.",
+        "citeAs": ("Naser Moghadasi, M. and Ghaderi, F. A Later Test Set Is Not a New "
+                   "Domain: Pretraining Familiarity Survives a Contamination-Free "
+                   "Hold-Out. 2026."),
         "distribution": dists,
         "recordSet": records,
     }

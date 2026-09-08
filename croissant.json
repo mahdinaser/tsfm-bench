@@ -24,10 +24,10 @@
   "name": "tsfm-bench-holdout-2026",
   "description": "A contamination-free forecasting benchmark: seven groups drawn from five domains, with every test observation published after the release of every model evaluated against it. Distributed as retrieval code rather than as a frozen archive, so that the panel is rebuilt from the publisher and the test window keeps moving forward -- a frozen file would be contaminated as soon as the next generation of models was trained on it.",
   "license": "Each publisher's own terms govern reuse of its data; the retrieval code is released under the repository licence.",
-  "url": "TODO: repository URL",
+  "url": "https://github.com/mahdinaser/tsfm-bench",
   "version": "1.0.0",
   "datePublished": "2026-09-08",
-  "citeAs": "TODO: cite this paper once it has an arXiv identifier.",
+  "citeAs": "Naser Moghadasi, M. and Ghaderi, F. A Later Test Set Is Not a New Domain: Pretraining Familiarity Survives a Contamination-Free Hold-Out. 2026.",
   "distribution": [
     {
       "@type": "cr:FileObject",

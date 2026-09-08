@@ -1,0 +1,102 @@
+--- 2026-09-07T21:24:59.314434+00:00 Sundial__m3_other
+Traceback (most recent call last):
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 93, in main
+    fc = model.run(data.train, group.horizon, group.seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/base.py", line 56, in run
+    fc = self.forecast(train, horizon, seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/foundation.py", line 313, in forecast
+    out = model.generate(xt, max_new_tokens=horizon, num_samples=self.num_samples)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/.cache/huggingface/modules/transformers_modules/thuml/sundial_hyphen_base_hyphen_128m/3212e42564493f520593e5414af4367fc4b49226/ts_generation_mixin.py", line 34, in generate
+    outputs = super().generate(inputs=inputs, generation_config=generation_config, logits_processor=logits_processor, stopping_criteria=stopping_criteria, prefix_allowed_tokens_fn=prefix_allowed_tokens_fn, synced_gpus=synced_gpus, assistant_model=assistant_model, streamer=streamer, negative_prompt_ids=negative_prompt_ids, negative_prompt_attention_mask=negative_prompt_attention_mask, num_samples=num_samples, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/generation/utils.py", line 2566, in generate
+    result = decoding_method(
+             ^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/generation/utils.py", line 2786, in _sample
+    outputs = self(**model_inputs, return_dict=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/.cache/huggingface/modules/transformers_modules/thuml/sundial_hyphen_base_hyphen_128m/3212e42564493f520593e5414af4367fc4b49226/modeling_sundial.py", line 443, in forward
+    outputs = self.model(
+              ^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/.cache/huggingface/modules/transformers_modules/thuml/sundial_hyphen_base_hyphen_128m/3212e42564493f520593e5414af4367fc4b49226/modeling_sundial.py", line 327, in forward
+    attention_mask = _prepare_4d_causal_attention_mask(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/modeling_attn_mask_utils.py", line 337, in _prepare_4d_causal_attention_mask
+    attention_mask = attn_mask_converter.to_4d(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/modeling_attn_mask_utils.py", line 145, in to_4d
+    expanded_attn_mask = causal_4d_mask.masked_fill(expanded_attn_mask.bool(), torch.finfo(dtype).min)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: The size of tensor a (95) must match the size of tensor b (6) at non-singleton dimension 3
+--- 2026-09-07T21:25:00.613294+00:00 Sundial__tourism_yearly
+Traceback (most recent call last):
+  File "/Users/mahdinaser/workspace/tsfm-bench/run.py", line 93, in main
+    fc = model.run(data.train, group.horizon, group.seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/base.py", line 56, in run
+    fc = self.forecast(train, horizon, seasonality)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/tsfm_bench/models/foundation.py", line 313, in forecast
+    out = model.generate(xt, max_new_tokens=horizon, num_samples=self.num_samples)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/.cache/huggingface/modules/transformers_modules/thuml/sundial_hyphen_base_hyphen_128m/3212e42564493f520593e5414af4367fc4b49226/ts_generation_mixin.py", line 34, in generate
+    outputs = super().generate(inputs=inputs, generation_config=generation_config, logits_processor=logits_processor, stopping_criteria=stopping_criteria, prefix_allowed_tokens_fn=prefix_allowed_tokens_fn, synced_gpus=synced_gpus, assistant_model=assistant_model, streamer=streamer, negative_prompt_ids=negative_prompt_ids, negative_prompt_attention_mask=negative_prompt_attention_mask, num_samples=num_samples, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/generation/utils.py", line 2566, in generate
+    result = decoding_method(
+             ^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/generation/utils.py", line 2786, in _sample
+    outputs = self(**model_inputs, return_dict=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/.cache/huggingface/modules/transformers_modules/thuml/sundial_hyphen_base_hyphen_128m/3212e42564493f520593e5414af4367fc4b49226/modeling_sundial.py", line 443, in forward
+    outputs = self.model(
+              ^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/.cache/huggingface/modules/transformers_modules/thuml/sundial_hyphen_base_hyphen_128m/3212e42564493f520593e5414af4367fc4b49226/modeling_sundial.py", line 327, in forward
+    attention_mask = _prepare_4d_causal_attention_mask(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/modeling_attn_mask_utils.py", line 337, in _prepare_4d_causal_attention_mask
+    attention_mask = attn_mask_converter.to_4d(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mahdinaser/workspace/tsfm-bench/.venv/lib/python3.12/site-packages/transformers/modeling_attn_mask_utils.py", line 145, in to_4d
+    expanded_attn_mask = causal_4d_mask.masked_fill(expanded_attn_mask.bool(), torch.finfo(dtype).min)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: The size of tensor a (30) must match the size of tensor b (2) at non-singleton dimension 3

@@ -1,0 +1,10 @@
+{
+  "torch": "2.4.1",
+  "mps_available": true,
+  "mps_built": true,
+  "cuda_available": false,
+  "threads": 10,
+  "platform": "macOS-14.4-arm64-arm-64bit",
+  "machine": "arm64",
+  "python": "3.12.4"
+}
