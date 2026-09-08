@@ -49,9 +49,16 @@ Q05 = {
 
 
 def load_panel(results: str, metric: str) -> dict[str, pd.DataFrame]:
-    """group -> DataFrame of per-series loss, one column per model."""
+    """group -> DataFrame of per-series loss, one column per model.
+
+    Seed repeats are excluded. They belong in the variance estimate, not in the
+    headline ranks: three copies of LightGBM in the panel would shift every
+    other model's average rank simply by being there.
+    """
     frames: dict[str, dict[str, pd.Series]] = defaultdict(dict)
     for path in sorted(glob.glob(os.path.join(results, "metrics", "*.csv"))):
+        if "__seed" in os.path.basename(path):
+            continue
         df = pd.read_csv(path)
         if metric not in df.columns:
             continue

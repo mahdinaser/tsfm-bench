@@ -1,6 +1,7 @@
 """Validate the metric implementation: seasonal naive on FULL M4 vs published M4 table."""
-import numpy as np, pandas as pd, sys
-sys.path.insert(0, '/home/claude/tsfm-bench')
+import os, sys
+import numpy as np, pandas as pd
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from tsfm_bench.data import _load_m4, GROUPS
 from tsfm_bench.metrics import smape, mase_scale
 

@@ -9,6 +9,12 @@ from __future__ import annotations
 import argparse, json, os, platform, sys, time
 from datetime import datetime, timezone
 
+# Apple MPS still lacks a few ops the baselines hit (nanmedian in the
+# neuralforecast scaler, cummax in uni2ts). With this set PyTorch runs those
+# ops on the CPU and keeps everything else on the GPU; without it LSTM,
+# N-BEATS and Moirai2 abort outright. Must be set before torch is imported.
+os.environ.setdefault("PYTORCH_ENABLE_MPS_FALLBACK", "1")
+
 import numpy as np
 import pandas as pd
 
@@ -16,8 +22,21 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from tsfm_bench.data import GROUPS, load_group
 from tsfm_bench.metrics import QUANTILE_LEVELS, coverage, mase_scale, smape, wql
 from tsfm_bench.models import get_model
+from tsfm_bench.models.base import RANDOM_SEED as SEED
+
+DEFAULT_SEED = 20260907
 
 RESULTS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results")
+
+
+def _peak_rss_mb() -> float | None:
+    """Process peak resident set size so far (macOS reports bytes, Linux KiB)."""
+    try:
+        import resource
+        v = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+        return round(v / 2**20, 1) if sys.platform == "darwin" else round(v / 2**10, 1)
+    except Exception:
+        return None
 
 
 def score(group, fc, data) -> tuple[pd.DataFrame, dict]:
@@ -63,7 +82,9 @@ def main() -> int:
     for model_name in args.models:
         for gname in groups:
             group = GROUPS[gname]
-            tag = f"{model_name}__{gname}"
+            # A non-default seed writes its own file, so repeated runs
+            # accumulate instead of the second silently skipping the first.
+            tag = f"{model_name}__{gname}" if SEED == DEFAULT_SEED else f"{model_name}__{gname}__seed{SEED}"
             out_csv = os.path.join(args.out, "metrics", f"{tag}.csv")
             if os.path.exists(out_csv):
                 print(f"[skip] {tag} (already have {out_csv})", flush=True)
@@ -72,21 +93,31 @@ def main() -> int:
             try:
                 data = load_group(gname)
                 model = get_model(model_name)
+                rss0 = _peak_rss_mb()
                 t0 = time.perf_counter()
                 fc = model.run(data.train, group.horizon, group.seasonality)
                 wall = time.perf_counter() - t0
+                rss1 = _peak_rss_mb()
                 per_series, agg = score(group, fc, data)
                 per_series.insert(0, "model", model_name)
+                per_series.insert(1, "seed", SEED)
                 per_series.to_csv(out_csv, index=False)
                 rec = {
-                    "model": model_name, "group": gname,
+                    "model": model_name, "group": gname, "seed": SEED,
                     "model_version": getattr(model, "version", None),
                     "n_series": data.n_series, "horizon": group.horizon,
                     "wall_seconds": wall,
+                    "load_seconds": fc.load_seconds,
                     "fit_seconds": fc.fit_seconds,
                     "predict_seconds": fc.predict_seconds,
                     "seconds_per_1000_forecasts":
                         wall / (data.n_series * group.horizon) * 1000.0,
+                    "seconds_per_series": wall / data.n_series,
+                    "device": fc.device,
+                    "n_params": fc.n_params,
+                    "peak_rss_mb_before": rss0,
+                    "peak_rss_mb_after": rss1,
+                    "config": fc.extra,
                     "timestamp": datetime.now(timezone.utc).isoformat(),
                     "platform": platform.platform(),
                     "processor": platform.processor(),
@@ -98,9 +129,17 @@ def main() -> int:
                 msg = f"  MASE={agg['mase']:.4f} sMAPE={agg['smape']:.4f}"
                 if "wql" in agg:
                     msg += f" WQL={agg['wql']:.4f} cov80={agg['coverage80']:.3f}"
-                print(f"{msg}  [{wall:.1f}s]", flush=True)
+                print(f"{msg}  [{wall:.1f}s on {fc.device}"
+                      f"{', load ' + format(fc.load_seconds, '.1f') + 's' if fc.load_seconds else ''}]",
+                      flush=True)
             except Exception as exc:
+                import traceback
                 print(f"  FAILED {tag}: {type(exc).__name__}: {exc}", flush=True)
+                if os.environ.get("TSFM_BENCH_DEBUG"):
+                    traceback.print_exc()
+                with open(os.path.join(args.out, "failures.log"), "a") as fh:
+                    fh.write(f"--- {datetime.now(timezone.utc).isoformat()} {tag}\n")
+                    fh.write(traceback.format_exc())
     return 0
 
 
