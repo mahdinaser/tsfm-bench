@@ -12,6 +12,8 @@ python scripts/significance.py --results results/holdout_2026 >/dev/null
 # the data does, so it is not run here by default:
 #   python scripts/features.py
 python scripts/corpus_familiarity.py >/dev/null
+python scripts/make_figures.py >/dev/null
+python scripts/make_croissant.py >/dev/null
 
 cd paper
 pdflatex -interaction=nonstopmode main.tex >/dev/null

@@ -1,0 +1,255 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "cr": "http://mlcommons.org/croissant/",
+    "sc": "https://schema.org/",
+    "column": "cr:column",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileObject": "cr:fileObject",
+    "recordSet": "cr:recordSet",
+    "source": "cr:source"
+  },
+  "@type": "sc:Dataset",
+  "conformsTo": "http://mlcommons.org/croissant/1.0",
+  "name": "tsfm-bench-holdout-2026",
+  "description": "A contamination-free forecasting benchmark: seven groups drawn from five domains, with every test observation published after the release of every model evaluated against it. Distributed as retrieval code rather than as a frozen archive, so that the panel is rebuilt from the publisher and the test window keeps moving forward -- a frozen file would be contaminated as soon as the next generation of models was trained on it.",
+  "license": "Each publisher's own terms govern reuse of its data; the retrieval code is released under the repository licence.",
+  "url": "TODO: repository URL",
+  "version": "1.0.0",
+  "datePublished": "2026-09-08",
+  "citeAs": "TODO: cite this paper once it has an arXiv identifier.",
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "wiki_daily.csv.gz",
+      "name": "wiki_daily.csv.gz",
+      "description": "Wikipedia pageviews, daily (weekly and monthly groups are aggregated from this file). ? series covering 20200101 to 20260906; retrieved 2026-09-07",
+      "contentUrl": "https://wikimedia.org/api/rest_v1/",
+      "encodingFormat": "application/gzip",
+      "sha256": "12975d918ca694ef9309e373ff6c6fba0aff1729bc09ed9f433f2774fcd6d6e3"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "weather_hourly.csv.gz",
+      "name": "weather_hourly.csv.gz",
+      "description": "ERA5 reanalysis weather, hourly. 300 series covering 2024-01-01 to 2026-09-06; retrieved 2026-09-08",
+      "contentUrl": "https://archive-api.open-meteo.com/v1/archive",
+      "encodingFormat": "application/gzip",
+      "sha256": "7a1379c7ef621045ad0d23341f22d3f8758ce53016ed8bf6231dcc76b6392201"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "airquality_hourly.csv.gz",
+      "name": "airquality_hourly.csv.gz",
+      "description": "CAMS air quality, hourly. 379 series covering 2024-01-01 to 2026-09-07; retrieved 2026-09-08",
+      "contentUrl": "https://air-quality-api.open-meteo.com/v1/air-quality",
+      "encodingFormat": "application/gzip",
+      "sha256": "968cc8845ce278c00b2a0132533bc40bc09cd6d991bbcb5c02855e46e3f284f3"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "energy_hourly.csv.gz",
+      "name": "energy_hourly.csv.gz",
+      "description": "Danish grid production and consumption settlement, hourly. 47 series covering 2024-01-01 to 2026-09-08; retrieved 2026-09-08",
+      "contentUrl": "https://api.energidataservice.dk/dataset/ProductionConsumptionSettlement",
+      "encodingFormat": "application/gzip",
+      "sha256": "d0e854dbd60a8665d69889398e1037426c128af9cfcd919c5e85bac78d0d90d9"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "fx_daily.csv.gz",
+      "name": "fx_daily.csv.gz",
+      "description": "European Central Bank euro reference exchange rates, daily. 29 series covering 2024-01-01 to 2026-09-07; retrieved 2026-09-08",
+      "contentUrl": "https://data-api.ecb.europa.eu/service/data/EXR",
+      "encodingFormat": "application/gzip",
+      "sha256": "02cb05541e0dd6dc077b8f27efb1c547e4bf354664c6992e87733c672eb69943"
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "@id": "wiki_daily",
+      "name": "wiki_daily",
+      "description": "Wide format: one column per series, first column the timestamp. Wikipedia pageviews, daily (weekly and monthly groups are aggregated from this file).",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "wiki_daily/timestamp",
+          "name": "timestamp",
+          "dataType": "sc:DateTime",
+          "description": "Observation time, UTC.",
+          "source": {
+            "fileObject": {
+              "@id": "wiki_daily.csv.gz"
+            },
+            "extract": {
+              "column": "time"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "wiki_daily/value",
+          "name": "value",
+          "dataType": "sc:Float",
+          "description": "Observed value for one series at one timestamp.",
+          "source": {
+            "fileObject": {
+              "@id": "wiki_daily.csv.gz"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "weather_hourly",
+      "name": "weather_hourly",
+      "description": "Wide format: one column per series, first column the timestamp. ERA5 reanalysis weather, hourly.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "weather_hourly/timestamp",
+          "name": "timestamp",
+          "dataType": "sc:DateTime",
+          "description": "Observation time, UTC.",
+          "source": {
+            "fileObject": {
+              "@id": "weather_hourly.csv.gz"
+            },
+            "extract": {
+              "column": "time"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "weather_hourly/value",
+          "name": "value",
+          "dataType": "sc:Float",
+          "description": "Observed value for one series at one timestamp.",
+          "source": {
+            "fileObject": {
+              "@id": "weather_hourly.csv.gz"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "airquality_hourly",
+      "name": "airquality_hourly",
+      "description": "Wide format: one column per series, first column the timestamp. CAMS air quality, hourly.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "airquality_hourly/timestamp",
+          "name": "timestamp",
+          "dataType": "sc:DateTime",
+          "description": "Observation time, UTC.",
+          "source": {
+            "fileObject": {
+              "@id": "airquality_hourly.csv.gz"
+            },
+            "extract": {
+              "column": "time"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "airquality_hourly/value",
+          "name": "value",
+          "dataType": "sc:Float",
+          "description": "Observed value for one series at one timestamp.",
+          "source": {
+            "fileObject": {
+              "@id": "airquality_hourly.csv.gz"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "energy_hourly",
+      "name": "energy_hourly",
+      "description": "Wide format: one column per series, first column the timestamp. Danish grid production and consumption settlement, hourly.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "energy_hourly/timestamp",
+          "name": "timestamp",
+          "dataType": "sc:DateTime",
+          "description": "Observation time, UTC.",
+          "source": {
+            "fileObject": {
+              "@id": "energy_hourly.csv.gz"
+            },
+            "extract": {
+              "column": "time"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "energy_hourly/value",
+          "name": "value",
+          "dataType": "sc:Float",
+          "description": "Observed value for one series at one timestamp.",
+          "source": {
+            "fileObject": {
+              "@id": "energy_hourly.csv.gz"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "fx_daily",
+      "name": "fx_daily",
+      "description": "Wide format: one column per series, first column the timestamp. European Central Bank euro reference exchange rates, daily.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "fx_daily/timestamp",
+          "name": "timestamp",
+          "dataType": "sc:DateTime",
+          "description": "Observation time, UTC.",
+          "source": {
+            "fileObject": {
+              "@id": "fx_daily.csv.gz"
+            },
+            "extract": {
+              "column": "time"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "fx_daily/value",
+          "name": "value",
+          "dataType": "sc:Float",
+          "description": "Observed value for one series at one timestamp.",
+          "source": {
+            "fileObject": {
+              "@id": "fx_daily.csv.gz"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

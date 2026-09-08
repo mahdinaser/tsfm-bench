@@ -156,6 +156,27 @@
     "arima_over_Chronos2_min": 4.880620372801002,
     "arima_n_groups": 7
   },
+  "probabilistic": {
+    "diverged": {
+      "AutoETS": [
+        "wiki_daily",
+        "wiki_weekly"
+      ]
+    },
+    "mean_coverage_gap": {
+      "Theta": -0.09207211441043754,
+      "AutoETS": -0.08150027440077245,
+      "AutoARIMA": -0.05406046869553248,
+      "LSTM": 0.04984856169043371,
+      "TimesFM": 0.052414550848726336,
+      "TimesFM3": 0.062348117225078124,
+      "ChronosBoltSmall": 0.06718121720331675,
+      "ChronosBoltBase": 0.07127704927876818,
+      "NBEATS": 0.07959657982857489,
+      "Chronos2": 0.0797073343299247,
+      "Moirai2": 0.08887465305426968
+    }
+  },
   "n_cells": 104,
   "n_models": 13
 }

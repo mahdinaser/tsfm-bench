@@ -144,6 +144,58 @@ def cost_table(t: pd.DataFrame) -> tuple[str, dict]:
     return "\n".join(lines), facts
 
 
+def prob_table(t: pd.DataFrame) -> tuple[str, dict]:
+    """Weighted quantile loss and 80% interval coverage.
+
+    Both are computed by run.py for every probabilistic model and were never
+    reported, which left half the evidence on the floor: a model can win on
+    point accuracy and still produce intervals nobody could plan against.
+    """
+    wql = t.pivot_table(index="model", columns="group", values="wql", aggfunc="first")
+    cov = t.pivot_table(index="model", columns="group", values="coverage80", aggfunc="first")
+    cols = [g for g in ORDER if g in wql.columns]
+    wql, cov = wql[cols], cov[cols]
+
+    # AutoETS diverges on the spiky Wikipedia groups and emits quantiles of
+    # order 1e14. Printing that verbatim would put a meaningless number in a
+    # table of otherwise sub-unit losses and make every real value unreadable;
+    # printing nothing would hide a genuine failure. It is marked instead.
+    DIVERGED = 1e3
+    lines = [r"\begin{tabular}{l" + "r" * len(cols) + "}", r"\toprule",
+             "Model & " + " & ".join(GROUP_LABEL.get(g, g) for g in cols) + r" \\",
+             r"\midrule",
+             rf"\multicolumn{{{len(cols) + 1}}}{{l}}{{\emph{{Weighted quantile loss (lower is better)}}}} \\"]
+    for m in wql.index:
+        cells = []
+        for g in cols:
+            v = wql.loc[m, g]
+            if pd.isna(v):
+                cells.append("--")
+            elif v > DIVERGED:
+                cells.append(r"\textdagger")
+            else:
+                best = wql[g][wql[g] <= DIVERGED].min()
+                cells.append(rf"\textbf{{{v:.3f}}}" if np.isclose(v, best) else f"{v:.3f}")
+        lines.append(f"{esc(m)} & " + " & ".join(cells) + r" \\")
+    lines.append(r"\midrule")
+    lines.append(rf"\multicolumn{{{len(cols) + 1}}}{{l}}{{\emph{{80\% interval coverage (nominal 0.80)}}}} \\")
+    for m in cov.index:
+        cells = []
+        for g in cols:
+            v = cov.loc[m, g]
+            cells.append("--" if pd.isna(v) else f"{v:.2f}")
+        lines.append(f"{esc(m)} & " + " & ".join(cells) + r" \\")
+    lines += [r"\bottomrule", r"\end{tabular}"]
+
+    diverged = {m: [g for g in cols if wql.loc[m, g] > DIVERGED]
+                for m in wql.index if (wql.loc[m, cols] > DIVERGED).any()}
+    # How far below nominal the intervals run, averaged over groups.
+    gap = (0.80 - cov).mean(axis=1).dropna().sort_values()
+    facts = {"diverged": diverged,
+             "mean_coverage_gap": {k: float(v) for k, v in gap.items()}}
+    return "\n".join(lines), facts
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--results", default="results/holdout_2026")
@@ -161,11 +213,13 @@ def main() -> int:
     t = timing(args.results)
     cost_tex, cost_facts = cost_table(t)
 
-    for name, tex in (("mase", mase_tex), ("ranks", rank_tex), ("cost", cost_tex)):
+    prob_tex, prob_facts = prob_table(t)
+    for name, tex in (("mase", mase_tex), ("ranks", rank_tex), ("cost", cost_tex),
+                      ("prob", prob_tex)):
         open(os.path.join(args.out, "tables", f"{name}.tex"), "w").write(tex + "\n")
 
     # The claims the prose makes, computed rather than remembered.
-    facts: dict = {"groups": {}, "cost": cost_facts,
+    facts: dict = {"groups": {}, "cost": cost_facts, "probabilistic": prob_facts,
                    "n_cells": int(len(t)), "n_models": int(t["model"].nunique())}
     for g, v in verdicts.items():
         col = means[g].dropna()

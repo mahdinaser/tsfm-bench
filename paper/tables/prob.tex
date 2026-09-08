@@ -1,0 +1,31 @@
+\begin{tabular}{lrrrrrrr}
+\toprule
+Model & Wikipedia (daily) & Wikipedia (weekly) & Wikipedia (monthly) & Weather (hourly) & Air quality (hourly) & Electricity (hourly) & Exchange rates (daily) \\
+\midrule
+\multicolumn{8}{l}{\emph{Weighted quantile loss (lower is better)}} \\
+AutoARIMA & 0.547 & 0.514 & 0.518 & 0.140 & 0.306 & 0.313 & 0.003 \\
+AutoETS & \textdagger & \textdagger & 4.274 & 0.190 & 0.479 & 0.377 & 0.004 \\
+Chronos2 & 0.217 & 0.292 & 0.334 & \textbf{0.122} & \textbf{0.260} & 0.300 & 0.003 \\
+ChronosBoltBase & 0.228 & 0.300 & 0.335 & 0.125 & 0.268 & 0.358 & 0.004 \\
+ChronosBoltSmall & 0.233 & 0.300 & 0.340 & 0.125 & 0.264 & 0.365 & 0.004 \\
+LSTM & 0.281 & 0.313 & 0.412 & 0.151 & 0.298 & 0.407 & 0.005 \\
+Moirai2 & 0.222 & 0.298 & 0.328 & 0.124 & 0.266 & 0.310 & 0.004 \\
+NBEATS & 0.268 & 0.334 & 0.399 & 0.131 & 0.268 & 0.303 & 0.004 \\
+Theta & 0.701 & 0.627 & 0.530 & 0.160 & 0.354 & 0.298 & 0.004 \\
+TimesFM & 0.209 & 0.294 & \textbf{0.327} & 0.127 & 0.263 & 0.318 & 0.003 \\
+TimesFM3 & \textbf{0.207} & \textbf{0.283} & 0.329 & 0.127 & 0.262 & \textbf{0.294} & \textbf{0.003} \\
+\midrule
+\multicolumn{8}{l}{\emph{80\% interval coverage (nominal 0.80)}} \\
+AutoARIMA & 0.96 & 0.94 & 0.91 & 0.72 & 0.82 & 0.74 & 0.88 \\
+AutoETS & 0.94 & 0.95 & 0.88 & 0.80 & 0.89 & 0.83 & 0.88 \\
+Chronos2 & 0.76 & 0.72 & 0.70 & 0.73 & 0.74 & 0.65 & 0.75 \\
+ChronosBoltBase & 0.79 & 0.75 & 0.73 & 0.73 & 0.72 & 0.62 & 0.76 \\
+ChronosBoltSmall & 0.78 & 0.77 & 0.75 & 0.74 & 0.74 & 0.64 & 0.72 \\
+LSTM & 0.84 & 0.75 & 0.86 & 0.76 & 0.80 & 0.61 & 0.63 \\
+Moirai2 & 0.74 & 0.71 & 0.70 & 0.74 & 0.73 & 0.68 & 0.66 \\
+NBEATS & 0.78 & 0.69 & 0.78 & 0.78 & 0.82 & 0.65 & 0.55 \\
+Theta & 0.97 & 0.94 & 0.93 & 0.85 & 0.83 & 0.86 & 0.87 \\
+TimesFM & 0.82 & 0.77 & 0.70 & 0.76 & 0.78 & 0.65 & 0.75 \\
+TimesFM3 & 0.79 & 0.74 & 0.72 & 0.74 & 0.75 & 0.69 & 0.74 \\
+\bottomrule
+\end{tabular}
