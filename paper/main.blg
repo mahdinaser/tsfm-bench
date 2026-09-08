@@ -4,45 +4,46 @@ The top-level auxiliary file: main.aux
 The style file: plainnat.bst
 Database file #1: refs.bib
 Warning--can't use both volume and number fields in dlinear
-You've used 24 entries,
+Warning--can't use both volume and number fields in informer
+You've used 43 entries,
             2773 wiz_defined-function locations,
-            723 strings with 10242 characters,
-and the built_in function-call counts, 15134 in all, are:
-= -- 1240
-> -- 1302
-< -- 11
-+ -- 435
-- -- 411
-* -- 1368
-:= -- 2376
-add.period$ -- 83
-call.type$ -- 24
-change.case$ -- 207
-chr.to.int$ -- 24
-cite$ -- 49
-duplicate$ -- 571
-empty$ -- 959
-format.name$ -- 439
-if$ -- 3094
-int.to.chr$ -- 1
+            824 strings with 14006 characters,
+and the built_in function-call counts, 25462 in all, are:
+= -- 2121
+> -- 2021
+< -- 22
++ -- 678
+- -- 633
+* -- 2264
+:= -- 3951
+add.period$ -- 157
+call.type$ -- 43
+change.case$ -- 338
+chr.to.int$ -- 41
+cite$ -- 88
+duplicate$ -- 1017
+empty$ -- 1751
+format.name$ -- 684
+if$ -- 5253
+int.to.chr$ -- 3
 int.to.str$ -- 1
-missing$ -- 25
-newline$ -- 139
-num.names$ -- 96
-pop$ -- 420
+missing$ -- 43
+newline$ -- 251
+num.names$ -- 172
+pop$ -- 691
 preamble$ -- 1
-purify$ -- 184
+purify$ -- 296
 quote$ -- 0
-skip$ -- 506
+skip$ -- 846
 stack$ -- 0
-substring$ -- 381
-swap$ -- 92
-text.length$ -- 8
+substring$ -- 676
+swap$ -- 159
+text.length$ -- 15
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 259
-warning$ -- 1
-while$ -- 96
+type$ -- 468
+warning$ -- 2
+while$ -- 170
 width$ -- 0
-write$ -- 331
-(There was 1 warning)
+write$ -- 606
+(There were 2 warnings)

@@ -1,0 +1,45 @@
+{
+  "group": "fx_daily",
+  "seeds": [
+    20260907,
+    20260909
+  ],
+  "models": {
+    "SeasonalNaive": {
+      "status": "deterministic",
+      "max_abs_diff": 0.0
+    },
+    "Theta": {
+      "status": "deterministic",
+      "max_abs_diff": 0.0
+    },
+    "AutoETS": {
+      "status": "deterministic",
+      "max_abs_diff": 0.0
+    },
+    "ChronosBoltSmall": {
+      "status": "deterministic",
+      "max_abs_diff": 0.0
+    },
+    "ChronosBoltBase": {
+      "status": "deterministic",
+      "max_abs_diff": 0.0
+    },
+    "Chronos2": {
+      "status": "deterministic",
+      "max_abs_diff": 0.0
+    },
+    "TimesFM": {
+      "status": "deterministic",
+      "max_abs_diff": 0.0
+    },
+    "TimesFM3": {
+      "status": "deterministic",
+      "max_abs_diff": 0.0
+    },
+    "Moirai2": {
+      "status": "deterministic",
+      "max_abs_diff": 0.0
+    }
+  }
+}

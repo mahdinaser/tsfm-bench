@@ -65,7 +65,10 @@ def main() -> int:
         report[name] = {"status": verdict, "max_abs_diff": gap}
 
     bad = [m for m, r in report.items() if r.get("status") == "STOCHASTIC"]
-    out = os.path.join("results", "holdout_2026", "determinism.json")
+    # Per group, not one shared file: running a second group silently
+    # overwrote the first result, leaving only the last group's evidence in the
+    # released artefacts.
+    out = os.path.join("results", "holdout_2026", f"determinism__{args.group}.json")
     os.makedirs(os.path.dirname(out), exist_ok=True)
     json.dump({"group": args.group, "seeds": args.seeds, "models": report},
               open(out, "w"), indent=2)

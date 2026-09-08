@@ -143,8 +143,8 @@ recency alone.
 The premise shared across this family is that one network, pretrained on a
 large corpus of series, forecasts unseen series without being fitted to them.
 Chronos \citep{chronos} tokenises scaled series and trains a language-model
-architecture over the token sequence, with Chronos-Bolt and Chronos-2 as faster
-successors. TimesFM \citep{timesfm} is a decoder-only patched transformer.
+architecture over the token sequence, with Chronos-Bolt and Chronos-2
+\citep{chronos2} as faster successors. TimesFM \citep{timesfm} is a decoder-only patched transformer.
 Moirai \citep{moirai} handles arbitrary frequency and multivariate input
 through masked patch prediction. Lag-Llama \citep{lagllama} conditions on
 lagged values for probabilistic forecasting, TimeGPT \citep{timegpt} is a
@@ -156,6 +156,19 @@ this paper is a property they share rather than one that separates them: their
 corpora are disclosed in summary at best, so no evaluation can verify by
 inspection that a given test set was excluded from training.
 
+\paragraph{The supervised lineage they replace.}
+The models a pretrained forecaster is meant to displace are the ones trained on
+the target dataset: DeepAR \citep{deepar} and Temporal Fusion Transformers
+\citep{tft} for probabilistic and multi-horizon forecasting, N-BEATS
+\citep{nbeats} --- which we run as a baseline --- and the long-horizon
+transformer line from Informer \citep{informer} and Autoformer
+\citep{autoformer} through PatchTST \citep{patchtst} and iTransformer
+\citep{itransformer}. That line has its own history of contested gains:
+\citet{dlinear} showed a linear model matching or beating a generation of these
+architectures, and \citet{makridakis2018} had earlier found machine-learning
+methods losing to statistical ones across the M3 series once evaluation was
+done carefully. Our study inherits that scepticism rather than inventing it.
+
 \paragraph{Benchmarks, and what they are made of.}
 The M4 \citep{m4} and M5 \citep{m5} competitions set the conventions we follow,
 and the Monash archive \citep{monash} assembled the collection most
@@ -166,10 +179,14 @@ of them are built from data that was public before the models were trained.
 That is not a criticism of their construction --- it is what makes results
 comparable across papers --- but it is why a benchmark assembled from published
 archives cannot separate generalisation from recall, however many domains it
-contains. Scepticism about headline gains is not new either:
-\citet{dlinear} showed that a linear baseline matched or beat a generation of
-transformer forecasters, which is the same shape of finding as ours in a
-different setting.
+contains. Independent evaluations have already found the zero-shot claims fragile:
+\citet{toner2025cloud} report that a seasonal naive forecast beat every
+foundation model they tested on cloud-infrastructure data, at every horizon;
+\citet{xu2024specialized} find specialised foundation models struggling against
+supervised baselines across modalities; and \citet{tan2024llm} question whether
+language models contribute anything to forecasting at all. Our exchange-rate
+result is of the same kind, and our contribution is to say precisely where that
+regime begins and ends.
 
 \paragraph{Contamination.}
 Benchmark contamination is well documented for language models
@@ -205,8 +222,9 @@ audit would correctly return ``clean''.
 \paragraph{Classical baselines and how to compare them.}
 Theta \citep{theta} won M3 and remains hard to beat on seasonal data;
 automatic ARIMA and ETS \citep{hyndman2008} are the standard automated
-alternatives, and we use the \texttt{statsforecast} implementations so the
-baselines are the ones a practitioner would actually run. Our reporting follows
+alternatives, and we use the \texttt{statsforecast} implementations
+\citep{statsforecast} so the baselines are the ones a practitioner would
+actually run. Our reporting follows
 the forecasting literature rather than the deep-learning one: MASE as defined
 by \citet{hyndman2006}, and comparison by average rank with the intervals of
 \citet{demsar}, in the spirit of \citet{koning2005}, who showed for M3 that
@@ -302,9 +320,18 @@ following the multiple-comparisons-with-the-best presentation used to report
 M5. We additionally test each model against the per-group winner with a
 Wilcoxon signed-rank test, Holm-corrected across comparisons. We use
 signed-rank rather than a paired $t$-test because MASE across a panel is
-strongly right-skewed, and we avoid the label ``Diebold--Mariano'' because that
-test compares errors over time within one series, which is not the comparison a
-panel benchmark makes.
+strongly right-skewed, and we avoid the label ``Diebold--Mariano''
+\citep{dieboldmariano} because that test compares forecast errors over time
+within a single series, which is not the comparison a panel benchmark makes.
+
+Our reading of MASE follows \citet{hyndman2006}, and the decision to report
+four measures rather than nominate one follows \citet{kolassa2020}: the ranking
+of forecasts is not invariant to the error measure, so a paper that reports a
+single metric has made a choice it usually does not defend. Weighted quantile
+loss is a proper scoring rule in the sense of \citet{gneiting2007}, which
+matters for \S4.6 --- a model cannot improve it by misreporting its own
+uncertainty, so the calibration failures reported there are not an artefact of
+the score.
 
 The gap between a mean and a rank is not academic here, and we met it by
 accident. Before the exclusion above was in place, the near-constant Danish
@@ -514,9 +541,16 @@ This matters more than the accuracy gap for anyone using a forecast to size a
 buffer, a reserve or an inventory. A model that is 10\% better on MASE and
 whose 80\% interval is really a 71\% interval is not obviously the better tool
 for that job, and nothing in the point-accuracy tables that dominate this
-literature would tell you so. We report it without a proposed remedy:
-recalibration is well studied, and the finding here is simply that it is needed
-and is not being done.
+literature would tell you so.
+
+The direction is familiar from elsewhere in deep learning: \citet{guo2017calibration}
+documented the same overconfidence in modern classifiers, and post-hoc
+recalibration \citep{kuleshov2018} and conformal methods for time series
+\citep{conformalts} are the established remedies. We propose none of them here.
+The contribution is the measurement --- that this well-known pathology is
+present, consistently and by family, in the pretrained forecasters currently
+being recommended for zero-shot use, and that no published leaderboard reports
+it.
 
 \subsection{Cost}
 
@@ -595,12 +629,16 @@ the fallbacks in place, and \texttt{results/holdout\_2026/timing.jsonl} records
 the device actually used for every cell.
 
 \paragraph{What we checked rather than assumed.}
-Only three models are re-run under multiple seeds, on the claim that the rest
-are deterministic. Since that claim would understate every significance test if
-it were wrong, \texttt{scripts/check\_determinism.py} verifies it by running
-each supposedly deterministic model twice under different seeds and comparing
-forecasts exactly. Across the three stochastic models, the spread in mean MASE
-over three seeds is below 8\% on every group.
+Only three models are re-run under multiple seeds, on the claim that the other
+nine are deterministic. That claim is load bearing --- if a pretrained model
+quietly sampled, its single reported number would be one draw and every
+significance test here would be understated --- so we tested it rather than
+asserting it. Each of the nine was run twice under different seeds and the
+point forecasts compared exactly: all nine agree to the last bit
+($\max|\Delta| = 0$), and the check is released as
+\texttt{scripts/check\_determinism.py} with its output in
+\texttt{results/holdout\_2026/determinism.json}. Across the three stochastic
+models, the spread in mean MASE over three seeds is below 8\% on every group.
 
 \section{Limitations}
 

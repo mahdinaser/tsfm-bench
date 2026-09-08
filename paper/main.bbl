@@ -1,4 +1,4 @@
-\begin{thebibliography}{24}
+\begin{thebibliography}{43}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -21,6 +21,12 @@ Vassilios Assimakopoulos and Konstantinos Nikolopoulos.
 \newblock The theta model: A decomposition approach to forecasting.
 \newblock \emph{International Journal of Forecasting}, 16\penalty0 (4):\penalty0 521--530, 2000.
 
+\bibitem[{Chronos Team, Amazon Web Services}(2025)]{chronos2}
+{Chronos Team, Amazon Web Services}.
+\newblock Chronos-2.
+\newblock \emph{arXiv preprint arXiv:2510.15821}, 2025.
+\newblock Identifier taken from the authors' repository; not independently confirmed. Chronos-Bolt has no separate publication and is documented by its model card.
+
 \bibitem[Das et~al.(2024)Das, Kong, Sen, and Zhou]{timesfm}
 Abhimanyu Das, Weihao Kong, Rajat Sen, and Yichen Zhou.
 \newblock A decoder-only foundation model for time-series forecasting.
@@ -32,16 +38,34 @@ Janez Dem{\v{s}}ar.
 \newblock Statistical comparisons of classifiers over multiple data sets.
 \newblock \emph{Journal of Machine Learning Research}, 7:\penalty0 1--30, 2006.
 
+\bibitem[Diebold and Mariano(1995)]{dieboldmariano}
+Francis~X. Diebold and Roberto~S. Mariano.
+\newblock Comparing predictive accuracy.
+\newblock \emph{Journal of Business \& Economic Statistics}, 13\penalty0 (3):\penalty0 253--263, 1995.
+\newblock \doi{10.1080/07350015.1995.10524599}.
+
 \bibitem[Ekambaram et~al.(2024)Ekambaram, Jati, Dayama, Mukherjee, Nguyen, Gifford, Reddy, and Kalagnanam]{ttm}
 Vijay Ekambaram, Arindam Jati, Pankaj Dayama, Sumanta Mukherjee, Nam~H. Nguyen, Wesley~M. Gifford, Chandra Reddy, and Jayant Kalagnanam.
 \newblock Tiny time mixers ({TTM}s): Fast pre-trained models for enhanced zero/few-shot forecasting of multivariate time series.
 \newblock In \emph{Advances in Neural Information Processing Systems (NeurIPS)}, 2024.
 \newblock arXiv:2401.03955.
 
+\bibitem[Garza et~al.(2022)Garza, Mergenthaler~Canseco, Chall{\'u}, and Olivares]{statsforecast}
+Azul Garza, Max Mergenthaler~Canseco, Cristian Chall{\'u}, and Kin~G. Olivares.
+\newblock {StatsForecast}: Lightning fast forecasting with statistical and econometric models.
+\newblock PyCon Salt Lake City, Utah, US, 2022.
+\newblock Software; no peer-reviewed publication exists. \url{https://github.com/Nixtla/statsforecast}.
+
 \bibitem[Garza et~al.(2023)Garza, Challu, and Mergenthaler-Canseco]{timegpt}
 Azul Garza, Cristian Challu, and Max Mergenthaler-Canseco.
 \newblock Timegpt-1.
 \newblock \emph{arXiv preprint arXiv:2310.03589}, 2023.
+
+\bibitem[Gneiting and Raftery(2007)]{gneiting2007}
+Tilmann Gneiting and Adrian~E. Raftery.
+\newblock Strictly proper scoring rules, prediction, and estimation.
+\newblock \emph{Journal of the American Statistical Association}, 102\penalty0 (477):\penalty0 359--378, 2007.
+\newblock \doi{10.1198/016214506000001437}.
 
 \bibitem[Godahewa et~al.(2021)Godahewa, Bergmeir, Webb, Hyndman, and Montero-Manso]{monash}
 Rakshitha Godahewa, Christoph Bergmeir, Geoffrey~I. Webb, Rob~J. Hyndman, and Pablo Montero-Manso.
@@ -54,6 +78,12 @@ Mononito Goswami, Konrad Szafer, Arjun Choudhry, Yifu Cai, Shuo Li, and Artur Du
 \newblock In \emph{International Conference on Machine Learning (ICML)}, volume 235 of \emph{PMLR}, 2024.
 \newblock arXiv:2402.03885.
 
+\bibitem[Guo et~al.(2017)Guo, Pleiss, Sun, and Weinberger]{guo2017calibration}
+Chuan Guo, Geoff Pleiss, Yu~Sun, and Kilian~Q. Weinberger.
+\newblock On calibration of modern neural networks.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, volume~70 of \emph{PMLR}, 2017.
+\newblock arXiv:1706.04599.
+
 \bibitem[Hyndman and Koehler(2006)]{hyndman2006}
 Rob~J. Hyndman and Anne~B. Koehler.
 \newblock Another look at measures of forecast accuracy.
@@ -65,20 +95,44 @@ Rob~J. Hyndman, Anne~B. Koehler, J.~Keith Ord, and Ralph~D. Snyder.
 \newblock \emph{Forecasting with Exponential Smoothing: The State Space Approach}.
 \newblock Springer, 2008.
 
+\bibitem[Kolassa(2020)]{kolassa2020}
+Stephan Kolassa.
+\newblock Why the ``best'' point forecast depends on the error or accuracy measure.
+\newblock \emph{International Journal of Forecasting}, 36\penalty0 (1):\penalty0 208--211, 2020.
+\newblock \doi{10.1016/j.ijforecast.2019.02.017}.
+
 \bibitem[Koning et~al.(2005)Koning, Franses, Hibon, and Stekler]{koning2005}
 Alex~J. Koning, Philip~Hans Franses, Mich{\`e}le Hibon, and H.~O. Stekler.
 \newblock The {M3} competition: Statistical tests of the results.
 \newblock \emph{International Journal of Forecasting}, 21\penalty0 (3):\penalty0 397--409, 2005.
+
+\bibitem[Kuleshov et~al.(2018)Kuleshov, Fenner, and Ermon]{kuleshov2018}
+Volodymyr Kuleshov, Nathan Fenner, and Stefano Ermon.
+\newblock Accurate uncertainties for deep learning using calibrated regression.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, volume~80 of \emph{PMLR}, 2018.
+\newblock arXiv:1807.00263.
 
 \bibitem[Li et~al.(2026)Li, Xie, Shen, Li, Chen, Zhang, Fu, Sun, Ren, and Liu]{tsfmaudit}
 Hongkai Li, Shifeng Xie, Lefei Shen, Zhuo Li, Mouxiang Chen, Xiaobin Zhang, Han Fu, Jianling Sun, Xiaoxue Ren, and Chenghao Liu.
 \newblock {TSFMAudit}: Data contamination auditing in forecasting time series foundation models.
 \newblock \emph{arXiv preprint arXiv:2605.26161}, 2026.
 
-\bibitem[Liu et~al.(2024)Liu, Zhang, Li, Huang, Wang, and Long]{timer}
+\bibitem[Lim et~al.(2021)Lim, Ar{\i}k, Loeff, and Pfister]{tft}
+Bryan Lim, Sercan~{\"O}. Ar{\i}k, Nicolas Loeff, and Tomas Pfister.
+\newblock Temporal fusion transformers for interpretable multi-horizon time series forecasting.
+\newblock \emph{International Journal of Forecasting}, 37\penalty0 (4):\penalty0 1748--1764, 2021.
+\newblock \doi{10.1016/j.ijforecast.2021.03.012}.
+
+\bibitem[Liu et~al.(2024{\natexlab{a}})Liu, Hu, Zhang, Wu, Wang, Ma, and Long]{itransformer}
+Yong Liu, Tengge Hu, Haoran Zhang, Haixu Wu, Shiyu Wang, Lintao Ma, and Mingsheng Long.
+\newblock {iTransformer}: Inverted transformers are effective for time series forecasting.
+\newblock In \emph{International Conference on Learning Representations (ICLR)}, 2024{\natexlab{a}}.
+\newblock Spotlight. arXiv:2310.06625.
+
+\bibitem[Liu et~al.(2024{\natexlab{b}})Liu, Zhang, Li, Huang, Wang, and Long]{timer}
 Yong Liu, Haoran Zhang, Chenyu Li, Xiangdong Huang, Jianmin Wang, and Mingsheng Long.
 \newblock Timer: Generative pre-trained transformers are large time series models.
-\newblock In \emph{International Conference on Machine Learning (ICML)}, 2024.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, 2024{\natexlab{b}}.
 \newblock arXiv:2402.02368.
 
 \bibitem[Liu et~al.(2025)Liu, Qin, Shi, Chen, Yang, Huang, Wang, and Long]{sundial}
@@ -86,6 +140,12 @@ Yong Liu, Guo Qin, Zhiyuan Shi, Zhi Chen, Caiyin Yang, Xiangdong Huang, Jianmin 
 \newblock Sundial: A family of highly capable time series foundation models.
 \newblock \emph{arXiv preprint arXiv:2502.00816}, 2025.
 \newblock Reported as ICML 2025 Oral by the authors' repository; not stated on arXiv.
+
+\bibitem[Makridakis et~al.(2018)Makridakis, Spiliotis, and Assimakopoulos]{makridakis2018}
+Spyros Makridakis, Evangelos Spiliotis, and Vassilios Assimakopoulos.
+\newblock Statistical and machine learning forecasting methods: Concerns and ways forward.
+\newblock \emph{PLOS ONE}, 13\penalty0 (3):\penalty0 e0194889, 2018.
+\newblock \doi{10.1371/journal.pone.0194889}.
 
 \bibitem[Makridakis et~al.(2020)Makridakis, Spiliotis, and Assimakopoulos]{m4}
 Spyros Makridakis, Evangelos Spiliotis, and Vassilios Assimakopoulos.
@@ -103,6 +163,18 @@ Marcel Meyer, Sascha Kaltenpoth, Kevin Zalipski, and Oliver M{\"u}ller.
 \newblock Rethinking evaluation in the era of time series foundation models: (un)known information leakage challenges.
 \newblock \emph{arXiv preprint arXiv:2510.13654}, 2025.
 
+\bibitem[Nie et~al.(2023)Nie, Nguyen, Sinthong, and Kalagnanam]{patchtst}
+Yuqi Nie, Nam~H. Nguyen, Phanwadee Sinthong, and Jayant Kalagnanam.
+\newblock A time series is worth 64 words: Long-term forecasting with transformers.
+\newblock In \emph{International Conference on Learning Representations (ICLR)}, 2023.
+\newblock arXiv:2211.14730.
+
+\bibitem[Oreshkin et~al.(2020)Oreshkin, Carpov, Chapados, and Bengio]{nbeats}
+Boris~N. Oreshkin, Dmitri Carpov, Nicolas Chapados, and Yoshua Bengio.
+\newblock {N-BEATS}: Neural basis expansion analysis for interpretable time series forecasting.
+\newblock In \emph{International Conference on Learning Representations (ICLR)}, 2020.
+\newblock arXiv:1905.10437.
+
 \bibitem[Rasul et~al.(2023)Rasul, Ashok, Williams, Khorasani, Adamopoulos, Bhagwatkar, Bilo{\v{s}}, Ghonia, Hassen, et~al.]{lagllama}
 Kashif Rasul, Arjun Ashok, Andrew~Robert Williams, Arian Khorasani, George Adamopoulos, Rishika Bhagwatkar, Marin Bilo{\v{s}}, Hena Ghonia, Nadhir Hassen, et~al.
 \newblock Lag-llama: Towards foundation models for probabilistic time series forecasting.
@@ -114,10 +186,33 @@ Oscar Sainz, Jon Campos, Iker Garc{\'i}a-Ferrero, Julen Etxaniz, Oier~Lopez de~L
 \newblock In \emph{Findings of the Association for Computational Linguistics: EMNLP 2023}, pages 10776--10787, 2023.
 \newblock arXiv:2310.18018.
 
+\bibitem[Salinas et~al.(2020)Salinas, Flunkert, Gasthaus, and Januschowski]{deepar}
+David Salinas, Valentin Flunkert, Jan Gasthaus, and Tim Januschowski.
+\newblock {DeepAR}: Probabilistic forecasting with autoregressive recurrent networks.
+\newblock \emph{International Journal of Forecasting}, 36\penalty0 (3):\penalty0 1181--1191, 2020.
+\newblock \doi{10.1016/j.ijforecast.2019.07.001}.
+
 \bibitem[Shchur et~al.(2025)Shchur, Ansari, Turkmen, Stella, Erickson, Guerron, Bohlke-Schneider, and Wang]{fevbench}
 Oleksandr Shchur, Abdul~Fatir Ansari, Caner Turkmen, Lorenzo Stella, Nick Erickson, Pablo Guerron, Michael Bohlke-Schneider, and Yuyang Wang.
 \newblock fev-bench: A realistic benchmark for time series forecasting.
 \newblock \emph{arXiv preprint arXiv:2509.26468}, 2025.
+
+\bibitem[Stankevi{\v{c}}i{\=u}t{\.e} et~al.(2021)Stankevi{\v{c}}i{\=u}t{\.e}, Alaa, and van~der Schaar]{conformalts}
+Kamil{\.e} Stankevi{\v{c}}i{\=u}t{\.e}, Ahmed~M. Alaa, and Mihaela van~der Schaar.
+\newblock Conformal time-series forecasting.
+\newblock In \emph{Advances in Neural Information Processing Systems (NeurIPS)}, volume~34, 2021.
+
+\bibitem[Tan et~al.(2024)Tan, Merrill, Gupta, Althoff, and Hartvigsen]{tan2024llm}
+Mingtian Tan, Mike~A. Merrill, Vinayak Gupta, Tim Althoff, and Thomas Hartvigsen.
+\newblock Are language models actually useful for time series forecasting?
+\newblock In \emph{Advances in Neural Information Processing Systems (NeurIPS)}, 2024.
+\newblock Spotlight. arXiv:2406.16964.
+
+\bibitem[Toner et~al.(2025)Toner, Lee, Joosen, Singh, and Asenov]{toner2025cloud}
+William Toner, Thomas~L. Lee, Artjom Joosen, Rajkarn Singh, and Martin Asenov.
+\newblock Performance of zero-shot time series foundation models on cloud data.
+\newblock In \emph{ICLR Workshop: I Can't Believe It's Not Better}, 2025.
+\newblock arXiv:2502.12944.
 
 \bibitem[Woo et~al.(2024)Woo, Liu, Kumar, Xiong, Savarese, and Sahoo]{moirai}
 Gerald Woo, Chenghao Liu, Akshat Kumar, Caiming Xiong, Silvio Savarese, and Doyen Sahoo.
@@ -125,15 +220,32 @@ Gerald Woo, Chenghao Liu, Akshat Kumar, Caiming Xiong, Silvio Savarese, and Doye
 \newblock In \emph{International Conference on Machine Learning (ICML)}, volume 235 of \emph{PMLR}, pages 53140--53164, 2024.
 \newblock arXiv:2402.02592 (identifier not re-checked against the abstract page).
 
-\bibitem[Xu et~al.(2024)Xu, Guan, Greene, and Kechadi]{xu2024contamination}
+\bibitem[Wu et~al.(2021)Wu, Xu, Wang, and Long]{autoformer}
+Haixu Wu, Jiehui Xu, Jianmin Wang, and Mingsheng Long.
+\newblock Autoformer: Decomposition transformers with auto-correlation for long-term series forecasting.
+\newblock In \emph{Advances in Neural Information Processing Systems (NeurIPS)}, volume~34, pages 22419--22430, 2021.
+\newblock arXiv:2106.13008.
+
+\bibitem[Xu et~al.(2024{\natexlab{a}})Xu, Guan, Greene, and Kechadi]{xu2024contamination}
 Cheng Xu, Shuhao Guan, Derek Greene, and M-Tahar Kechadi.
 \newblock Benchmark data contamination of large language models: A survey.
-\newblock \emph{arXiv preprint arXiv:2406.04244}, 2024.
+\newblock \emph{arXiv preprint arXiv:2406.04244}, 2024{\natexlab{a}}.
+
+\bibitem[Xu et~al.(2024{\natexlab{b}})Xu, Gupta, Cheng, Shen, Shen, Talwalkar, and Khodak]{xu2024specialized}
+Zongzhe Xu, Ritvik Gupta, Wenduo Cheng, Alexander Shen, Junhong Shen, Ameet Talwalkar, and Mikhail Khodak.
+\newblock Specialized foundation models struggle to beat supervised baselines.
+\newblock \emph{arXiv preprint arXiv:2411.02796}, 2024{\natexlab{b}}.
 
 \bibitem[Zeng et~al.(2023)Zeng, Chen, Zhang, and Xu]{dlinear}
 Ailing Zeng, Muxi Chen, Lei Zhang, and Qiang Xu.
 \newblock Are transformers effective for time series forecasting?
 \newblock In \emph{Proceedings of the AAAI Conference on Artificial Intelligence}, volume~37, pages 11121--11128, 2023.
 \newblock \doi{10.1609/aaai.v37i9.26317}.
+
+\bibitem[Zhou et~al.(2021)Zhou, Zhang, Peng, Zhang, Li, Xiong, and Zhang]{informer}
+Haoyi Zhou, Shanghang Zhang, Jieqi Peng, Shuai Zhang, Jianxin Li, Hui Xiong, and Wancai Zhang.
+\newblock Informer: Beyond efficient transformer for long sequence time-series forecasting.
+\newblock In \emph{Proceedings of the AAAI Conference on Artificial Intelligence}, volume~35, pages 11106--11115, 2021.
+\newblock arXiv:2012.07436.
 
 \end{thebibliography}
