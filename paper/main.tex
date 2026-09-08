@@ -17,6 +17,7 @@
 \usepackage{graphicx}   % also provides \resizebox for the wide tables
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{xcolor}      % the checklist's \answerYes macros use \textcolor
 \usepackage{microtype}
 \usepackage[hidelinks]{hyperref}
 \usepackage{url}
@@ -663,5 +664,8 @@ re-running the models.
 
 \bibliographystyle{plainnat}
 \bibliography{refs}
+
+\newpage
+\input{checklist.tex}
 
 \end{document}
