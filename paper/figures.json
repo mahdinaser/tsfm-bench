@@ -1,0 +1,159 @@
+{
+  "groups": {
+    "wiki_daily": {
+      "best": "TimesFM3",
+      "friedman_p": 9.287771085647924e-251,
+      "n_series": 500,
+      "tied_with_best": [
+        "TimesFM3",
+        "TimesFM",
+        "Moirai2"
+      ],
+      "label": "Wikipedia (daily)",
+      "best_foundation_mase": 0.6889762743477647,
+      "best_classical_mase": 0.9284148409947824,
+      "foundation_gain_pct": 25.790040838905913,
+      "best_is_foundation": true,
+      "naive_tied_with_best": false
+    },
+    "wiki_weekly": {
+      "best": "TimesFM3",
+      "friedman_p": 1.089835214791259e-264,
+      "n_series": 500,
+      "tied_with_best": [
+        "TimesFM3",
+        "TimesFM",
+        "Chronos2"
+      ],
+      "label": "Wikipedia (weekly)",
+      "best_foundation_mase": 1.0730724840571038,
+      "best_classical_mase": 1.498771997759208,
+      "foundation_gain_pct": 28.403220392331946,
+      "best_is_foundation": true,
+      "naive_tied_with_best": false
+    },
+    "wiki_monthly": {
+      "best": "Moirai2",
+      "friedman_p": 2.177183483985983e-258,
+      "n_series": 500,
+      "tied_with_best": [
+        "Moirai2",
+        "Chronos2",
+        "TimesFM",
+        "TimesFM3",
+        "ChronosBoltBase"
+      ],
+      "label": "Wikipedia (monthly)",
+      "best_foundation_mase": 0.6201593022195367,
+      "best_classical_mase": 0.7462217673296764,
+      "foundation_gain_pct": 16.893431769117235,
+      "best_is_foundation": true,
+      "naive_tied_with_best": false
+    },
+    "weather_hourly": {
+      "best": "Chronos2",
+      "friedman_p": 4.6602264718654264e-85,
+      "n_series": 300,
+      "tied_with_best": [
+        "Chronos2",
+        "TimesFM3",
+        "ChronosBoltBase",
+        "Moirai2",
+        "ChronosBoltSmall",
+        "TimesFM"
+      ],
+      "label": "Weather (hourly)",
+      "best_foundation_mase": 1.0428546427203782,
+      "best_classical_mase": 1.1911891892894118,
+      "foundation_gain_pct": 12.452643786796,
+      "best_is_foundation": true,
+      "naive_tied_with_best": false
+    },
+    "airquality_hourly": {
+      "best": "TimesFM3",
+      "friedman_p": 2.2386862449062254e-112,
+      "n_series": 379,
+      "tied_with_best": [
+        "TimesFM3",
+        "Moirai2",
+        "Chronos2",
+        "TimesFM",
+        "NBEATS",
+        "ChronosBoltBase"
+      ],
+      "label": "Air quality (hourly)",
+      "best_foundation_mase": 0.8947700645222322,
+      "best_classical_mase": 1.119714420582368,
+      "foundation_gain_pct": 20.089439943368887,
+      "best_is_foundation": true,
+      "naive_tied_with_best": false
+    },
+    "energy_hourly": {
+      "best": "Theta",
+      "friedman_p": 9.337342854882971e-11,
+      "n_series": 47,
+      "tied_with_best": [
+        "Theta",
+        "Chronos2",
+        "TimesFM3",
+        "Moirai2",
+        "ChronosBoltSmall",
+        "TimesFM"
+      ],
+      "label": "Electricity (hourly)",
+      "best_foundation_mase": 1.1307600999282197,
+      "best_classical_mase": 1.0227357023938508,
+      "foundation_gain_pct": -10.562298478631694,
+      "best_is_foundation": false,
+      "naive_tied_with_best": false
+    },
+    "fx_daily": {
+      "best": "TimesFM",
+      "friedman_p": 0.11864562133850551,
+      "n_series": 29,
+      "tied_with_best": [
+        "TimesFM",
+        "Chronos2",
+        "AutoETS",
+        "SeasonalNaive",
+        "Theta",
+        "Moirai2",
+        "NBEATS",
+        "ChronosBoltBase",
+        "TimesFM3",
+        "ChronosBoltSmall",
+        "LightGBM"
+      ],
+      "label": "Exchange rates (daily)",
+      "best_foundation_mase": 2.3901938010507604,
+      "best_classical_mase": 2.4050609225262662,
+      "foundation_gain_pct": 0.6181598701412302,
+      "best_is_foundation": true,
+      "naive_tied_with_best": true
+    }
+  },
+  "cost": {
+    "median_seconds_per_series": {
+      "SeasonalNaive": 1.4451425522565842e-06,
+      "ChronosBoltSmall": 0.012147648527844758,
+      "Moirai2": 0.014077768661081791,
+      "ChronosBoltBase": 0.01663221020526732,
+      "Chronos2": 0.017005941953441243,
+      "TimesFM3": 0.02685082208365202,
+      "Theta": 0.030660599165906507,
+      "LightGBM": 0.03282346756819213,
+      "NBEATS": 0.04998863148589012,
+      "TimesFM": 0.06308979837169827,
+      "LSTM": 0.07988265644523038,
+      "AutoETS": 0.11594282475725248,
+      "AutoARIMA": 0.4915500064147636
+    },
+    "arima_over_Chronos2_median": 52.23989606556826,
+    "arima_over_Chronos2_max": 2688.7946302738405,
+    "arima_over_Chronos2_max_group": "weather_hourly",
+    "arima_over_Chronos2_min": 16.995988153008305,
+    "arima_n_groups": 4
+  },
+  "n_cells": 88,
+  "n_models": 13
+}
