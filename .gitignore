@@ -1,4 +1,11 @@
-data/
+# The downloaded payloads are large and reproducible from the fetchers, so
+# they stay out — but the fetchers themselves are source code and define the
+# datasets the paper claims. Leaving them untracked would make the benchmark
+# unreproducible by anyone reading it.
+data/*
+!data/sources/
+data/sources/*
+!data/sources/*.py
 .venv/
 __pycache__/
 *.pyc

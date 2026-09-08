@@ -39,6 +39,12 @@ class Group:
     horizon: int         # official forecast horizon
     seasonality: int     # seasonal period m used by MASE and seasonal naive
     subsample: int | None = None   # None = use all series
+    # Uniform context cap, applied identically to every model. The ERA5 hourly
+    # series run to 17k points — longer than anything in M4 — which no
+    # foundation model can read (their windows stop at 512-2048) and which
+    # makes a seasonal AutoARIMA search intractable. Truncating in the loader
+    # keeps the comparison fair rather than letting each model choose.
+    max_context: int | None = None
 
 
 GROUPS: dict[str, Group] = {
@@ -59,7 +65,102 @@ GROUPS: dict[str, Group] = {
     "tourism_yearly":    Group("tourism_yearly",    "Tourism", "YEARLY",    4,  1,  None),
     "tourism_quarterly": Group("tourism_quarterly", "Tourism", "QUARTERLY", 8,  4,  None),
     "tourism_monthly":   Group("tourism_monthly",   "Tourism", "MONTHLY",   24, 12, None),
+    # --- Wikimedia pageviews (post-cutoff holdout; see docs/dataset-plan.md).
+    #     Fetched by data/sources/wikimedia_fetch.py; horizons/seasonality
+    #     mirror M4's daily/weekly/monthly so results sit next to prior work.
+    #     Monthly horizon is 8, not M4's 18: with the test origin at 1 Jan 2026
+    #     (docs/dataset-plan.md §1) only eight complete months exist yet.
+    "wiki_daily":    Group("wiki_daily",    "Wikimedia", "D",  14, 7,  SUBSAMPLE_N),
+    #     Weekly seasonality is 1, as in M4's official weekly setting (m4_weekly
+    #     above): a seasonal ARIMA search at m=52 is what the M4 organisers
+    #     avoided, and it exhausts memory here too.
+    "wiki_weekly":   Group("wiki_weekly",   "Wikimedia", "W",  13, 1,  SUBSAMPLE_N),
+    "wiki_monthly":  Group("wiki_monthly",  "Wikimedia", "MS", 8,  12, SUBSAMPLE_N),
+    # --- Open-Meteo ERA5 hourly weather (post-cutoff holdout, second domain).
+    #     Horizon 48 and seasonality 24 are M4's official hourly settings.
+    "weather_hourly": Group("weather_hourly", "OpenMeteo", "H", 48, 24, SUBSAMPLE_N,
+                            max_context=2016),   # 12 weeks: covers daily (24) and weekly (168) cycles
+    # --- Open-Meteo CAMS hourly air quality (third domain). Same sampling rate
+    #     and same daily cycle as weather, but spiky and heavy-tailed: pollution
+    #     episodes are level shifts no seasonal structure anticipates. Having
+    #     both separates "good at hourly" from "good at smooth".
+    "airquality_hourly": Group("airquality_hourly", "OpenMeteoAQ", "H", 48, 24, SUBSAMPLE_N,
+                               max_context=2016),
+    # --- Danish grid settlement, hourly (fourth domain). Electricity is the
+    #     domain foundation-model papers claim most often, but always on
+    #     ETTh/ETTm, which predate every model and sit in their pretraining.
+    "energy_hourly":  Group("energy_hourly",  "Energinet", "H", 48, 24, None,
+                            max_context=2016),
+    # --- ECB daily reference rates (fifth domain, and the adversarial one).
+    #     Seasonality 1: exchange rates have no weekly cycle, and the standing
+    #     result is that nothing reliably beats a naive forecast on them. A
+    #     benchmark with no such domain cannot show where the advantage stops.
+    "fx_daily":       Group("fx_daily",       "ECB", "D", 14, 1, None),
 }
+
+WIKI_CSV = os.path.join(DATA_ROOT, "wikimedia", "pageviews_daily.csv.gz")
+WEATHER_CSV = os.path.join(DATA_ROOT, "openmeteo", "weather_hourly.csv.gz")
+AQ_CSV = os.path.join(DATA_ROOT, "openmeteo_aq", "airquality_hourly.csv.gz")
+ENERGY_CSV = os.path.join(DATA_ROOT, "energidata", "energy_hourly.csv.gz")
+FX_CSV = os.path.join(DATA_ROOT, "ecb", "fx_daily.csv.gz")
+
+# Forecast origin for the post-cutoff groups: the first day of the hold-out.
+# Set once the pretraining-cutoff table in docs/dataset-plan.md is filled
+# (t* = latest cutoff + 1 month). Unset = hold out the last `horizon` points,
+# which is fine for smoke runs but is NOT the contamination-free protocol.
+TEST_ORIGIN = os.environ.get("TSFM_BENCH_ORIGIN")
+
+
+def _split_at_origin(df: pd.DataFrame, horizon: int, label: str
+                     ) -> tuple[tuple[str, ...], tuple[np.ndarray, ...], np.ndarray]:
+    """Hold out `horizon` points from TEST_ORIGIN (or the tail if unset)."""
+    if TEST_ORIGIN:
+        origin = pd.Timestamp(TEST_ORIGIN)
+        pos = df.index.searchsorted(origin)
+        if pos + horizon > len(df):
+            raise ValueError(f"{label}: origin {origin.date()} leaves fewer than {horizon} points to hold out")
+    else:
+        pos = len(df) - horizon
+    ids, train, test = [], [], []
+    for col in df.columns:
+        s = df[col].to_numpy(dtype=float)
+        tr, te = s[:pos], s[pos:pos + horizon]
+        if np.isnan(tr).any() or np.isnan(te).any() or len(tr) < 2 * horizon:
+            continue
+        ids.append(col); train.append(tr); test.append(te)
+    return tuple(ids), tuple(train), np.asarray(test, dtype=float)
+
+
+@lru_cache(maxsize=None)
+def _load_weather(horizon: int) -> tuple[tuple[str, ...], tuple[np.ndarray, ...], np.ndarray]:
+    if not os.path.exists(WEATHER_CSV):
+        raise FileNotFoundError(f"{WEATHER_CSV} missing — run data/sources/openmeteo_fetch.py")
+    df = pd.read_csv(WEATHER_CSV, index_col="time", parse_dates=True)
+    return _split_at_origin(df, horizon, "weather_hourly")
+
+
+@lru_cache(maxsize=None)
+def _load_wide(path: str, index_col: str, horizon: int, label: str
+               ) -> tuple[tuple[str, ...], tuple[np.ndarray, ...], np.ndarray]:
+    """Load a wide CSV of one column per series and split it at the origin."""
+    if not os.path.exists(path):
+        raise FileNotFoundError(f"{path} missing — run the matching fetcher in data/sources/")
+    df = pd.read_csv(path, index_col=index_col, parse_dates=True)
+    return _split_at_origin(df, horizon, label)
+
+
+@lru_cache(maxsize=None)
+def _load_wikimedia(freq: str, horizon: int) -> tuple[tuple[str, ...], tuple[np.ndarray, ...], np.ndarray]:
+    if not os.path.exists(WIKI_CSV):
+        raise FileNotFoundError(f"{WIKI_CSV} missing — run data/sources/wikimedia_fetch.py")
+    df = pd.read_csv(WIKI_CSV, index_col="date", parse_dates=True)
+    if freq != "D":
+        # Sum views within each week (Mon-anchored) / month; drop a partial last period.
+        df = df.resample("W-MON" if freq == "W" else "MS").sum()
+        last_full = df.index[-1] + pd.tseries.frequencies.to_offset("W-MON" if freq == "W" else "MS")
+        if last_full > pd.Timestamp.today().normalize():
+            df = df.iloc[:-1]
+    return _split_at_origin(df, horizon, f"wikimedia/{freq}")
 
 
 @dataclass
@@ -92,6 +193,14 @@ def _load_m4(frequency: str) -> tuple[tuple[str, ...], tuple[np.ndarray, ...], n
     return tuple(tr_ids), tuple(train), np.asarray(test, dtype=float)
 
 
+# Sources that arrive as one wide CSV, one column per series.
+WIDE_SOURCES: dict[str, tuple[str, str]] = {
+    "OpenMeteoAQ": (AQ_CSV, "time"),
+    "Energinet":   (ENERGY_CSV, "time"),
+    "ECB":         (FX_CSV, "date"),
+}
+
+
 def load_group(name: str) -> GroupData:
     g = GROUPS[name]
     if g.source == "M4":
@@ -101,14 +210,28 @@ def load_group(name: str) -> GroupData:
         ids, train, test = _load_rda_group(M3_RDA, "M3", g.frequency)
     elif g.source == "Tourism":
         ids, train, test = _load_rda_group(TOURISM_RDA, "tourism", g.frequency)
+    elif g.source == "Wikimedia":
+        ids, train, test = _load_wikimedia(g.frequency, g.horizon)
+        ids, train = list(ids), list(train)
+    elif g.source == "OpenMeteo":
+        ids, train, test = _load_weather(g.horizon)
+        ids, train = list(ids), list(train)
+    elif g.source in WIDE_SOURCES:
+        path, index_col = WIDE_SOURCES[g.source]
+        ids, train, test = _load_wide(path, index_col, g.horizon, g.name)
+        ids, train = list(ids), list(train)
     else:
         raise ValueError(g.source)
 
-    test = np.asarray(test, dtype=float)
-    if test.shape[1] != g.horizon:
+    widths = {len(np.asarray(t).ravel()) for t in test}
+    if widths != {g.horizon}:
         raise ValueError(
-            f"{name}: hold-out width {test.shape[1]} != official horizon {g.horizon}"
+            f"{name}: hold-out widths {sorted(widths)} != official horizon {g.horizon}"
         )
+    test = np.asarray([np.asarray(t, dtype=float).ravel() for t in test], dtype=float)
+
+    if g.max_context is not None:
+        train = [t[-g.max_context:] for t in train]
 
     if g.subsample is not None and len(ids) > g.subsample:
         rng = np.random.default_rng(SUBSAMPLE_SEED)
@@ -118,6 +241,49 @@ def load_group(name: str) -> GroupData:
         test = test[pick]
 
     return GroupData(group=g, ids=ids, train=train, test=test)
+
+
+def _as_scalar_str(value) -> str:
+    """R length-1 character vectors reach Python in several shapes.
+
+    Depending on the rdata version and whether xarray is installed, a field
+    like ``period`` can arrive as ``str``, ``bytes``, a 0-d/1-element numpy
+    array, or an xarray ``DataArray``.  ``str()`` on the array shapes yields
+    ``"['YEARLY']"``, which silently matches nothing -- so normalise first.
+    """
+    if isinstance(value, str):
+        return value
+    if isinstance(value, (bytes, bytearray)):
+        return value.decode("utf-8", "replace")
+    arr = np.asarray(getattr(value, "values", value)).ravel()
+    if arr.size == 0:
+        return ""
+    item = arr[0]
+    if isinstance(item, (bytes, bytearray)):
+        return item.decode("utf-8", "replace")
+    return str(item)
+
+
+def _as_float_1d(value) -> np.ndarray:
+    """Coerce an R ts / numeric vector (possibly an xarray DataArray) to 1-D float."""
+    return np.asarray(getattr(value, "values", value), dtype=float).ravel()
+
+
+def _entry_field(entry, key: str):
+    """Read a field from an Mdata record however rdata chose to represent it."""
+    try:
+        return entry[key]
+    except (TypeError, KeyError, IndexError):
+        pass
+    if hasattr(entry, key):
+        return getattr(entry, key)
+    raise KeyError(f"record has no field {key!r} (available: {_entry_keys(entry)})")
+
+
+def _entry_keys(entry) -> list[str]:
+    if hasattr(entry, "keys"):
+        return [str(k) for k in entry.keys()]
+    return [a for a in dir(entry) if not a.startswith("_")]
 
 
 def _load_rda_group(path: str, obj: str, period: str):
@@ -133,18 +299,38 @@ def _load_rda_group(path: str, obj: str, period: str):
             "(pip install rdata xarray)"
         ) from exc
 
-    parsed = rdata.parser.parse_file(path)
-    converted = rdata.conversion.convert(parsed)
-    collection = converted[obj]
+    collection = _read_rda_collection(path, obj)
 
-    ids, train, test = [], [], []
+    want = period.upper()
+    ids, train, test, seen = [], [], [], set()
     for sid, entry in collection.items():
-        if str(entry["period"]).upper() != period.upper():
+        label = _as_scalar_str(_entry_field(entry, "period")).strip().upper()
+        seen.add(label)
+        if label != want:
             continue
         ids.append(str(sid))
-        train.append(np.asarray(entry["x"], dtype=float))
-        test.append(np.asarray(entry["xx"], dtype=float))
+        train.append(_as_float_1d(_entry_field(entry, "x")))
+        test.append(_as_float_1d(_entry_field(entry, "xx")))
+
+    if not ids:
+        raise ValueError(
+            f"{os.path.basename(path)}: no series with period {want!r}; "
+            f"labels present: {sorted(seen)}"
+        )
     return ids, train, test
+
+
+@lru_cache(maxsize=None)
+def _read_rda_collection(path: str, obj: str):
+    """Parse an .rda once and return the named collection inside it."""
+    import rdata
+
+    converted = rdata.conversion.convert(rdata.parser.parse_file(path))
+    if obj not in converted:
+        raise KeyError(
+            f"{os.path.basename(path)} contains {sorted(converted)}, not {obj!r}"
+        )
+    return converted[obj]
 
 
 def describe_groups() -> pd.DataFrame:
