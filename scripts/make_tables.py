@@ -109,12 +109,22 @@ def rank_table(panels: dict[str, pd.DataFrame]) -> tuple[str, dict]:
 
 def cost_table(t: pd.DataFrame) -> tuple[str, dict]:
     per = t.groupby("model")["seconds_per_series"].median().sort_values()
+    # Seasonal naive costs a few microseconds because it copies an array, so
+    # dividing by it reported the fastest pretrained model as 8,000x slower
+    # than the baseline - true, meaningless, and it buried the comparison that
+    # matters. The reference is the cheapest method that actually computes a
+    # forecast, and the naive row is marked as the free one rather than used as
+    # a denominator.
+    ref_model = next((m for m in per.index if m != "SeasonalNaive" and per[m] > 0), None)
+    base = per[ref_model] if ref_model else 1.0
     lines = [r"\begin{tabular}{lrr}", r"\toprule",
-             r"Model & Median s/series & Slowdown vs.\ fastest \\", r"\midrule"]
-    base = per[per > 0].min()
+             rf"Model & Median s/series & Relative to {esc(ref_model or '')} \\", r"\midrule"]
     for m, v in per.items():
-        lines.append(f"{esc(m)} & {v:.4f} & " +
-                     ("--" if v <= 0 else f"{v / base:.0f}$\\times$") + r" \\")
+        if m == "SeasonalNaive":
+            rel = "free"
+        else:
+            rel = f"{v / base:,.0f}$\\times$" if v / base >= 10 else f"{v / base:.1f}$\\times$"
+        lines.append(f"{esc(m)} & {v:.4f} & {rel}" + r" \\")
     lines += [r"\bottomrule", r"\end{tabular}"]
     facts = {"median_seconds_per_series": {k: float(v) for k, v in per.items()}}
     # The cost gap is NOT a single number: it is 17x on weekly data and 2,700x
@@ -192,7 +202,13 @@ def main() -> int:
                     and means[g].min() < means.loc["AutoARIMA", g]]
     macros = {
         "MaxGain": f"{max(gains.values()):.0f}\\%" if gains else "??",
-        "MaxGainGroup": GROUP_LABEL.get(max(gains, key=gains.get), "??").lower() if gains else "??",
+        # Not lowercased: it is a proper noun, and the label's own parentheses
+        # would nest inside the sentence's. "Wikipedia (weekly)" becomes
+        # "weekly Wikipedia pageviews".
+        "MaxGainGroup": (lambda lbl: (f"{lbl[lbl.index('(') + 1:lbl.index(')')]} "
+                                      f"{lbl[:lbl.index('(')].strip()} pageviews")
+                         if "(" in lbl else lbl)(
+            GROUP_LABEL.get(max(gains, key=gains.get), "??")) if gains else "??",
         "NumGroups": str(len(facts["groups"])),
         "NumGroupsFoundationBest": str(n_best),
         "NumGroupsFoundationBestSig": str(n_best_sig),

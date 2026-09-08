@@ -1,0 +1,53 @@
+\begin{thebibliography}{8}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Ansari et~al.(2024)]{chronos}
+Abdul~Fatir Ansari et~al.
+\newblock Chronos: Learning the language of time series.
+\newblock \emph{Transactions on Machine Learning Research}, 2024.
+\newblock TODO: full author list; arXiv identifier.
+
+\bibitem[Assimakopoulos and Nikolopoulos(2000)]{theta}
+Vassilios Assimakopoulos and Konstantinos Nikolopoulos.
+\newblock The theta model: A decomposition approach to forecasting.
+\newblock \emph{International Journal of Forecasting}, 16\penalty0 (4):\penalty0 521--530, 2000.
+
+\bibitem[Das et~al.(2024)Das, Kong, Sen, and Zhou]{timesfm}
+Abhimanyu Das, Weihao Kong, Rajat Sen, and Yichen Zhou.
+\newblock A decoder-only foundation model for time-series forecasting.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, 2024.
+\newblock TODO: arXiv identifier; pages.
+
+\bibitem[Godahewa et~al.(2021)Godahewa, Bergmeir, Webb, Hyndman, and Montero-Manso]{monash}
+Rakshitha Godahewa, Christoph Bergmeir, Geoffrey~I. Webb, Rob~J. Hyndman, and Pablo Montero-Manso.
+\newblock Monash time series forecasting archive.
+\newblock In \emph{NeurIPS Datasets and Benchmarks Track}, 2021.
+
+\bibitem[Hyndman et~al.(2008)Hyndman, Koehler, Ord, and Snyder]{hyndman2008}
+Rob~J. Hyndman, Anne~B. Koehler, J.~Keith Ord, and Ralph~D. Snyder.
+\newblock \emph{Forecasting with Exponential Smoothing: The State Space Approach}.
+\newblock Springer, 2008.
+
+\bibitem[Makridakis et~al.(2020)Makridakis, Spiliotis, and Assimakopoulos]{m4}
+Spyros Makridakis, Evangelos Spiliotis, and Vassilios Assimakopoulos.
+\newblock The m4 competition: 100,000 time series and 61 forecasting methods.
+\newblock \emph{International Journal of Forecasting}, 36\penalty0 (1), 2020.
+\newblock TODO: verify volume, issue and page range.
+
+\bibitem[Makridakis et~al.(2022)Makridakis, Spiliotis, and Assimakopoulos]{m5}
+Spyros Makridakis, Evangelos Spiliotis, and Vassilios Assimakopoulos.
+\newblock The m5 accuracy competition: Results, findings and conclusions.
+\newblock \emph{International Journal of Forecasting}, 38\penalty0 (4), 2022.
+\newblock TODO: verify volume, issue and page range.
+
+\bibitem[Woo et~al.(2024)]{moirai}
+Gerald Woo et~al.
+\newblock Unified training of universal time series forecasting transformers.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, 2024.
+\newblock TODO: full author list; arXiv identifier; pages.
+
+\end{thebibliography}

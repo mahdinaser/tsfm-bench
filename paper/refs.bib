@@ -1,47 +1,56 @@
-% VERIFY BEFORE SUBMISSION.
-%
-% Titles, authors and venues below are as far as they could be stated with
-% confidence; arXiv identifiers, volume/page numbers and exact author lists are
-% marked TODO rather than guessed. An invented arXiv number is worse than a
-% missing one — it looks authoritative and is unverifiable — so nothing here is
-% filled in from memory alone. Resolve each TODO against the actual record
-% before the manuscript leaves the machine.
+This file's TODOs are deliberate. Titles, authors and venues below are as far
+as they could be stated with confidence; arXiv identifiers, volume and page
+numbers are marked TODO inside the note field rather than guessed. An invented
+arXiv number is worse than a missing one -- it looks authoritative and is
+unverifiable -- so nothing here is filled in from memory alone. Resolve every
+TODO against the actual record before submission.
+
+Note for editors of this file: BibTeX has no "%" comment syntax. Inline "%"
+notes after a field silently swallowed the following field, which is how the
+first compile produced citations with no year.
 
 @article{chronos,
   title  = {Chronos: Learning the Language of Time Series},
-  author = {Ansari, Abdul Fatir and others},          % TODO full author list
+  author = {Ansari, Abdul Fatir and others},
+  journal = {Transactions on Machine Learning Research},
   year   = {2024},
-  note   = {TODO arXiv identifier; published in TMLR}
+  note   = {TODO: full author list; arXiv identifier}
 }
 
-@article{timesfm,
+@inproceedings{timesfm,
   title  = {A Decoder-Only Foundation Model for Time-Series Forecasting},
   author = {Das, Abhimanyu and Kong, Weihao and Sen, Rajat and Zhou, Yichen},
+  booktitle = {International Conference on Machine Learning (ICML)},
   year   = {2024},
-  note   = {TODO arXiv identifier; ICML 2024}
+  note   = {TODO: arXiv identifier; pages}
 }
 
-@article{moirai,
+@inproceedings{moirai,
   title  = {Unified Training of Universal Time Series Forecasting Transformers},
-  author = {Woo, Gerald and others},                  % TODO full author list
+  author = {Woo, Gerald and others},
+  booktitle = {International Conference on Machine Learning (ICML)},
   year   = {2024},
-  note   = {TODO arXiv identifier; ICML 2024}
+  note   = {TODO: full author list; arXiv identifier; pages}
 }
 
 @article{m4,
   title   = {The M4 Competition: 100,000 Time Series and 61 Forecasting Methods},
   author  = {Makridakis, Spyros and Spiliotis, Evangelos and Assimakopoulos, Vassilios},
   journal = {International Journal of Forecasting},
+  volume  = {36},
+  number  = {1},
   year    = {2020},
-  note    = {TODO volume, issue, pages}
+  note    = {TODO: verify volume, issue and page range}
 }
 
 @article{m5,
   title   = {The M5 Accuracy Competition: Results, Findings and Conclusions},
   author  = {Makridakis, Spyros and Spiliotis, Evangelos and Assimakopoulos, Vassilios},
   journal = {International Journal of Forecasting},
+  volume  = {38},
+  number  = {4},
   year    = {2022},
-  note    = {TODO volume, issue, pages}
+  note    = {TODO: verify volume, issue and page range}
 }
 
 @inproceedings{monash,

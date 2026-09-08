@@ -18,6 +18,17 @@ follow the tables automatically.
   record.
 - The pretraining-cutoff table promised in §3.1 (`docs/dataset-plan.md`) still
   needs the supplement written out.
-- No LaTeX toolchain was available on the machine where this was drafted, so
-  `main.tex` has been checked structurally (citations resolve, inputs exist,
-  macros defined, braces balance) but has never been compiled.
+- The bibliography's `TODO` notes live inside `note` fields and therefore
+  **print in the reference list**. That is deliberate while drafting; it also
+  means the paper cannot be submitted without noticing them.
+
+## Toolchain
+
+TinyTeX at `~/Library/TinyTeX` (user-level, no sudo, ~200MB — MacTeX is 5GB and
+needs an admin password). `paper/build.sh` runs the whole chain. Packages added
+beyond the base install: `microtype booktabs natbib geometry hyperref amsmath
+graphics caption`.
+
+Note for anyone editing `refs.bib`: BibTeX has no `%` comment syntax. An inline
+`%` note after a field silently swallows the field that follows it, which is how
+the first build produced citations with no year.

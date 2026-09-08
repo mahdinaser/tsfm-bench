@@ -5,7 +5,7 @@
 
 \usepackage[margin=1in]{geometry}
 \usepackage{booktabs}
-\usepackage{graphicx}
+\usepackage{graphicx}   % also provides \resizebox for the wide tables
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage[hidelinks]{hyperref}
@@ -222,7 +222,7 @@ away from a headline; reported as ranks it is not.
 \begin{table}[t]
 \centering
 \small
-\input{tables/mase.tex}
+\resizebox{\textwidth}{!}{\input{tables/mase.tex}}
 \caption{Mean MASE by group; lower is better, best per column in bold.}
 \label{tab:mase}
 \end{table}
@@ -230,7 +230,7 @@ away from a headline; reported as ranks it is not.
 \begin{table}[t]
 \centering
 \small
-\input{tables/ranks.tex}
+\resizebox{\textwidth}{!}{\input{tables/ranks.tex}}
 \caption{Average rank across series (lower is better). Underlined entries are
 statistically indistinguishable from the best model in that column under the
 Nemenyi interval.}
