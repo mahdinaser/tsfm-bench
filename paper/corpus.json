@@ -18,11 +18,11 @@
   "median_delta_in_corpus": -0.833333333333333,
   "median_delta_elsewhere": 0.0,
   "mean_delta_in_corpus": -0.5297777777777778,
-  "mean_delta_elsewhere": -0.08543046357615892,
+  "mean_delta_elsewhere": -0.0888594164456233,
   "n_in_corpus": 1500,
-  "n_elsewhere": 755,
-  "mannwhitney_p": 8.090117549805903e-08,
-  "rank_biserial": -0.13491125827814565,
+  "n_elsewhere": 754,
+  "mannwhitney_p": 9.840616868076238e-08,
+  "rank_biserial": -0.13403625110521666,
   "per_group_family_rank": {
     "airquality_hourly": {
       "TimesFM": 3.41688654353562,
@@ -33,12 +33,12 @@
       "Moirai2": 3.3931398416886545
     },
     "energy_hourly": {
-      "TimesFM": 3.7872340425531914,
-      "TimesFM3": 3.1702127659574466,
-      "Chronos2": 3.0638297872340425,
-      "ChronosBoltBase": 3.6595744680851063,
-      "ChronosBoltSmall": 3.723404255319149,
-      "Moirai2": 3.595744680851064
+      "TimesFM": 3.782608695652174,
+      "TimesFM3": 3.130434782608696,
+      "Chronos2": 3.108695652173913,
+      "ChronosBoltBase": 3.6739130434782608,
+      "ChronosBoltSmall": 3.760869565217391,
+      "Moirai2": 3.5434782608695654
     },
     "fx_daily": {
       "TimesFM": 3.1379310344827585,

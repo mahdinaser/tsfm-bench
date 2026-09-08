@@ -148,13 +148,21 @@ baselines are the ones practitioners would actually run.
 
 \subsection{Contamination-free hold-out}
 
-Let $t^\ast$ be one month after the latest disclosed pretraining cutoff among
-the evaluated models. Every test observation is drawn from after $t^\ast$; the
-forecast origin is fixed at 1 January 2026 for all groups, and the input
-context is whatever precedes it. The cutoffs we could establish from model
-cards and papers are tabulated in the supplement, together with the cases where
-a cutoff is not disclosed at all --- for those we take the model's public
-release date, which is conservative in the direction that favours the model.
+The forecast origin is fixed at 1 January 2026 for every group; each model
+receives the observations preceding it as context and is scored on the horizon
+that follows. Every evaluated checkpoint --- \texttt{amazon/chronos-bolt-small}
+and \texttt{-base}, \texttt{amazon/chronos-2},
+\texttt{google/timesfm-2.5-200m-pytorch}, \texttt{google/timesfm-3.0-pytorch}
+and \texttt{Salesforce/moirai-2.0-R-small} --- was published before that date,
+so no test observation existed when any of them was trained.
+
+We deliberately do not tabulate pretraining cutoffs. Several of these models
+disclose their corpora only in summary, and a table of dates assembled from
+release notes would give the protocol a precision it does not have. The
+argument does not need it: an observation recorded in 2026 cannot appear in a
+checkpoint published in 2025, whatever that checkpoint's internal cutoff was.
+What we can pin exactly is the software, and \texttt{requirements-lock.txt}
+records every library version used to produce these numbers.
 
 \subsection{Domains}
 
@@ -218,6 +226,16 @@ away from a headline; reported as ranks it is not.
 \section{Results}
 
 \subsection{Accuracy}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/mcb.png}
+\caption{Average rank with Nemenyi intervals, per group. Any model whose
+interval crosses the dashed line is statistically indistinguishable from the
+best model in that panel. Exchange rates, on the bottom row, is the panel where
+every interval overlaps every other and the Friedman test does not reject.}
+\label{fig:mcb}
+\end{figure}
 
 \begin{table}[t]
 \centering
@@ -331,6 +349,17 @@ the benchmark, and those are the well-published ones --- which are also the
 ones most likely to be in a pretraining corpus.
 
 \subsection{Cost}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.86\textwidth]{figures/cost_accuracy.png}
+\caption{Cost against accuracy, aggregated over the seven groups. The
+pretrained models occupy a tight cluster at the top left --- cheapest and most
+accurate --- while the automatic ARIMA search sits two orders of magnitude to
+the right of them and ranks worse than a Theta baseline that costs a hundredth
+as much.}
+\label{fig:cost}
+\end{figure}
 
 \begin{table}[t]
 \centering
