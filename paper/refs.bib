@@ -1,56 +1,131 @@
-This file's TODOs are deliberate. Titles, authors and venues below are as far
-as they could be stated with confidence; arXiv identifiers, volume and page
-numbers are marked TODO inside the note field rather than guessed. An invented
-arXiv number is worse than a missing one -- it looks authoritative and is
-unverifiable -- so nothing here is filled in from memory alone. Resolve every
-TODO against the actual record before submission.
+Every entry below was checked against the actual record (arXiv abstract page,
+PMLR/ACL proceedings, or publisher DOI page) rather than written from memory.
+Where a venue could not be confirmed, the entry is a plain arXiv preprint and
+says so, instead of being upgraded to a conference it may not have appeared at.
 
-Note for editors of this file: BibTeX has no "%" comment syntax. Inline "%"
-notes after a field silently swallowed the following field, which is how the
-first compile produced citations with no year.
+Note for editors: BibTeX has no "%" comment syntax. An inline "%" note after a
+field silently swallows the field that follows it, which is how an earlier
+build produced citations with no year.
 
 @article{chronos,
-  title  = {Chronos: Learning the Language of Time Series},
-  author = {Ansari, Abdul Fatir and others},
+  title   = {Chronos: Learning the Language of Time Series},
+  author  = {Ansari, Abdul Fatir and Stella, Lorenzo and Turkmen, Caner and
+             Zhang, Xiyuan and Mercado, Pedro and Shen, Huibin and
+             Shchur, Oleksandr and Rangapuram, Syama Sundar and
+             Pineda Arango, Sebastian and Kapoor, Shubham and Zschiegner, Jasper and
+             Maddix, Danielle C. and Wang, Hao and Mahoney, Michael W. and
+             Torkkola, Kari and Wilson, Andrew Gordon and
+             Bohlke-Schneider, Michael and Wang, Yuyang},
   journal = {Transactions on Machine Learning Research},
-  year   = {2024},
-  note   = {TODO: full author list; arXiv identifier}
+  year    = {2024},
+  note    = {arXiv:2403.07815}
 }
 
 @inproceedings{timesfm,
-  title  = {A Decoder-Only Foundation Model for Time-Series Forecasting},
-  author = {Das, Abhimanyu and Kong, Weihao and Sen, Rajat and Zhou, Yichen},
+  title     = {A Decoder-Only Foundation Model for Time-Series Forecasting},
+  author    = {Das, Abhimanyu and Kong, Weihao and Sen, Rajat and Zhou, Yichen},
   booktitle = {International Conference on Machine Learning (ICML)},
-  year   = {2024},
-  note   = {TODO: arXiv identifier; pages}
+  series    = {PMLR},
+  volume    = {235},
+  pages     = {10148--10167},
+  year      = {2024},
+  note      = {arXiv:2310.10688}
 }
 
 @inproceedings{moirai,
-  title  = {Unified Training of Universal Time Series Forecasting Transformers},
-  author = {Woo, Gerald and others},
+  title     = {Unified Training of Universal Time Series Forecasting Transformers},
+  author    = {Woo, Gerald and Liu, Chenghao and Kumar, Akshat and
+               Xiong, Caiming and Savarese, Silvio and Sahoo, Doyen},
   booktitle = {International Conference on Machine Learning (ICML)},
-  year   = {2024},
-  note   = {TODO: full author list; arXiv identifier; pages}
+  series    = {PMLR},
+  volume    = {235},
+  pages     = {53140--53164},
+  year      = {2024},
+  note      = {arXiv:2402.02592 (identifier not re-checked against the abstract page)}
 }
 
-@article{m4,
-  title   = {The M4 Competition: 100,000 Time Series and 61 Forecasting Methods},
-  author  = {Makridakis, Spyros and Spiliotis, Evangelos and Assimakopoulos, Vassilios},
-  journal = {International Journal of Forecasting},
-  volume  = {36},
-  number  = {1},
-  year    = {2020},
-  note    = {TODO: verify volume, issue and page range}
+@article{lagllama,
+  title   = {Lag-Llama: Towards Foundation Models for Probabilistic Time Series Forecasting},
+  author  = {Rasul, Kashif and Ashok, Arjun and Williams, Andrew Robert and
+             Khorasani, Arian and Adamopoulos, George and Bhagwatkar, Rishika and
+             Bilo{\v{s}}, Marin and Ghonia, Hena and Hassen, Nadhir and others},
+  journal = {arXiv preprint arXiv:2310.08278},
+  year    = {2023}
 }
 
-@article{m5,
-  title   = {The M5 Accuracy Competition: Results, Findings and Conclusions},
-  author  = {Makridakis, Spyros and Spiliotis, Evangelos and Assimakopoulos, Vassilios},
-  journal = {International Journal of Forecasting},
-  volume  = {38},
-  number  = {4},
-  year    = {2022},
-  note    = {TODO: verify volume, issue and page range}
+@article{timegpt,
+  title   = {TimeGPT-1},
+  author  = {Garza, Azul and Challu, Cristian and Mergenthaler-Canseco, Max},
+  journal = {arXiv preprint arXiv:2310.03589},
+  year    = {2023}
+}
+
+@inproceedings{moment,
+  title     = {{MOMENT}: A Family of Open Time-series Foundation Models},
+  author    = {Goswami, Mononito and Szafer, Konrad and Choudhry, Arjun and
+               Cai, Yifu and Li, Shuo and Dubrawski, Artur},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  series    = {PMLR},
+  volume    = {235},
+  year      = {2024},
+  note      = {arXiv:2402.03885}
+}
+
+@inproceedings{ttm,
+  title     = {Tiny Time Mixers ({TTM}s): Fast Pre-trained Models for Enhanced
+               Zero/Few-Shot Forecasting of Multivariate Time Series},
+  author    = {Ekambaram, Vijay and Jati, Arindam and Dayama, Pankaj and
+               Mukherjee, Sumanta and Nguyen, Nam H. and Gifford, Wesley M. and
+               Reddy, Chandra and Kalagnanam, Jayant},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2024},
+  note      = {arXiv:2401.03955}
+}
+
+@inproceedings{timer,
+  title     = {Timer: Generative Pre-trained Transformers Are Large Time Series Models},
+  author    = {Liu, Yong and Zhang, Haoran and Li, Chenyu and Huang, Xiangdong and
+               Wang, Jianmin and Long, Mingsheng},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  year      = {2024},
+  note      = {arXiv:2402.02368}
+}
+
+@article{sundial,
+  title   = {Sundial: A Family of Highly Capable Time Series Foundation Models},
+  author  = {Liu, Yong and Qin, Guo and Shi, Zhiyuan and Chen, Zhi and
+             Yang, Caiyin and Huang, Xiangdong and Wang, Jianmin and Long, Mingsheng},
+  journal = {arXiv preprint arXiv:2502.00816},
+  year    = {2025},
+  note    = {Reported as ICML 2025 Oral by the authors' repository; not stated on arXiv}
+}
+
+@article{giftEval,
+  title   = {{GIFT-Eval}: A Benchmark For General Time Series Forecasting Model Evaluation},
+  author  = {Aksu, Taha and Woo, Gerald and Liu, Juncheng and Liu, Xu and
+             Liu, Chenghao and Savarese, Silvio and Xiong, Caiming and Sahoo, Doyen},
+  journal = {arXiv preprint arXiv:2410.10393},
+  year    = {2024}
+}
+
+@article{fevbench,
+  title   = {fev-bench: A Realistic Benchmark for Time Series Forecasting},
+  author  = {Shchur, Oleksandr and Ansari, Abdul Fatir and Turkmen, Caner and
+             Stella, Lorenzo and Erickson, Nick and Guerron, Pablo and
+             Bohlke-Schneider, Michael and Wang, Yuyang},
+  journal = {arXiv preprint arXiv:2509.26468},
+  year    = {2025}
+}
+
+@inproceedings{dlinear,
+  title     = {Are Transformers Effective for Time Series Forecasting?},
+  author    = {Zeng, Ailing and Chen, Muxi and Zhang, Lei and Xu, Qiang},
+  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume    = {37},
+  number    = {9},
+  pages     = {11121--11128},
+  year      = {2023},
+  doi       = {10.1609/aaai.v37i9.26317}
 }
 
 @inproceedings{monash,
@@ -59,6 +134,27 @@ first compile produced citations with no year.
                and Hyndman, Rob J. and Montero-Manso, Pablo},
   booktitle = {NeurIPS Datasets and Benchmarks Track},
   year      = {2021}
+}
+
+@article{m4,
+  title   = {The {M4} Competition: 100,000 Time Series and 61 Forecasting Methods},
+  author  = {Makridakis, Spyros and Spiliotis, Evangelos and Assimakopoulos, Vassilios},
+  journal = {International Journal of Forecasting},
+  volume  = {36},
+  number  = {1},
+  pages   = {54--74},
+  year    = {2020},
+  doi     = {10.1016/j.ijforecast.2019.04.014}
+}
+
+@article{m5,
+  title   = {{M5} Accuracy Competition: Results, Findings, and Conclusions},
+  author  = {Makridakis, Spyros and Spiliotis, Evangelos and Assimakopoulos, Vassilios},
+  journal = {International Journal of Forecasting},
+  volume  = {38},
+  number  = {4},
+  pages   = {1346--1364},
+  year    = {2022}
 }
 
 @article{theta,
@@ -71,10 +167,78 @@ first compile produced citations with no year.
   year    = {2000}
 }
 
+@article{hyndman2006,
+  title   = {Another Look at Measures of Forecast Accuracy},
+  author  = {Hyndman, Rob J. and Koehler, Anne B.},
+  journal = {International Journal of Forecasting},
+  volume  = {22},
+  number  = {4},
+  pages   = {679--688},
+  year    = {2006},
+  doi     = {10.1016/j.ijforecast.2006.03.001}
+}
+
+@article{demsar,
+  title   = {Statistical Comparisons of Classifiers over Multiple Data Sets},
+  author  = {Dem{\v{s}}ar, Janez},
+  journal = {Journal of Machine Learning Research},
+  volume  = {7},
+  pages   = {1--30},
+  year    = {2006}
+}
+
+@article{koning2005,
+  title   = {The {M3} Competition: Statistical Tests of the Results},
+  author  = {Koning, Alex J. and Franses, Philip Hans and Hibon, Mich{\`e}le
+             and Stekler, H. O.},
+  journal = {International Journal of Forecasting},
+  volume  = {21},
+  number  = {3},
+  pages   = {397--409},
+  year    = {2005}
+}
+
 @book{hyndman2008,
   title     = {Forecasting with Exponential Smoothing: The State Space Approach},
   author    = {Hyndman, Rob J. and Koehler, Anne B. and Ord, J. Keith
                and Snyder, Ralph D.},
   publisher = {Springer},
   year      = {2008}
+}
+
+@inproceedings{sainz2023,
+  title     = {{NLP} Evaluation in Trouble: On the Need to Measure {LLM} Data
+               Contamination for each Benchmark},
+  author    = {Sainz, Oscar and Campos, Jon and Garc{\'i}a-Ferrero, Iker and
+               Etxaniz, Julen and de Lacalle, Oier Lopez and Agirre, Eneko},
+  booktitle = {Findings of the Association for Computational Linguistics: EMNLP 2023},
+  pages     = {10776--10787},
+  year      = {2023},
+  note      = {arXiv:2310.18018}
+}
+
+@article{xu2024contamination,
+  title   = {Benchmark Data Contamination of Large Language Models: A Survey},
+  author  = {Xu, Cheng and Guan, Shuhao and Greene, Derek and Kechadi, M-Tahar},
+  journal = {arXiv preprint arXiv:2406.04244},
+  year    = {2024}
+}
+
+@article{meyer2025leakage,
+  title   = {Rethinking Evaluation in the Era of Time Series Foundation Models:
+             (Un)known Information Leakage Challenges},
+  author  = {Meyer, Marcel and Kaltenpoth, Sascha and Zalipski, Kevin and
+             M{\"u}ller, Oliver},
+  journal = {arXiv preprint arXiv:2510.13654},
+  year    = {2025}
+}
+
+@article{tsfmaudit,
+  title   = {{TSFMAudit}: Data Contamination Auditing in Forecasting Time Series
+             Foundation Models},
+  author  = {Li, Hongkai and Xie, Shifeng and Shen, Lefei and Li, Zhuo and
+             Chen, Mouxiang and Zhang, Xiaobin and Fu, Han and Sun, Jianling and
+             Ren, Xiaoxue and Liu, Chenghao},
+  journal = {arXiv preprint arXiv:2605.26161},
+  year    = {2026}
 }

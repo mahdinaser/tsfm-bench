@@ -6,70 +6,102 @@
 \citation{chronos}
 \citation{timesfm}
 \citation{moirai}
+\citation{lagllama}
+\citation{timegpt}
+\citation{moment}
+\citation{ttm}
+\citation{timer}
+\citation{sundial}
 \citation{m4}
 \citation{m5}
 \citation{monash}
-\citation{theta}
-\citation{hyndman2008}
+\citation{giftEval}
+\citation{fevbench}
+\citation{dlinear}
 \@writefile{toc}{\contentsline {paragraph}{Contributions.}{2}{section*.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2}Related work}{2}{section.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Pretrained forecasters.}{2}{section*.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Benchmarks and their contamination.}{2}{section*.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Classical baselines.}{2}{section*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Benchmarks, and what they are made of.}{2}{section*.3}\protected@file@percent }
+\citation{sainz2023,xu2024contamination}
+\citation{meyer2025leakage}
+\citation{tsfmaudit}
+\citation{theta}
+\citation{hyndman2008}
+\citation{hyndman2006}
+\citation{demsar}
+\citation{koning2005}
+\@writefile{toc}{\contentsline {paragraph}{Contamination.}{3}{section*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Classical baselines and how to compare them.}{3}{section*.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3}Protocol}{3}{section.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Contamination-free hold-out}{3}{subsection.3.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Domains}{3}{subsection.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Horizons, seasonality and context}{3}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Horizons, seasonality and context}{4}{subsection.3.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Metrics and significance}{4}{subsection.3.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Results}{4}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Accuracy}{4}{subsection.4.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Average rank with Nemenyi intervals, per group. Any model whose interval crosses the dashed line is statistically indistinguishable from the best model in that panel. Exchange rates, on the bottom row, is the panel where every interval overlaps every other and the Friedman test does not reject.}}{4}{figure.1}\protected@file@percent }
-\newlabel{fig:mcb}{{1}{4}{Average rank with Nemenyi intervals, per group. Any model whose interval crosses the dashed line is statistically indistinguishable from the best model in that panel. Exchange rates, on the bottom row, is the panel where every interval overlaps every other and the Friedman test does not reject}{figure.1}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Mean MASE by group; lower is better, best per column in bold.}}{5}{table.1}\protected@file@percent }
 \newlabel{tab:mase}{{1}{5}{Mean MASE by group; lower is better, best per column in bold}{table.1}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Average rank across series (lower is better). Underlined entries are statistically indistinguishable from the best model in that column under the Nemenyi interval.}}{5}{table.2}\protected@file@percent }
 \newlabel{tab:ranks}{{2}{5}{Average rank across series (lower is better). Underlined entries are statistically indistinguishable from the best model in that column under the Nemenyi interval}{table.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}The seven groups, one at a time}{5}{subsection.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Wikipedia pageviews (500 series each, daily / weekly / monthly).}{5}{section*.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Weather (300 series, hourly).}{5}{section*.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Air quality (379 series, hourly).}{5}{section*.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Electricity (46 series, hourly).}{5}{section*.8}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Series properties measured on the input window only, against the observed advantage. Neither column orders the last one.}}{6}{table.3}\protected@file@percent }
-\newlabel{tab:features}{{3}{6}{Series properties measured on the input window only, against the observed advantage. Neither column orders the last one}{table.3}{}}
-\@writefile{toc}{\contentsline {paragraph}{Exchange rates (29 series, daily).}{6}{section*.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Results}{5}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Accuracy}{5}{subsection.4.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Average rank with Nemenyi intervals, per group. Any model whose interval crosses the dashed line is statistically indistinguishable from the best model in that panel. Exchange rates, on the bottom row, is the panel where every interval overlaps every other and the Friedman test does not reject.}}{5}{figure.1}\protected@file@percent }
+\newlabel{fig:mcb}{{1}{5}{Average rank with Nemenyi intervals, per group. Any model whose interval crosses the dashed line is statistically indistinguishable from the best model in that panel. Exchange rates, on the bottom row, is the panel where every interval overlaps every other and the Friedman test does not reject}{figure.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}The seven groups, one at a time}{6}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Wikipedia pageviews (500 series each, daily / weekly / monthly).}{6}{section*.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Weather (300 series, hourly).}{6}{section*.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Air quality (379 series, hourly).}{6}{section*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Electricity (46 series, hourly).}{6}{section*.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Exchange rates (29 series, daily).}{6}{section*.10}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}The intrinsic explanation, and why we abandoned it}{6}{subsection.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Corpus familiarity survives the hold-out}{6}{subsection.4.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Series properties measured on the input window only, against the observed advantage. Neither column orders the last one.}}{7}{table.3}\protected@file@percent }
+\newlabel{tab:features}{{3}{7}{Series properties measured on the input window only, against the observed advantage. Neither column orders the last one}{table.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Corpus familiarity survives the hold-out}{7}{subsection.4.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.5}What this means for evaluation}{7}{subsection.4.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Probabilistic forecasts, where the ordering changes}{7}{subsection.4.6}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Probabilistic accuracy and calibration. \textdagger \ marks a divergence (see \S  \ref {sec:failures}), not a large loss. Coverage should be read against a nominal 0.80: below is overconfident, above is conservative.}}{7}{table.4}\protected@file@percent }
-\newlabel{tab:prob}{{4}{7}{Probabilistic accuracy and calibration. \textdagger \ marks a divergence (see \S \ref {sec:failures}), not a large loss. Coverage should be read against a nominal 0.80: below is overconfident, above is conservative}{table.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.7}Cost}{7}{subsection.4.7}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Probabilistic accuracy and calibration. \textdagger \ marks a divergence (see \S  \ref {sec:failures}), not a large loss. Coverage should be read against a nominal 0.80: below is overconfident, above is conservative.}}{8}{table.4}\protected@file@percent }
+\newlabel{tab:prob}{{4}{8}{Probabilistic accuracy and calibration. \textdagger \ marks a divergence (see \S \ref {sec:failures}), not a large loss. Coverage should be read against a nominal 0.80: below is overconfident, above is conservative}{table.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7}Cost}{8}{subsection.4.7}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Cost against accuracy, aggregated over the seven groups. The pretrained models occupy a tight cluster at the top left --- cheapest and most accurate --- while the automatic ARIMA search sits two orders of magnitude to the right of them and ranks worse than a Theta baseline that costs a hundredth as much.}}{8}{figure.2}\protected@file@percent }
 \newlabel{fig:cost}{{2}{8}{Cost against accuracy, aggregated over the seven groups. The pretrained models occupy a tight cluster at the top left --- cheapest and most accurate --- while the automatic ARIMA search sits two orders of magnitude to the right of them and ranks worse than a Theta baseline that costs a hundredth as much}{figure.2}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Median wall-clock seconds per series on identical hardware, including model load.}}{8}{table.5}\protected@file@percent }
-\newlabel{tab:cost}{{5}{8}{Median wall-clock seconds per series on identical hardware, including model load}{table.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Failure modes we hit}{8}{section.5}\protected@file@percent }
-\newlabel{sec:failures}{{5}{8}{Failure modes we hit}{section.5}{}}
-\@writefile{toc}{\contentsline {paragraph}{A metric with no denominator.}{8}{section*.10}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{A classical baseline that diverges rather than degrades.}{9}{section*.11}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Numerical precision on accelerator hardware.}{9}{section*.12}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{What we checked rather than assumed.}{9}{section*.13}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6}Limitations}{9}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion}{9}{section.7}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Median wall-clock seconds per series on identical hardware, including model load.}}{9}{table.5}\protected@file@percent }
+\newlabel{tab:cost}{{5}{9}{Median wall-clock seconds per series on identical hardware, including model load}{table.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Failure modes we hit}{9}{section.5}\protected@file@percent }
+\newlabel{sec:failures}{{5}{9}{Failure modes we hit}{section.5}{}}
+\@writefile{toc}{\contentsline {paragraph}{A metric with no denominator.}{9}{section*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{A classical baseline that diverges rather than degrades.}{9}{section*.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Numerical precision on accelerator hardware.}{9}{section*.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{What we checked rather than assumed.}{9}{section*.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Limitations}{10}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion}{10}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Dataset documentation}{10}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{What we release, and what we do not.}{10}{section*.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Sources and terms.}{10}{section*.16}\protected@file@percent }
 \bibstyle{plainnat}
 \bibdata{refs}
-\bibcite{chronos}{{1}{2024}{{Ansari et~al.}}{{}}}
-\bibcite{theta}{{2}{2000}{{Assimakopoulos and Nikolopoulos}}{{}}}
-\@writefile{toc}{\contentsline {section}{\numberline {8}Dataset documentation}{10}{section.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{What we release, and what we do not.}{10}{section*.14}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Sources and terms.}{10}{section*.15}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Maintenance and drift.}{10}{section*.16}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Machine-readable metadata.}{10}{section*.17}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Known limitations of the data.}{10}{section*.18}\protected@file@percent }
-\bibcite{timesfm}{{3}{2024}{{Das et~al.}}{{Das, Kong, Sen, and Zhou}}}
-\bibcite{monash}{{4}{2021}{{Godahewa et~al.}}{{Godahewa, Bergmeir, Webb, Hyndman, and Montero-Manso}}}
-\bibcite{hyndman2008}{{5}{2008}{{Hyndman et~al.}}{{Hyndman, Koehler, Ord, and Snyder}}}
-\bibcite{m4}{{6}{2020}{{Makridakis et~al.}}{{Makridakis, Spiliotis, and Assimakopoulos}}}
-\bibcite{m5}{{7}{2022}{{Makridakis et~al.}}{{Makridakis, Spiliotis, and Assimakopoulos}}}
-\bibcite{moirai}{{8}{2024}{{Woo et~al.}}{{}}}
-\gdef \@abspage@last{18}
+\bibcite{giftEval}{{1}{2024}{{Aksu et~al.}}{{Aksu, Woo, Liu, Liu, Liu, Savarese, Xiong, and Sahoo}}}
+\bibcite{chronos}{{2}{2024}{{Ansari et~al.}}{{Ansari, Stella, Turkmen, Zhang, Mercado, Shen, Shchur, Rangapuram, Pineda~Arango, Kapoor, Zschiegner, Maddix, Wang, Mahoney, Torkkola, Wilson, Bohlke-Schneider, and Wang}}}
+\bibcite{theta}{{3}{2000}{{Assimakopoulos and Nikolopoulos}}{{}}}
+\bibcite{timesfm}{{4}{2024}{{Das et~al.}}{{Das, Kong, Sen, and Zhou}}}
+\bibcite{demsar}{{5}{2006}{{Dem{\v {s}}ar}}{{}}}
+\bibcite{ttm}{{6}{2024}{{Ekambaram et~al.}}{{Ekambaram, Jati, Dayama, Mukherjee, Nguyen, Gifford, Reddy, and Kalagnanam}}}
+\bibcite{timegpt}{{7}{2023}{{Garza et~al.}}{{Garza, Challu, and Mergenthaler-Canseco}}}
+\bibcite{monash}{{8}{2021}{{Godahewa et~al.}}{{Godahewa, Bergmeir, Webb, Hyndman, and Montero-Manso}}}
+\@writefile{toc}{\contentsline {paragraph}{Maintenance and drift.}{11}{section*.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Machine-readable metadata.}{11}{section*.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Known limitations of the data.}{11}{section*.19}\protected@file@percent }
+\bibcite{moment}{{9}{2024}{{Goswami et~al.}}{{Goswami, Szafer, Choudhry, Cai, Li, and Dubrawski}}}
+\bibcite{hyndman2006}{{10}{2006}{{Hyndman and Koehler}}{{}}}
+\bibcite{hyndman2008}{{11}{2008}{{Hyndman et~al.}}{{Hyndman, Koehler, Ord, and Snyder}}}
+\bibcite{koning2005}{{12}{2005}{{Koning et~al.}}{{Koning, Franses, Hibon, and Stekler}}}
+\bibcite{tsfmaudit}{{13}{2026}{{Li et~al.}}{{Li, Xie, Shen, Li, Chen, Zhang, Fu, Sun, Ren, and Liu}}}
+\bibcite{timer}{{14}{2024}{{Liu et~al.}}{{Liu, Zhang, Li, Huang, Wang, and Long}}}
+\bibcite{sundial}{{15}{2025}{{Liu et~al.}}{{Liu, Qin, Shi, Chen, Yang, Huang, Wang, and Long}}}
+\bibcite{m4}{{16}{2020}{{Makridakis et~al.}}{{Makridakis, Spiliotis, and Assimakopoulos}}}
+\bibcite{m5}{{17}{2022}{{Makridakis et~al.}}{{Makridakis, Spiliotis, and Assimakopoulos}}}
+\bibcite{meyer2025leakage}{{18}{2025}{{Meyer et~al.}}{{Meyer, Kaltenpoth, Zalipski, and M{\"u}ller}}}
+\bibcite{lagllama}{{19}{2023}{{Rasul et~al.}}{{Rasul, Ashok, Williams, Khorasani, Adamopoulos, Bhagwatkar, Bilo{\v {s}}, Ghonia, Hassen, et~al.}}}
+\bibcite{sainz2023}{{20}{2023}{{Sainz et~al.}}{{Sainz, Campos, Garc{\'i}a-Ferrero, Etxaniz, de~Lacalle, and Agirre}}}
+\bibcite{fevbench}{{21}{2025}{{Shchur et~al.}}{{Shchur, Ansari, Turkmen, Stella, Erickson, Guerron, Bohlke-Schneider, and Wang}}}
+\bibcite{moirai}{{22}{2024}{{Woo et~al.}}{{Woo, Liu, Kumar, Xiong, Savarese, and Sahoo}}}
+\bibcite{xu2024contamination}{{23}{2024}{{Xu et~al.}}{{Xu, Guan, Greene, and Kechadi}}}
+\bibcite{dlinear}{{24}{2023}{{Zeng et~al.}}{{Zeng, Chen, Zhang, and Xu}}}
+\gdef \@abspage@last{19}

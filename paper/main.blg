@@ -3,44 +3,46 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 The style file: plainnat.bst
 Database file #1: refs.bib
-You've used 8 entries,
+Warning--can't use both volume and number fields in dlinear
+You've used 24 entries,
             2773 wiz_defined-function locations,
-            634 strings with 6123 characters,
-and the built_in function-call counts, 3603 in all, are:
-= -- 296
-> -- 247
-< -- 3
-+ -- 83
-- -- 75
-* -- 284
-:= -- 576
-add.period$ -- 29
-call.type$ -- 8
-change.case$ -- 46
-chr.to.int$ -- 8
-cite$ -- 16
-duplicate$ -- 171
-empty$ -- 290
-format.name$ -- 87
-if$ -- 744
+            723 strings with 10242 characters,
+and the built_in function-call counts, 15134 in all, are:
+= -- 1240
+> -- 1302
+< -- 11
++ -- 435
+- -- 411
+* -- 1368
+:= -- 2376
+add.period$ -- 83
+call.type$ -- 24
+change.case$ -- 207
+chr.to.int$ -- 24
+cite$ -- 49
+duplicate$ -- 571
+empty$ -- 959
+format.name$ -- 439
+if$ -- 3094
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 9
-newline$ -- 53
-num.names$ -- 32
-pop$ -- 100
+missing$ -- 25
+newline$ -- 139
+num.names$ -- 96
+pop$ -- 420
 preamble$ -- 1
-purify$ -- 39
+purify$ -- 184
 quote$ -- 0
-skip$ -- 127
+skip$ -- 506
 stack$ -- 0
-substring$ -- 41
-swap$ -- 11
-text.length$ -- 0
+substring$ -- 381
+swap$ -- 92
+text.length$ -- 8
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 83
-warning$ -- 0
-while$ -- 26
+type$ -- 259
+warning$ -- 1
+while$ -- 96
 width$ -- 0
-write$ -- 116
+write$ -- 331
+(There was 1 warning)

@@ -1,15 +1,20 @@
-\begin{thebibliography}{8}
+\begin{thebibliography}{24}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem[Ansari et~al.(2024)]{chronos}
-Abdul~Fatir Ansari et~al.
+\bibitem[Aksu et~al.(2024)Aksu, Woo, Liu, Liu, Liu, Savarese, Xiong, and Sahoo]{giftEval}
+Taha Aksu, Gerald Woo, Juncheng Liu, Xu~Liu, Chenghao Liu, Silvio Savarese, Caiming Xiong, and Doyen Sahoo.
+\newblock {GIFT-Eval}: A benchmark for general time series forecasting model evaluation.
+\newblock \emph{arXiv preprint arXiv:2410.10393}, 2024.
+
+\bibitem[Ansari et~al.(2024)Ansari, Stella, Turkmen, Zhang, Mercado, Shen, Shchur, Rangapuram, Pineda~Arango, Kapoor, Zschiegner, Maddix, Wang, Mahoney, Torkkola, Wilson, Bohlke-Schneider, and Wang]{chronos}
+Abdul~Fatir Ansari, Lorenzo Stella, Caner Turkmen, Xiyuan Zhang, Pedro Mercado, Huibin Shen, Oleksandr Shchur, Syama~Sundar Rangapuram, Sebastian Pineda~Arango, Shubham Kapoor, Jasper Zschiegner, Danielle~C. Maddix, Hao Wang, Michael~W. Mahoney, Kari Torkkola, Andrew~Gordon Wilson, Michael Bohlke-Schneider, and Yuyang Wang.
 \newblock Chronos: Learning the language of time series.
 \newblock \emph{Transactions on Machine Learning Research}, 2024.
-\newblock TODO: full author list; arXiv identifier.
+\newblock arXiv:2403.07815.
 
 \bibitem[Assimakopoulos and Nikolopoulos(2000)]{theta}
 Vassilios Assimakopoulos and Konstantinos Nikolopoulos.
@@ -19,35 +24,116 @@ Vassilios Assimakopoulos and Konstantinos Nikolopoulos.
 \bibitem[Das et~al.(2024)Das, Kong, Sen, and Zhou]{timesfm}
 Abhimanyu Das, Weihao Kong, Rajat Sen, and Yichen Zhou.
 \newblock A decoder-only foundation model for time-series forecasting.
-\newblock In \emph{International Conference on Machine Learning (ICML)}, 2024.
-\newblock TODO: arXiv identifier; pages.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, volume 235 of \emph{PMLR}, pages 10148--10167, 2024.
+\newblock arXiv:2310.10688.
+
+\bibitem[Dem{\v{s}}ar(2006)]{demsar}
+Janez Dem{\v{s}}ar.
+\newblock Statistical comparisons of classifiers over multiple data sets.
+\newblock \emph{Journal of Machine Learning Research}, 7:\penalty0 1--30, 2006.
+
+\bibitem[Ekambaram et~al.(2024)Ekambaram, Jati, Dayama, Mukherjee, Nguyen, Gifford, Reddy, and Kalagnanam]{ttm}
+Vijay Ekambaram, Arindam Jati, Pankaj Dayama, Sumanta Mukherjee, Nam~H. Nguyen, Wesley~M. Gifford, Chandra Reddy, and Jayant Kalagnanam.
+\newblock Tiny time mixers ({TTM}s): Fast pre-trained models for enhanced zero/few-shot forecasting of multivariate time series.
+\newblock In \emph{Advances in Neural Information Processing Systems (NeurIPS)}, 2024.
+\newblock arXiv:2401.03955.
+
+\bibitem[Garza et~al.(2023)Garza, Challu, and Mergenthaler-Canseco]{timegpt}
+Azul Garza, Cristian Challu, and Max Mergenthaler-Canseco.
+\newblock Timegpt-1.
+\newblock \emph{arXiv preprint arXiv:2310.03589}, 2023.
 
 \bibitem[Godahewa et~al.(2021)Godahewa, Bergmeir, Webb, Hyndman, and Montero-Manso]{monash}
 Rakshitha Godahewa, Christoph Bergmeir, Geoffrey~I. Webb, Rob~J. Hyndman, and Pablo Montero-Manso.
 \newblock Monash time series forecasting archive.
 \newblock In \emph{NeurIPS Datasets and Benchmarks Track}, 2021.
 
+\bibitem[Goswami et~al.(2024)Goswami, Szafer, Choudhry, Cai, Li, and Dubrawski]{moment}
+Mononito Goswami, Konrad Szafer, Arjun Choudhry, Yifu Cai, Shuo Li, and Artur Dubrawski.
+\newblock {MOMENT}: A family of open time-series foundation models.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, volume 235 of \emph{PMLR}, 2024.
+\newblock arXiv:2402.03885.
+
+\bibitem[Hyndman and Koehler(2006)]{hyndman2006}
+Rob~J. Hyndman and Anne~B. Koehler.
+\newblock Another look at measures of forecast accuracy.
+\newblock \emph{International Journal of Forecasting}, 22\penalty0 (4):\penalty0 679--688, 2006.
+\newblock \doi{10.1016/j.ijforecast.2006.03.001}.
+
 \bibitem[Hyndman et~al.(2008)Hyndman, Koehler, Ord, and Snyder]{hyndman2008}
 Rob~J. Hyndman, Anne~B. Koehler, J.~Keith Ord, and Ralph~D. Snyder.
 \newblock \emph{Forecasting with Exponential Smoothing: The State Space Approach}.
 \newblock Springer, 2008.
 
+\bibitem[Koning et~al.(2005)Koning, Franses, Hibon, and Stekler]{koning2005}
+Alex~J. Koning, Philip~Hans Franses, Mich{\`e}le Hibon, and H.~O. Stekler.
+\newblock The {M3} competition: Statistical tests of the results.
+\newblock \emph{International Journal of Forecasting}, 21\penalty0 (3):\penalty0 397--409, 2005.
+
+\bibitem[Li et~al.(2026)Li, Xie, Shen, Li, Chen, Zhang, Fu, Sun, Ren, and Liu]{tsfmaudit}
+Hongkai Li, Shifeng Xie, Lefei Shen, Zhuo Li, Mouxiang Chen, Xiaobin Zhang, Han Fu, Jianling Sun, Xiaoxue Ren, and Chenghao Liu.
+\newblock {TSFMAudit}: Data contamination auditing in forecasting time series foundation models.
+\newblock \emph{arXiv preprint arXiv:2605.26161}, 2026.
+
+\bibitem[Liu et~al.(2024)Liu, Zhang, Li, Huang, Wang, and Long]{timer}
+Yong Liu, Haoran Zhang, Chenyu Li, Xiangdong Huang, Jianmin Wang, and Mingsheng Long.
+\newblock Timer: Generative pre-trained transformers are large time series models.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, 2024.
+\newblock arXiv:2402.02368.
+
+\bibitem[Liu et~al.(2025)Liu, Qin, Shi, Chen, Yang, Huang, Wang, and Long]{sundial}
+Yong Liu, Guo Qin, Zhiyuan Shi, Zhi Chen, Caiyin Yang, Xiangdong Huang, Jianmin Wang, and Mingsheng Long.
+\newblock Sundial: A family of highly capable time series foundation models.
+\newblock \emph{arXiv preprint arXiv:2502.00816}, 2025.
+\newblock Reported as ICML 2025 Oral by the authors' repository; not stated on arXiv.
+
 \bibitem[Makridakis et~al.(2020)Makridakis, Spiliotis, and Assimakopoulos]{m4}
 Spyros Makridakis, Evangelos Spiliotis, and Vassilios Assimakopoulos.
-\newblock The m4 competition: 100,000 time series and 61 forecasting methods.
-\newblock \emph{International Journal of Forecasting}, 36\penalty0 (1), 2020.
-\newblock TODO: verify volume, issue and page range.
+\newblock The {M4} competition: 100,000 time series and 61 forecasting methods.
+\newblock \emph{International Journal of Forecasting}, 36\penalty0 (1):\penalty0 54--74, 2020.
+\newblock \doi{10.1016/j.ijforecast.2019.04.014}.
 
 \bibitem[Makridakis et~al.(2022)Makridakis, Spiliotis, and Assimakopoulos]{m5}
 Spyros Makridakis, Evangelos Spiliotis, and Vassilios Assimakopoulos.
-\newblock The m5 accuracy competition: Results, findings and conclusions.
-\newblock \emph{International Journal of Forecasting}, 38\penalty0 (4), 2022.
-\newblock TODO: verify volume, issue and page range.
+\newblock {M5} accuracy competition: Results, findings, and conclusions.
+\newblock \emph{International Journal of Forecasting}, 38\penalty0 (4):\penalty0 1346--1364, 2022.
 
-\bibitem[Woo et~al.(2024)]{moirai}
-Gerald Woo et~al.
+\bibitem[Meyer et~al.(2025)Meyer, Kaltenpoth, Zalipski, and M{\"u}ller]{meyer2025leakage}
+Marcel Meyer, Sascha Kaltenpoth, Kevin Zalipski, and Oliver M{\"u}ller.
+\newblock Rethinking evaluation in the era of time series foundation models: (un)known information leakage challenges.
+\newblock \emph{arXiv preprint arXiv:2510.13654}, 2025.
+
+\bibitem[Rasul et~al.(2023)Rasul, Ashok, Williams, Khorasani, Adamopoulos, Bhagwatkar, Bilo{\v{s}}, Ghonia, Hassen, et~al.]{lagllama}
+Kashif Rasul, Arjun Ashok, Andrew~Robert Williams, Arian Khorasani, George Adamopoulos, Rishika Bhagwatkar, Marin Bilo{\v{s}}, Hena Ghonia, Nadhir Hassen, et~al.
+\newblock Lag-llama: Towards foundation models for probabilistic time series forecasting.
+\newblock \emph{arXiv preprint arXiv:2310.08278}, 2023.
+
+\bibitem[Sainz et~al.(2023)Sainz, Campos, Garc{\'i}a-Ferrero, Etxaniz, de~Lacalle, and Agirre]{sainz2023}
+Oscar Sainz, Jon Campos, Iker Garc{\'i}a-Ferrero, Julen Etxaniz, Oier~Lopez de~Lacalle, and Eneko Agirre.
+\newblock {NLP} evaluation in trouble: On the need to measure {LLM} data contamination for each benchmark.
+\newblock In \emph{Findings of the Association for Computational Linguistics: EMNLP 2023}, pages 10776--10787, 2023.
+\newblock arXiv:2310.18018.
+
+\bibitem[Shchur et~al.(2025)Shchur, Ansari, Turkmen, Stella, Erickson, Guerron, Bohlke-Schneider, and Wang]{fevbench}
+Oleksandr Shchur, Abdul~Fatir Ansari, Caner Turkmen, Lorenzo Stella, Nick Erickson, Pablo Guerron, Michael Bohlke-Schneider, and Yuyang Wang.
+\newblock fev-bench: A realistic benchmark for time series forecasting.
+\newblock \emph{arXiv preprint arXiv:2509.26468}, 2025.
+
+\bibitem[Woo et~al.(2024)Woo, Liu, Kumar, Xiong, Savarese, and Sahoo]{moirai}
+Gerald Woo, Chenghao Liu, Akshat Kumar, Caiming Xiong, Silvio Savarese, and Doyen Sahoo.
 \newblock Unified training of universal time series forecasting transformers.
-\newblock In \emph{International Conference on Machine Learning (ICML)}, 2024.
-\newblock TODO: full author list; arXiv identifier; pages.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, volume 235 of \emph{PMLR}, pages 53140--53164, 2024.
+\newblock arXiv:2402.02592 (identifier not re-checked against the abstract page).
+
+\bibitem[Xu et~al.(2024)Xu, Guan, Greene, and Kechadi]{xu2024contamination}
+Cheng Xu, Shuhao Guan, Derek Greene, and M-Tahar Kechadi.
+\newblock Benchmark data contamination of large language models: A survey.
+\newblock \emph{arXiv preprint arXiv:2406.04244}, 2024.
+
+\bibitem[Zeng et~al.(2023)Zeng, Chen, Zhang, and Xu]{dlinear}
+Ailing Zeng, Muxi Chen, Lei Zhang, and Qiang Xu.
+\newblock Are transformers effective for time series forecasting?
+\newblock In \emph{Proceedings of the AAAI Conference on Artificial Intelligence}, volume~37, pages 11121--11128, 2023.
+\newblock \doi{10.1609/aaai.v37i9.26317}.
 
 \end{thebibliography}

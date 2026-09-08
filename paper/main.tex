@@ -140,30 +140,78 @@ recency alone.
 \section{Related work}
 
 \paragraph{Pretrained forecasters.}
+The premise shared across this family is that one network, pretrained on a
+large corpus of series, forecasts unseen series without being fitted to them.
 Chronos \citep{chronos} tokenises scaled series and trains a language-model
-architecture over the token sequence; Chronos-Bolt and Chronos-2 are its
-faster successors. TimesFM \citep{timesfm} is a decoder-only patched
-transformer trained on a large corpus dominated by web and search traffic.
-Moirai \citep{moirai} targets arbitrary frequency and multivariate input via
-masked patch prediction. These models are trained on differing and only
-partially disclosed corpora, which is exactly why an evaluation cannot verify
-by inspection that a given test set was excluded.
+architecture over the token sequence, with Chronos-Bolt and Chronos-2 as faster
+successors. TimesFM \citep{timesfm} is a decoder-only patched transformer.
+Moirai \citep{moirai} handles arbitrary frequency and multivariate input
+through masked patch prediction. Lag-Llama \citep{lagllama} conditions on
+lagged values for probabilistic forecasting, TimeGPT \citep{timegpt} is a
+commercial entrant, MOMENT \citep{moment} targets several tasks beyond
+forecasting, Tiny Time Mixers \citep{ttm} pursues the same zero-shot goal at a
+fraction of the parameter count, and Timer \citep{timer} and Sundial
+\citep{sundial} extend the generative-pretraining approach. What matters for
+this paper is a property they share rather than one that separates them: their
+corpora are disclosed in summary at best, so no evaluation can verify by
+inspection that a given test set was excluded from training.
 
-\paragraph{Benchmarks and their contamination.}
-The M4 \citep{m4} and M5 \citep{m5} competitions established the evaluation
-conventions this paper follows: MASE and sMAPE against a seasonal naive scale,
-and multiple-comparison rank intervals rather than raw mean losses. Their data,
-along with the Monash archive \citep{monash}, is public and static, which makes
-it ideal for comparability and unusable for testing memorisation. Recent work
-has begun to raise leakage explicitly; our contribution is to make the hold-out
-temporal and the collection reproducible rather than to audit corpora
-post hoc.
+\paragraph{Benchmarks, and what they are made of.}
+The M4 \citep{m4} and M5 \citep{m5} competitions set the conventions we follow,
+and the Monash archive \citep{monash} assembled the collection most
+zero-shot claims are measured against. More recent efforts target foundation
+models directly: GIFT-Eval \citep{giftEval} spans many domains and frequencies,
+and fev-bench \citep{fevbench} emphasises realistic tasks with covariates. All
+of them are built from data that was public before the models were trained.
+That is not a criticism of their construction --- it is what makes results
+comparable across papers --- but it is why a benchmark assembled from published
+archives cannot separate generalisation from recall, however many domains it
+contains. Scepticism about headline gains is not new either:
+\citet{dlinear} showed that a linear baseline matched or beat a generation of
+transformer forecasters, which is the same shape of finding as ours in a
+different setting.
 
-\paragraph{Classical baselines.}
-Theta \citep{theta} won M3 and remains difficult to beat on seasonal series;
+\paragraph{Contamination.}
+Benchmark contamination is well documented for language models
+\citep{sainz2023, xu2024contamination}, where the usual approach is to detect
+overlap between a test set and a training corpus after the fact. Two recent
+papers raise the problem specifically for time-series foundation models, and
+this work sits directly between them.
+
+\citet{meyer2025leakage} audit dataset lineage across published models and find
+that only a small minority of the datasets in circulation have never appeared
+in some model's pretraining or fine-tuning corpus. Their empirical work
+demonstrates that leakage \emph{can} inflate results rather than measuring how
+much it does for any released model, and they close by calling for evaluation
+on continuously sourced, post-release test data. This paper is an attempt to
+build what they ask for.
+
+\citet{tsfmaudit} approach it from the opposite side, with a detector: they
+probe a model's adaptation dynamics --- contamination shows up as faster loss
+reduction with less movement in the backbone --- to decide whether a given
+dataset was in a given corpus. That answers a membership question, per dataset,
+without quantifying how much a reported zero-shot number is inflated, and
+without needing a clean test set.
+
+Our contribution requires no access to any corpus and asks neither question. We
+evaluate on observations that did not exist when the models were trained, and
+then compare performance on domains that are in a model's corpus against
+domains that are not. The three are complementary: an audit finds membership a
+temporal hold-out cannot see, and --- as \S4.3 argues --- a temporal hold-out
+exposes a residual effect that a membership audit would not flag at all,
+because under this protocol no test observation is in any corpus and every
+audit would correctly return ``clean''.
+
+\paragraph{Classical baselines and how to compare them.}
+Theta \citep{theta} won M3 and remains hard to beat on seasonal data;
 automatic ARIMA and ETS \citep{hyndman2008} are the standard automated
-alternatives. We use the \texttt{statsforecast} implementations so that the
-baselines are the ones practitioners would actually run.
+alternatives, and we use the \texttt{statsforecast} implementations so the
+baselines are the ones a practitioner would actually run. Our reporting follows
+the forecasting literature rather than the deep-learning one: MASE as defined
+by \citet{hyndman2006}, and comparison by average rank with the intervals of
+\citet{demsar}, in the spirit of \citet{koning2005}, who showed for M3 that
+many of the gaps separating competition entries were not statistically
+distinguishable at all. That is the lesson we apply to Table~\ref{tab:ranks}.
 
 \section{Protocol}
 
