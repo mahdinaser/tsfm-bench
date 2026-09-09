@@ -16,3 +16,6 @@ paper/main.log
 paper/main.out
 paper/main.bbl
 paper/main.blg
+
+# Built artefact; regenerate with the steps in paper/ARXIV_SUBMISSION.md
+paper/arxiv-submission.tar.gz
