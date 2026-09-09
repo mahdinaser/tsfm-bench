@@ -23,7 +23,7 @@
   "conformsTo": "http://mlcommons.org/croissant/1.0",
   "name": "tsfm-bench-holdout-2026",
   "description": "A contamination-free forecasting benchmark: seven groups drawn from five domains, with every test observation published after the release of every model evaluated against it. Distributed as retrieval code rather than as a frozen archive, so that the panel is rebuilt from the publisher and the test window keeps moving forward -- a frozen file would be contaminated as soon as the next generation of models was trained on it.",
-  "license": "Each publisher's own terms govern reuse of its data; the retrieval code is released under the repository licence.",
+  "license": "Code: MIT. Data: not redistributed here -- each publisher's own terms govern reuse of the observations its API returns.",
   "url": "https://github.com/mahdinaser/tsfm-bench",
   "version": "1.0.0",
   "datePublished": "2026-09-08",

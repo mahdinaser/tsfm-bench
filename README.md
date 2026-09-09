@@ -68,3 +68,9 @@ scripts/            data fetch, acceptance test
 paper/              main.tex and the compiled PDF
 results/EXCLUDED.md any model that could not be run, and exactly why
 ```
+
+## Licence
+
+Code: MIT (see `LICENSE`). No data is redistributed here — the fetchers
+retrieve it from each publisher at run time, and that publisher's terms govern
+reuse of the observations.

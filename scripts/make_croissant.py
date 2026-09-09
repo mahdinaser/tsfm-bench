@@ -103,8 +103,8 @@ def main() -> int:
             "window keeps moving forward -- a frozen file would be contaminated as soon as "
             "the next generation of models was trained on it."
         ),
-        "license": ("Each publisher's own terms govern reuse of its data; the retrieval "
-                    "code is released under the repository licence."),
+        "license": ("Code: MIT. Data: not redistributed here -- each publisher's own "
+                    "terms govern reuse of the observations its API returns."),
         "url": "https://github.com/mahdinaser/tsfm-bench",
         "version": "1.0.0",
         "datePublished": datetime.date.today().isoformat(),
